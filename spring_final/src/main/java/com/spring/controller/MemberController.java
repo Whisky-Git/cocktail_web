@@ -119,7 +119,6 @@ public class MemberController {
 			helper.setSubject(title);
 			helper.setText(content, true);
 			mailSender.send(message);
-			System.out.println("트라이");
 
 		} catch (Exception e) {
 			e.printStackTrace();

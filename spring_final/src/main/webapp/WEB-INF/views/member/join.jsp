@@ -357,7 +357,7 @@
 			
 			if(pw == pwck){
 				$('pwck_input_re_1').css('display','block');
-				$('.pwck_input_re_2').css('display','none');
+				$('.pwcray','none');
 				pwCheck = true;
 			}
 			else{
