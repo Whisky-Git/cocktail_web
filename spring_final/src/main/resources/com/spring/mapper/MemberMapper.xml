@@ -13,5 +13,11 @@
   		select count(*) from book_member where memberId = #{memberId}
   	
  	 	</select>
-  		
+ 	 	
+ 	 	 <!-- 로그인 -->
+      <select id="memberLogin" resultType="com.spring.model.MemberVO">
+      
+         select memberId, memberName, adminCK, money, point from book_member where memberId = #{memberId} and memberPw = #{memberPw}
+      
+      </select>
   </mapper>

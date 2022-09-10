@@ -3,6 +3,7 @@ package com.spring.controller;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.model.MemberVO;
 import com.spring.service.MemberService;
@@ -70,11 +72,11 @@ public class MemberController {
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception {
 
-		logger.info("memberIdChk() 진입");
+		System.out.println("memberIdChk() 진입");
 
 		int result = memberservice.idCheck(memberId);
 
-		logger.info("결과값 = " + result);
+		System.out.println("결과값 = " + result);
 
 		if (result != 0) {
 
@@ -104,7 +106,7 @@ public class MemberController {
 		System.out.println("인증번호" + checkNum);
 
 		/* 이메일 보내기 */
-		String setFrom = "0j1129@naver.com"; //이름 설정
+		String setFrom = "0j11293@gmail.com"; //이름 설정
 		String toMail = email;
 		String title = "회원가입 인증 이메일 입니다.";
 		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
@@ -129,4 +131,14 @@ public class MemberController {
 		return num;
 
 	}
+	
+	///////////////////////////		로그인		////////////////////////////////////
+    @RequestMapping(value="login", method=RequestMethod.POST)
+    public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
+        
+        System.out.println("login 메서드 진입");
+        System.out.println("전달된 데이터 : " + member);
+        
+        return null;
+    }
 }

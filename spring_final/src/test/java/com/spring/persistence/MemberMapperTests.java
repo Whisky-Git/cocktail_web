@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.mapper.MemberMapper;
 /*import com.spring.model.MemberVO;*/
+import com.spring.model.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -34,14 +35,33 @@ public class MemberMapperTests {
 	 * }
 	 */
 	
-	// 아이디 중복검사
-		@Test
-		public void memberIdChk() throws Exception{
-			String id = "admin";	// 존재하는 아이디
-			String id2 = "test123";	// 존재하지 않는 아이디
-			membermapper.idCheck(id);
-			membermapper.idCheck(id2);
-		}
+	/*
+	 * // 아이디 중복검사
+	 * 
+	 * @Test public void memberIdChk() throws Exception{ String id = "admin"; //
+	 * 존재하는 아이디 String id2 = "test123"; // 존재하지 않는 아이디 membermapper.idCheck(id);
+	 * membermapper.idCheck(id2); }
+	 */
+	
+	/* 로그인 쿼리 mapper 메소드 테스트 */
+	@Test
+	public void memberLogin() throws Exception{
+		
+		MemberVO member = new MemberVO();
+		
+		//올바른 id, pw 입력한 경우
+		member.setMemberId("test3");
+		member.setMemberPw("test3");
+		
+
+        /* 올바른 않은 아이디 비번 입력경우 */
+        //member.setMemberId("test1123");
+        //member.setMemberPw("test1321321");
+        
+        membermapper.memberLogin(member);
+        System.out.println("결과 값 : " + membermapper.memberLogin(member));
+		
+	}
 	
 	
 }
