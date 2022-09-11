@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,6 +140,20 @@ public class MemberController {
         System.out.println("login 메서드 진입");
         System.out.println("전달된 데이터 : " + member);
         
-        return null;
+        HttpSession session = request.getSession();
+        MemberVO lvo = memberservice.memberLogin(member);
+        
+        if(lvo == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
+            
+            int result = 0;
+            rttr.addFlashAttribute("result", result);
+            return "redirect:/member/login";
+            
+        }
+        
+        session.setAttribute("member", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+        
+        return "redirect:/main";
+        
     }
 }

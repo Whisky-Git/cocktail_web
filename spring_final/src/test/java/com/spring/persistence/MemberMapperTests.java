@@ -50,8 +50,8 @@ public class MemberMapperTests {
 		MemberVO member = new MemberVO();
 		
 		//올바른 id, pw 입력한 경우
-		member.setMemberId("test3");
-		member.setMemberPw("test3");
+		member.setMemberId("test1");
+		member.setMemberPw("test1");
 		
 
         /* 올바른 않은 아이디 비번 입력경우 */

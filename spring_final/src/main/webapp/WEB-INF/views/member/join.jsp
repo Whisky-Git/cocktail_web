@@ -18,6 +18,7 @@
 				<div class="subjecet">
 					<span>회원가입</span>
 				</div>
+				
 				<div class="id_wrap">
 					<div class="id_name">아이디</div>
 					<div class="id_input_box">
@@ -27,6 +28,7 @@
 						class="id_input_re_2">아이디가 이미 존재합니다.</span> <span
 						class="final_id_ck">아이디를 입력해주세요.</span>
 				</div>
+				
 				<div class="pw_wrap">
 					<div class="pw_name">비밀번호</div>
 					<div class="pw_input_box">
@@ -34,6 +36,7 @@
 					</div>
 					<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
 				</div>
+				
 				<div class="pwck_wrap">
 					<div class="pwck_name">비밀번호 확인</div>
 					<div class="pwck_input_box">
@@ -43,6 +46,7 @@
 						class="pwck_input_re_1">비밀번호가 일치합니다.</span> <span
 						class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
 				</div>
+				
 				<div class="user_wrap">
 					<div class="user_name">이름</div>
 					<div class="user_input_box">
@@ -50,6 +54,7 @@
 					</div>
 					<span class="final_name_ck">이름을 입력해주세요.</span>
 				</div>
+				
 				<div class="mail_wrap">
 					<div class="mail_name">이메일</div>
 					<div class="mail_input_box">
