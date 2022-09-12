@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
+  
+  
+  
     <meta charset="utf-8">
     <title>ShapeBootstrap Clean Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +32,10 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
       <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
+
+
+
+
 		<style>       
 	
 
@@ -37,6 +45,22 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
       <script src="js/side.js"></script>
+	  
+	  
+	  
+	     <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("value");
+        output.innerHTML = slider.value;
+        
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
+	  
+	  
+	  
+	  
       
   </head>
   <body>
@@ -98,27 +122,27 @@
 	 <div class="sidem-bg3"></div> 
 	 
 	 
-	   <ul class="nav">
-	 <li class="sidem-mm4 sidem2-f2 "><a href="index.html" style="color:rgb(0, 0, 0);"><b>칵테일 바 찾기</b></a></li>
+	  
+	 <div  class="sidem-mm4 sidem2-f2 "><a href="index.html" style="color:rgb(0, 0, 0);"><b>칵테일 바 찾기</b></a></div >
 	 <div class="sidem-bg3"></div> 
 	 
-     <li class="sidem-mm5 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>츨겨찾기</b></a></li>
+     <div  class="sidem-mm5 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>츨겨찾기</b></a></div >
 	<div class="sidem-bg3"></div> 
 	
-    <li class="sidem-mm4 sidem2-f2"> <a href="service.html" style="color:rgb(0, 0, 0);"><b>Q & A</b></a></li>
+    <div  class="sidem-mm4 sidem2-f2"> <a href="service.html" style="color:rgb(0, 0, 0);"><b>Q & A</b></a></div >
 	<div class="sidem-bg3"></div> 
 	
-    <li class="sidem-mm5 sidem2-f2"><a href="blog.html" style="color:rgb(0, 0, 0);"><b>공지사항</b></a></li>	
+    <div  class="sidem-mm5 sidem2-f2"><a href="blog.html" style="color:rgb(0, 0, 0);"><b>공지사항</b></a></div >	
 	 <div class="sidem-bg3"></div> 
 	 
-     <li class="sidem-mm4 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>고객센터</b></a></li>
+     <div  class="sidem-mm4 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>고객센터</b></a></div >
 	<div class="sidem-bg3"></div> 
 	
-    <li class="sidem-mm5 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>자유게시판</b></a></li>
+    <div  class="sidem-mm5 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>자유게시판</b></a></div >
 	<div class="sidem-bg3"></div> 
 	
-    <li class="sidem-mm4 sidem2-f2"><a href="blog.html" style="color:rgb(0, 0, 0);"><b>로그아웃</b></a></li>	
-	  </ul>
+    <div  class="sidem-mm4 sidem2-f2"><a href="blog.html" style="color:rgb(0, 0, 0);"><b>로그아웃</b></a></div >	
+	  
 	 
  </div>
 
@@ -202,134 +226,30 @@
   </div>
   <!-- /HEADER ROW -->
 
-
-
-
-
-
-
-
-
-
-
-
+  
   <div class="container">
-  <div class="loin-bg">
-  <div class="wrapper">
-  
-  
-  
-		<form id="join_form" method="post">
-			<div class="wrap">
-				<div class="subjecet">
-					<span>Sign Up</span><br><br><br><br><br>
-				</div>
+  <div class="Search-bg">
+  <div class="text-box">집에 있는 재료로 만들 수 있는 칵테일 검색</div>
+   
+   
+     <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <p>Value: <span id="value"></span></p>
+    </div>
 
-				<!-- /////////////아이디 ///////////////////////////////////////////-->
-				<div class="id_wrap">
-					<div class="id_name">아이디</div>
-					<div class="id_input_box">
-						<input class="id_input" name="memberId">
-					</div>
-					<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-					<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
-					<span class="final_id_ck"> 아이디를 입력해주세요.</span>
-				</div>
-			
-				<!-- /////////////패스워드 ///////////////////////////////////////////-->
-				<div class="pw_wrap">
-					<div class="pw_name">비밀번호</div>
-					<div class="pw_input_box">
-						<input class="pw_input" name="memberPw">
-					</div>
-					<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
-				</div>
-				<div class="pwck_wrap">
-					<div class="pwck_name">비밀번호 확인</div>
-					<div class="pwck_input_box">
-						<input class="pwck_input">
-					</div>
-					<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
-					<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
-					<span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
-				</div>
-
-				<!-- /////////////////이름 ///////////////////////////////////////-->
-				<div class="user_wrap">
-					<div class="user_name">이름</div>
-					<div class="user_input_box">
-						<input class="user_input" name="memberName">
-					</div>
-					<span class="final_name_ck">이름을 입력해주세요.</span>
-				</div>
-
-				<!--//////////////////이메일//////////////////////////////////////  -->
-				<div class="mail_wrap">
-					<div class="mail_name">이메일</div>
-					<div class="mail_input_box">
-						<input class="mail_input" name="memberMail">
-					</div>
-					<span class="final_mail_ck">이메일을 입력해주세요.</span>
-					<div class="mail_check_wrap">
-						<div class="mail_check_input_box" id="mail_check_input_box_false">
-							<input class="mail_check_input" disabled="disabled">
-						</div>
-						<div class="mail_check_button">
-							<span>인증번호 전송</span>
-						</div>
-						<div class="clearfix"></div>
-						<!-- 인증번호 일치 여부 (경고글) -->
-						<span id="mail_check_input_box_warn"></span>
-					</div>
-				</div>
-
-				<!--///////////////////주소 /////////////////////////////////////-->
-				<div class="address_wrap">
-					<div class="address_name">주소</div>
-					<div class="address_input_1_wrap">
-						<div class="address_input_1_box">
-							<input class="address_input_1" name="memberAddr1" readonly="readonly">
-						</div>
-						<div class="address_button" onclick="execution_daum_address()">
-							<span>주소 찾기</span>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="address_input_2_wrap">
-						<div class="address_input_2_box">
-							<input class="address_input_2" name="memberAddr1" readonly="readonly">
-						</div>
-					</div>
-					<div class="address_input_3_wrap">
-						<div class="address_input_3_box">
-							<input class="address_input_3" name="memberAddr1" readonly="readonly">
-						</div>
-					</div>
-				</div>
-				<span class="final_addr_ck">주소를 입력해주세요.</span>
-
-				<!--////////////////////회원가입 버튼////////////////////////////////////  -->
-				<div class="join_button_wrap">
-					<input type="button" class="join_button" value="가입하기">
-				</div>
-			</div>
-		</form>
-		
-		
-		
-	</div>
-	</div>
-	</div>
+ 
+   
+   
+   
+   
+   
+   
+</div>
+   
+</div>
 
 
 <!-- /.Row View -->
-
-
-
-
-
-
-
 
 
 
