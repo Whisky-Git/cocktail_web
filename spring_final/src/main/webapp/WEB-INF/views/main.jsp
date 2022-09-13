@@ -20,6 +20,7 @@
 		<div class="top_gnb_area">
 			<h1>gnb area</h1>
 			 <ul class = "list">
+			 
 			 	<!-- login off -->
 			 	<c:if test = "${member == null}">
 			 	<li>
