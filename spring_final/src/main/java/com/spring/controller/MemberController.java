@@ -3,6 +3,8 @@ package com.spring.controller;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,12 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.model.MemberVO;
 import com.spring.service.MemberService;
@@ -34,9 +37,13 @@ public class MemberController {
 	// mail sender 의존성 주입
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	//비밀번호 보안성 강화
+	@Autowired
+	private BCryptPasswordEncoder pwEncoder;
 
 	// 회원가입 페이지 이동
-	@RequestMapping(value = "join", method = RequestMethod.GET)
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void joinGET() {
 
 		logger.info("회원가입 페이지 진입");
@@ -47,13 +54,26 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(MemberVO member) throws Exception {
 
-		logger.info("join 진입");
+		/*  2022-09-12 프로젝트 [8]
+		 * logger.info("join 진입");
+		 * 
+		 * // 회원가입 서비스 실행 memberservice.memberJoin(member);
+		 * 
+		 * logger.info("join Service 성공");
+		 */
+		
+		String rawPw ="";				//encoding before password
+		String encodePw ="";			//encoding after password
+		
+		rawPw = member.getMemberPw();
+		encodePw = pwEncoder.encode(rawPw);	
+		member.setMemberPw(encodePw);	//인코딩된 비밀번호 member객체 다시 저장
+		
 
-		// 회원가입 서비스 실행
+		/* 회원가입 쿼리 진행 */
 		memberservice.memberJoin(member);
-
-		logger.info("join Service 성공");
-
+		
+		
 		return "redirect:/main";
 	}
 
@@ -70,11 +90,11 @@ public class MemberController {
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception {
 
-		logger.info("memberIdChk() 진입");
+		System.out.println("memberIdChk() 진입");
 
 		int result = memberservice.idCheck(memberId);
 
-		logger.info("결과값 = " + result);
+		System.out.println("결과값 = " + result);
 
 		if (result != 0) {
 
@@ -104,7 +124,7 @@ public class MemberController {
 		System.out.println("인증번호" + checkNum);
 
 		/* 이메일 보내기 */
-		String setFrom = "0j1129@naver.com"; //이름 설정
+		String setFrom = "0j11293@gmail.com"; //이름 설정
 		String toMail = email;
 		String title = "회원가입 인증 이메일 입니다.";
 		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
@@ -119,7 +139,6 @@ public class MemberController {
 			helper.setSubject(title);
 			helper.setText(content, true);
 			mailSender.send(message);
-			System.out.println("트라이");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -130,4 +149,57 @@ public class MemberController {
 		return num;
 
 	}
+	
+	///////////////////////////		로그인		////////////////////////////////////
+    @RequestMapping(value="login", method=RequestMethod.POST)
+    public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
+        
+        
+        HttpSession session = request.getSession();
+        String rawPw ="";
+        String encodePw = "";
+        
+        MemberVO lvo = memberservice.memberLogin(member); //제출한 아이디와 일치하는 아이디 확인
+        
+        if(lvo != null) { // 일치하는 아이디 존재 시
+            
+            rawPw = member.getMemberPw();		//사용자가 제출한 비밀번호
+            encodePw = lvo.getMemberPw();		//DB에 저장한 인코딩된 비밀번호
+            
+            //비밀번호 일치 여부 판단
+            if(true == pwEncoder.matches(rawPw, encodePw)) {		// 아이디가 존재하지 않을 시 (로그인 실패)
+            	
+            	lvo.setMemberPw("");
+            	session.setAttribute("member", lvo);
+            	return "redirect:/main";
+            	
+            }
+            
+            else{
+            	rttr.addFlashAttribute("result", 0);
+                return "redirect:/member/login"; 	
+            }
+                  
+        }
+        else				//일치하지 않는 경우
+        {
+        	   rttr.addFlashAttribute("result", 0);
+               return "redirect:/member/login";
+        }
+        
+    }
+    
+    /* 메인페이지 로그아웃 */
+    @RequestMapping(value="logout.do", method=RequestMethod.GET)
+    public String logoutMainGET(HttpServletRequest request) throws Exception{
+        
+    	logger.info("logoutMainGET 메소드 진입");
+    	
+    	HttpSession session = request.getSession();
+    	
+    	session.invalidate();
+    	
+    	return "redirect:/main";
+    }
+    
 }

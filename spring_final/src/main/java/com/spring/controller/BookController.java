@@ -20,4 +20,12 @@ public class BookController {
 		Logger.info("메인 페이지 진입");
 	
 	}
+	
+	//마이페이지 이동
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public void mypagePageGet() {
+		Logger.info("마이 페이지 진입");
+	
+	}
+	
 }
