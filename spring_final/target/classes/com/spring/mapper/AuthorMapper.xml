@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.mapper.AuthorMapper">
+  
+      <!-- 작가 등록 -->
+      <insert id="authorEnroll">
+      
+          insert into vam_author(authorName, nationId, authorIntro) values(#{authorName}, #{nationId}, #{authorIntro} )
+ 
+      </insert>
+      
+      <!-- 작가 목록 -->
+    <select id="authorGetList" resultType="com.spring.model.AuthorVO">
+    
+        select  authorid, authorname, nationid, regdate, updatedate
+        from vam_author 
+        <if test="keyword != null">
+            where authorname like concat('%',#{keyword}, '%')
+        </if>
+        order by authorid desc 
+        limit #{skip}, #{amount}    
+    
+    </select>
+    
+    <!-- 작가 수 -->
+      <select id="authorGetTotal" resultType="int">
+      
+          select count(*) from vam_author
+          
+          <if test="keyword != null">
+          
+              where authorname like concat('%', #{keyword}, '%');
+          
+          </if>
+          
+      </select>
+      
+  </mapper>
