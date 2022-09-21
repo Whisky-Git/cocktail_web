@@ -28,4 +28,24 @@ public class BookController {
 	
 	}
 	
+	//페이지 이동
+	@RequestMapping(value = "/service", method = RequestMethod.GET)
+	public void servicePageGet() {
+		Logger.info("service 페이지 진입");
+	
+	}
+	
+	//페이지 이동
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public void contactPageGet() {
+		Logger.info("contact 페이지 진입");
+	
+	}
+	
+	//keyword 페이지 이동
+		@RequestMapping(value = "/keyword", method = RequestMethod.GET)
+		public void keywordPageGet() {
+			Logger.info("keyword 페이지 진입");
+		
+		}
 }

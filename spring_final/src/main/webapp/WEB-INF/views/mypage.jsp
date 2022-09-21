@@ -9,9 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Bootstrap -->
-    <link href="../resources/css/bootstrap.css" rel="stylesheet">
-    <link href="../resources/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="../resources/css/style.css" rel="stylesheet"> 
+    <link href="../resources/css/bootstrap.css?after" rel="stylesheet">
+    <link href="../resources/css/bootstrap-responsive.css?after" rel="stylesheet">
+    <link href="../resources/css/style.css?after" rel="stylesheet"> 
     
     <!--Font-->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
