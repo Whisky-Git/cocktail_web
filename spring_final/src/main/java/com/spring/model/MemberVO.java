@@ -9,7 +9,7 @@ public class MemberVO {
 	private String memberAddr1;	//회원 우편번호
 	private String memberAddr2; //회원 주소
 	private String memberAddr3;	//회원 상세주소
-	private int adminCheck;		//관리자 구분(0: 일반 사용자, 1: 관리자)
+	private int adminCk;		//관리자 구분(0: 일반 사용자, 1: 관리자)
 	private int regDate;		//등록일자
 	private int money;			//회원 돈
 	private int point;			//회원 포인트
@@ -70,12 +70,12 @@ public class MemberVO {
 		this.memberAddr3 = memberAddr3;
 	}
 	
-	public int getAdminCheck() {
-		return adminCheck;
+	public int getAdminCk() {
+		return adminCk;
 	}
 	
-	public void setAdminCheck(int adminCheck) {
-		this.adminCheck = adminCheck;
+	public void setAdminCk(int adminCk) {
+		this.adminCk = adminCk;
 	}
 	
 	public int getRegDate() {
@@ -106,7 +106,7 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
 				+ ", memberMail=" + memberMail + ", memberAddr1=" + memberAddr1 + ", memberAddr2=" + memberAddr2
-				+ ", memberAddr3=" + memberAddr3 + ", adminCheck=" + adminCheck + ", regDate=" + regDate + ", money="
+				+ ", memberAddr3=" + memberAddr3 + ", adminCk=" + adminCk + ", regDate=" + regDate + ", money="
 				+ money + ", point=" + point + "]";
 	}
 	
