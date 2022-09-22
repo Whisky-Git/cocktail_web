@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<<<<<<< HEAD
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-=======
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
->>>>>>> refs/remotes/origin/김태산
 <!DOCTYPE html>
 <html>
   <head>
@@ -39,7 +35,35 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
       <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
-<<<<<<< HEAD
+		<style>       
+		</style>
+    <!-- SCRIPT 
+    ============================================================-->  
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/side.js"></script>
+      
+  </head>
+  <body>
+  <!--HEADER ROW-->
+  <input type="checkbox" id="menuicon">
+<ul>
+	<li>
+		<label for="menuicon">
+			<span></span><span></span><span></span>
+		</label>
+	</li>
+</ul>
+
+
+
+
+<div class="sidebar">
+
+
+
+
+
 <div class="wrapper">
 	<div class="wrap">
 		<div class="top_gnb_area">
@@ -104,42 +128,45 @@
 		<div class="content_area">
 			<h1>content area</h1>
 		</div>
-=======
-		<style>       
-		</style>
-    <!-- SCRIPT 
-    ============================================================-->  
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/side.js"></script>
-      
-  </head>
-  <body>
-  <!--HEADER ROW-->
-  <input type="checkbox" id="menuicon">
-<ul>
-	<li>
-		<label for="menuicon">
-			<span></span><span></span><span></span>
-		</label>
-	</li>
-</ul>
-
-
-
-
-<div class="sidebar">
-
-
-
-
-
 	<div class="sidem">
 	<div class="sidem_a ">
     <div class="items sidem_mm">
 	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
     <div class="items my-f1  sidem_mm1"> 홍길동</div>
->>>>>>> refs/remotes/origin/김태산
+	</div>
+	
+	<div class="sidem_b ">
+    <div class="items sidem_mm">
+	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
+	<div class="items sidem_mm">
+	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
+	 <div class="items sidem_mm">
+	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
+	</div>	
+	</div>
+	 
+	<div class="sidem-bg"></div> 
+	 
+	 
+	<div class="sidem2">	
+    <div class="items2 items2-mm1">
+	<div class="sidem2-f">등급</div> <br>
+	<a><img src="../resources/img/grade/gold.png" height="90" width = "90"/></a><br><br>
+	gold	
+	</div>
+		
+    <div class=" sidem-bg2"></div>
+	
+	 <div class="items2 items2-mm2">
+	<div class="sidem2-f">내가 쓴 글</div>  <br><br>
+	<div class="sidem2-f">21</div>  <br><br>
+	 <a class="btn btn-large btn-danger" href="#">  더 보러가기  </a>
+	 </div>	
+	<div class="sidem">
+	<div class="sidem_a ">
+    <div class="items sidem_mm">
+	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
+    <div class="items my-f1  sidem_mm1"> 홍길동</div>
 	</div>
 	
 	<div class="sidem_b ">
@@ -394,25 +421,6 @@
 		<div class="span6 mm4"><img src="../resources/img/test4.png"  width = "500"></div>
     </div>
 </div>
-<<<<<<< HEAD
-<script>
- 
-    /* gnb_area 로그아웃 버튼 작동 */
-    $("#gnb_logout_button").click(function(){
-        //alert("버튼 작동");
-        $.ajax({
-            type:"POST",
-            url:"/member/logout.do",
-            success:function(data){
-                alert("로그아웃 성공");
-                document.location.reload();     
-            } 
-        }); // ajax 
-    });
-    
-</script>	
-</body>
-=======
 
 <br><br>
  <!--<div class="hr-divider"></div> <!-- 직선======================================--> 
@@ -606,7 +614,22 @@
 
    
 </div>
-
+<script>
+ 
+    /* gnb_area 로그아웃 버튼 작동 */
+    $("#gnb_logout_button").click(function(){
+        //alert("버튼 작동");
+        $.ajax({
+            type:"POST",
+            url:"/member/logout.do",
+            success:function(data){
+                alert("로그아웃 성공");
+                document.location.reload();     
+            } 
+        }); // ajax 
+    });
+    
+</script>	
 <!-- /.Row View -->
 <!--Footer
 ==========================-->
@@ -641,5 +664,4 @@
 <!--/.Footer-->
 
   </body>
->>>>>>> refs/remotes/origin/김태산
 </html>
