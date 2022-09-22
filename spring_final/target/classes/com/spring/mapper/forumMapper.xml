@@ -4,6 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.spring.mapper.forumMapper">
   
+  <!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="where (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            forum_title like concat('%',#{keyword},'%') 
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            forum_content like concat('%',#{keyword},'%') 
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            forum_memberID like concat('%',#{keyword},'%' )
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    
+    </sql>
+  
  	<!-- 게시판 등록 -->
  	<insert id="enroll">
         
@@ -43,7 +65,13 @@
     
         select * from (
                 select forum_no, forum_title, forum_date, forum_content, forum_views,forum_recommend
-                from forum order by forum_no desc) as T1 
+                from forum
+                <if test="keyword != null">
+                    <include refid="criteria"></include>
+                </if>
+                
+                order by forum_no desc) as T1 
+                
         <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
         limit #{skip},#{amount}
     
@@ -53,7 +81,13 @@
     <select id="getTotal" resultType="int">
     
         select count(*) from forum
-    
+    	<if test="keyword != null">
+           <include refid="criteria"></include>
+        </if>
     </select>
+    
+    
+    
+    
     
   </mapper>

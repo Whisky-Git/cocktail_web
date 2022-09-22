@@ -85,6 +85,9 @@ textarea{
 		<input type="hidden" id="forum_no" name="forum_no" value='<c:out value="${pageInfo.forum_no}"/>'>
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+		<input type="hidden" name="type" value="${cri.type }">
+		<input type="hidden" name="keyword" value="${cri.keyword }"/> 
+		
 	</form>
 <script>
 	let form = $("#infoForm");

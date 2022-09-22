@@ -33,7 +33,7 @@ public class forumController {
         
         model.addAttribute("list", bservice.getListPaging(cri));
         
-        int total = bservice.getTotal();
+        int total = bservice.getTotal(cri);
         
         PageMakerDTO pageMake = new PageMakerDTO(cri, total);
         
@@ -71,10 +71,10 @@ public class forumController {
     
     /* 수정 페이지 이동 */
     @GetMapping("/modify")
-    public void forumModifyGET(int forum_no, Model model) {
+    public void forumModifyGET(int forum_no, Model model,Criteria cri) {
         
         model.addAttribute("pageInfo", bservice.getPage(forum_no));
-      
+        model.addAttribute("cri",cri);
     }
     
     /* 페이지 수정 */
