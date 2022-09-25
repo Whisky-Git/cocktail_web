@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.mapper.CocktailMapper">
+  
+		<!-- 칵테일 목록 -->
+    <select id="cocktailGetList" resultType="com.spring.model.CocktailVO">
+    	<choose>
+			<when test = "tag != null">
+				select  *
+       		    from cocktail_recipe
+       		    where
+       		    <foreach collection="tag" item="tag" separator="and">
+       		    cocktailMaterials like concat('%',#{tag}, '%')
+       		    </foreach>
+       		    order by cocktailNo asc 
+        		limit #{skip}, #{amount} 
+			</when>
+			<otherwise>
+		   		select  *
+     		    from cocktail_recipe 
+       			 <if test="keyword != null">
+           		 where cocktailName like concat('%',#{keyword}, '%')
+       			 </if>
+       			 order by cocktailNo asc 
+        		limit #{skip}, #{amount} 
+        	</otherwise>
+		</choose>
+    </select>
+    
+     <!-- 칵테일 수 -->
+      <select id="cocktailGetTotal" resultType="int">
+      	<choose>
+      		<when test="tag != null">
+      			select count(*) from cocktail_recipe
+      			where
+       		    <foreach collection="tag" item="tag" separator="and">
+       		    cocktailMaterials like concat('%',#{tag}, '%')
+       		    </foreach>
+      		</when>
+      		<otherwise>
+      			select count(*) from cocktail_recipe
+          
+          <if test="keyword != null">
+          
+              where cocktailName like concat('%', #{keyword}, '%');
+          
+          </if>
+      		</otherwise>
+      	</choose>
+          
+          
+      </select>
+      
+      <!-- 칵테일 디테일 페이지 -->
+  	<select id="cocktailGetDetail" resultType="com.spring.model.CocktailVO">
+  	
+  		select * from cocktail_recipe where cocktailNo = #{cocktailNo}
+  	
+  	</select>
+  	
+      <!-- 키워드 검색 -->
+  	<select id="cocktailGetTag" resultType="com.spring.model.CocktailVO">
+  	
+  		select * from cocktail_recipe where LIKE ‘%위스키%’
+  	
+  	</select>
+  </mapper>

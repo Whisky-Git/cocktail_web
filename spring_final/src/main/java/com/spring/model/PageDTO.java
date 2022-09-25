@@ -1,7 +1,8 @@
 package com.spring.model;
 
 public class PageDTO {
-	/* 페이지 시작 번호 */
+
+    /* 페이지 시작 번호 */
     private int pageStart;
     
     /* 페이지 끝 번호 */
@@ -14,10 +15,10 @@ public class PageDTO {
     private int total;
     
     /* 현재페이지 번호(pageNum), 행 표시 수(amount), 검색 키워드(keyword), 검색 종류(type) */
-    private Criteria cri;
+    private CocktailCriteria cri;
     
     /* 생성자(클래스 호출 시 각 변수 값 초기화) */
-    public PageDTO(Criteria cri, int total) {
+    public PageDTO(CocktailCriteria cri, int total) {
         
         /* cri, total 초기화 */
         this.cri = cri;
@@ -85,18 +86,19 @@ public class PageDTO {
 		this.total = total;
 	}
 
-	public Criteria getCri() {
+	public CocktailCriteria getCri() {
 		return cri;
 	}
 
-	public void setCri(Criteria cri) {
+	public void setCri(CocktailCriteria cri) {
 		this.cri = cri;
 	}
 
 	@Override
 	public String toString() {
 		return "PageDTO [pageStart=" + pageStart + ", pageEnd=" + pageEnd + ", next=" + next + ", prev=" + prev
-				+ ", total=" + total + ", cri=" + cri + "]";
+				+ ", total=" + total + "]";
 	}
+    
     
 }

@@ -13,13 +13,6 @@ public class MemberVO {
 	private int regDate;		//등록일자
 	private int money;			//회원 돈
 	private int point;			//회원 포인트
-	private int memberMbtiNo;	//회원 mbti
-	private int memberAge; 		//회원나이
-	private String memberGender;//회원성별
-	private int memberGradeNo; 	//회원등급
-	private int countAttendance;//회원출석일수
-	private int countPost;		//회원게시물수
-	private int memberQuestionNo;//회원문의내역
 	
 	public String getMemberId() {
 		return memberId;
@@ -81,7 +74,7 @@ public class MemberVO {
 		return adminCk;
 	}
 	
-	public void setAdminCheck(int adminCk) {
+	public void setAdminCk(int adminCk) {
 		this.adminCk = adminCk;
 	}
 	
@@ -108,70 +101,13 @@ public class MemberVO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public int getMemberMbtiNo() {
-		return memberMbtiNo;
-	}
-
-	public void setMemberMbtiNo(int memberMbtiNo) {
-		this.memberMbtiNo = memberMbtiNo;
-	}
-
-	public int getMemberAge() {
-		return memberAge;
-	}
-
-	public void setMemberAge(int memberAge) {
-		this.memberAge = memberAge;
-	}
-
-	public String getMemberGender() {
-		return memberGender;
-	}
-
-	public void setMemberGender(String memberGender) {
-		this.memberGender = memberGender;
-	}
-
-	public int getMemberGradeNo() {
-		return memberGradeNo;
-	}
-
-	public void setMemberGradeNo(int memberGradeNo) {
-		this.memberGradeNo = memberGradeNo;
-	}
-
-	public int getCountAttendance() {
-		return countAttendance;
-	}
-
-	public void setCountAttendance(int countAttendance) {
-		this.countAttendance = countAttendance;
-	}
-
-	public int getCountPost() {
-		return countPost;
-	}
-
-	public void setCountPost(int countPost) {
-		this.countPost = countPost;
-	}
-
-	public int getMemberQuestionNo() {
-		return memberQuestionNo;
-	}
-
-	public void setMemberQuestionNo(int memberQuestionNo) {
-		this.memberQuestionNo = memberQuestionNo;
-	}
 
 	@Override
 	public String toString() {
 		return "MemberVO [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
 				+ ", memberMail=" + memberMail + ", memberAddr1=" + memberAddr1 + ", memberAddr2=" + memberAddr2
-				+ ", memberAddr3=" + memberAddr3 + ", adminCheck=" + adminCk + ", regDate=" + regDate + ", money="
-				+ money + ", point=" + point + ", memberMbtiNo=" + memberMbtiNo +",memberAge=" + memberAge + ", memberGender= " + memberGender+ ","
-				+ " memberGradeNo= " + memberGradeNo + " ,  countAttendance= " + countAttendance + ", countPost= " + countPost + ", memberQuestionNo=" + memberQuestionNo + "]";
-				 
+				+ ", memberAddr3=" + memberAddr3 + ", adminCk=" + adminCk + ", regDate=" + regDate + ", money="
+				+ money + ", point=" + point + "]";
 	}
 	
 }

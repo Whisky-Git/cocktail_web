@@ -1,43 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <div class="clearfix"></div>
-            </div>
-            
-            <!-- Footer 영역 -->
-        <div class="footer_nav">
-            <div class="footer_nav_container">
-                <ul>
-                    <li>회사소개</li>
-                    <span class="line">|</span>
-                    <li>이용약관</li>
-                    <span class="line">|</span>
-                    <li>고객센터</li>
-                    <span class="line">|</span>
-                    <li>광고문의</li>
-                    <span class="line">|</span>
-                    <li>채용정보</li>
-                    <span class="line">|</span>
-                </ul>
-            </div>
-        </div> <!-- class="footer_nav" -->
-        
-        <div class="footer">
-            <div class="footer_container">
-                
-                <div class="footer_left">
-                    <img src="resources/img/logo.png">
-                </div>
-                <div class="footer_right">
-                    (주) VamBook    대표이사 : OOO
-                    <br>
-                    사업자등록번호 : ooo-oo-ooooo
-                    <br>
-                    대표전화 : oooo-oooo(발신자 부담전화)
-                    <br>
-                    <br>
-                    COPYRIGHT(C) <strong>kimvampa.tistory.com</strong>    ALL RIGHTS RESERVED.
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div> <!-- class="footer" --> 
+    <script>
+		/* gnb_area 로그아웃 버튼 작동 */
+		$("#gnb_logout_button").click(function() {
+			//alert("버튼 작동");
+			$.ajax({
+				type : "POST",
+				url : "/member/logout.do",
+				success : function(data) {
+					alert("로그아웃 성공");
+					document.location.reload();
+				}
+			}); // ajax 
+		});
+	</script>
+	<!-- /.Row View -->
+	<!--Footer
+==========================-->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="span3">
+					<a href="../main"><img src="../resources/img/logo.png"></a> <br>
+					<br> <small><a href="#"><img src=""> ㅁ</a> <a
+						href="#"><img src=""> ㅁ</a> <a href="#"><img src="">
+							ㅁ</a></small>
+				</div>
+				<div class="span3"></div>
+				<div class="span6">
+
+					<div class="social pull-right">
+						<p>연락처 : 010-0000-0000</p>
+						<p>책임자: 홍길동</p>
+						<p>이메일: abc@naver.com</p>
+						<br>
+						<!--
+				  <a href="#"><img src="img/social/googleplus.png" alt=""></a>
+                <a href="#"><img src="img/social/dribbble.png" alt=""></a>
+                <a href="#"><img src="img/social/twitter.png" alt=""></a>
+                <a href="#"><img src="img/social/dribbble.png" alt=""></a>
+                <a href="#"><img src="img/social/rss.png" alt=""></a>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!--/.Footer-->
