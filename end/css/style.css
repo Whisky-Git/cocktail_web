@@ -227,7 +227,7 @@ input[id="menuicon"]:checked + ul + div {right:0;}
 
 .boardb button{
 	
-	width:13%;
+	width:12%;
 	font-size:18px;
 	border: 2px solid #b70f0a;
 	height: 50px;
@@ -236,17 +236,21 @@ input[id="menuicon"]:checked + ul + div {right:0;}
 	/*outline: none;*/
 	/*float:left;*/
 	color: #ffffff;
-	  margin-left: 23%;
+	
 	
 }
 
 /* 페이지 숫자, 작성 버튼 */
 	.foot{
-			margin-left: 40%;
+			width:60%;
+			  margin-right: 23%;
+		}
+ 
+	.foot-m{
+			float : right;
 			margin-top: 15px;
 		}
  
-
             .foot .arrow {
                 -ms-transform: scale(1.5); /* IE */
                 -moz-transform: scale(1.5); /* FF */
