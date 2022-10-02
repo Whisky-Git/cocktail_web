@@ -3,9 +3,15 @@
 	margin: 0;
 	padding:0;
 }
+
+a{
+    text-decoration: none;
+}
+ 
+ 
 /* 화면 전체 렙 */
 .wrapper{
-	width: 1900px;
+	width: 100%;
 }
 /* content 랩 */
 .wrap{
@@ -17,7 +23,24 @@
 	width: 100%;
     height: 50px;
     background-color: #a2a2ea;
+    position:relative;
 }
+
+.top_gnb_area .list{
+    position: absolute;
+    top: 0px;
+    right: 0;
+    
+}
+ 
+.top_gnb_area .list li{
+    list-style: none;    
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+ 
 /* 로고, 검색, 로그인 */
 .top_area{
 	width: 100%;
@@ -59,12 +82,13 @@
 	margin-top: 10px;
     font-weight: 900;
     display: inline-block;
-}
+}/*
 .login_button{
 	height : 50%;
 	background-color: #D4DFE6;
 	margin-top:30px;
 }
+*/
 
 /* 제품 목록 네비 */
 .navi_bar_area{
@@ -73,11 +97,43 @@
     background-color: #7696fd;
 }
 
+
 /* 홈페이지 메인 제품 목록  */
 .content_area{
 	width: 100%;
     background-color: #97ef97;
     height: 1000px;
+}
+
+/* 로그인 성공 영역 */
+.login_success_area{
+	
+    height: 62%;
+    width: 80%;
+    border: 2px solid #7474ad;
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 5%;
+    
+}
+
+.login_success_area>span{
+    display : block;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.login_success_area>a{
+    font-size: 15px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 5px;
+    background: #e1e5e8;
+    width: 82px;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 25px;
+    color: #606267;    
 }
 
 /* float 속성 해제 */
