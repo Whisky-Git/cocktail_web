@@ -10,7 +10,7 @@ public class MemberVO {
 	private String memberAddr2; //회원 주소
 	private String memberAddr3;	//회원 상세주소
 	private int adminCk;		//관리자 구분(0: 일반 사용자, 1: 관리자)
-	private int regDate;		//등록일자
+	private String regDate;		//등록일자
 	private int money;			//회원 돈
 	private int point;			//회원 포인트
 	
@@ -78,11 +78,11 @@ public class MemberVO {
 		this.adminCk = adminCk;
 	}
 	
-	public int getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 	
-	public void setRegDate(int regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	

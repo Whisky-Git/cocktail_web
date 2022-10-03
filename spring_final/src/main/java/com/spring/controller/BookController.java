@@ -48,4 +48,15 @@ public class BookController {
 			Logger.info("keyword 페이지 진입");
 		
 		}
+		
+		
+		//keyword 페이지 이동
+		//		@RequestMapping(value = "/myinfor", method = RequestMethod.GET)
+		//		public void myinforPageGet() {
+		//			Logger.info("myinfor 페이지 진입");
+		//		
+		//		}
+		
+		
+		
 }

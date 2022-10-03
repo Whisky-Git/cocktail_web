@@ -32,8 +32,9 @@
 
 		<style>       
 	.wrapper1{
-			width: 1194px;
-			height: 400px;
+			width: 1172px;
+			height: 320px;
+			padding-left : 20px;
 			border: 3px solid #000000;
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;
@@ -51,14 +52,15 @@
 			border: 2px solid #e0e0e0;
 		}
     .itemGroup1{
+    
       display: flex;
       justify-content: center;
       align-items: center;
       width:1100px;
-      margin-top: 40px;
+      margin-top: 20px;
     }
     .itemGroup2{
-      margin-top: 20px;
+     margin-top: 30px;
     }
     
 		.itemBox2{
@@ -115,12 +117,14 @@
       margin-top: 40px;
     }
     .items1_3{
-      width:1100px;
-      height: 35px;
-			line-height: 35px;
-			color:#000000;
-      border: 1px solid #e0e0e0;
-      margin:0 auto;
+    width:700px;
+    padding-top: 10px;
+   	height: 50px;
+	line-height: 35px;
+	color:#000000;
+   	border: 1px solid #e0e0e0;
+    margin:0 auto;
+    font-size: 22px;
     }
     .items1_3:nth-child(odd){
 			background-color: #e0e0e0;
@@ -147,8 +151,8 @@
 }
 .camera{
   position:relative;
-  top: 65px;
-  right: 35px;
+  top: 80px;
+  right: 50px;
 }
 
     
@@ -235,33 +239,28 @@
       <br><br>
       <div class="Page-Title">MyPage</div>
       <br><br>
-      <div class="myPage2"><b>사나운고양이</b> 님의 페이지</div>
+      <div class="myPage2"><b>  ${member.memberName}</b> 님의 페이지</div>
       <br>
       <div class="wrapper1">
         <div class="itemGroup1">
-          <img src="../resources/img/cat.jpg" width="250px" height="250px" style="
+          <img src="../resources/img/cat.jpg" width="350px" height="350px" style="
           border: 3px solid rgb(121, 121, 121);
           border-radius: 15px;">
-          <img src="../resources/img/camera.png" width="25px" height="25px" class="camera">
-          <div class="itemBox1">
-            <div class="items1_1">
-              <img src="../resources/img/grade/gold.png" width="100px" height="100px">
-              <div style="margin-left: 30px; font-size:30px;"><b>골드</b></div>
-              <div style="margin: -40px 0 0 400px;"><a class="btn btn-large btn-danger" href="#" width="400px">정보 수정</a></div>
-            </div>
-            <div class="items1_2">
-             <div><b>다음 등급까지 남은 진행률</b></div>
-             <div><진행률> 15%</div>
-             <progress id="progress" value="15" min="0" max="100"></progress>
-            </div>
-          </div>
-        </div>
-        <div class="itemGroup2">
+          <img src="../resources/img/camera.png" width="40px" height="40px" class="camera">
+          
+          
+           <div class="itemGroup2">
           <div class="items1_3"><div class="leftPadding">
-            <b>- 이메일 : antjdnsrhdiddl@naver.com</b></div></div>
+            <b>- 이메일 : ${member.memberMail}</b></div></div>
           <div class="items1_3"><div class="leftPadding">
-            <b>- 가입일 : 2022.01.03</b></div></div>
+            <b>- 가입일 : ${member.regDate}</b></div></div>
+             <div class="items1_3"><div class="leftPadding">
+            <b>- 생년월일 : ${info.memberDate}</b></div></div>
+             <div style="margin: 10px 0 0 580px;"><a class="btn btn-large btn-danger" href="../myinfor" width="400px">정보 수정</a></div>
         </div>
+                
+        </div>
+       
       </div>
       
       
@@ -283,14 +282,14 @@
         </div>
         <div class="itemBox2">
             <div class="items2">MBTI</div>
-            <div class="items2"><font size=30px>isfp</font></div>
+            <div class="items2"><font size=30px> ${info.memberMbti}</font></div>
             <div class="items2">
-              <button onclick="location.href='#'" class="btn_red">검사</button >
+              <button onclick="location.href='https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC'" class="btn_red">검사</button >
             </div>
         </div>
         <div class="itemBox2">
             <div class="items2">나이</div>
-            <div class="items2"><font size=30px>27</font></div>
+            <div class="items2"><font size=30px>${info.memberAge}</font></div>
         </div>
       </div>
 
