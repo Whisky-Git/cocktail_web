@@ -15,4 +15,13 @@ public interface CocktailMapper {
     
     /* 칵테일 상세 */
 	public CocktailVO cocktailGetDetail(int cocktailNo);
+	
+	/* 칵테일 등록 */
+    public void cocktailEnroll(CocktailVO cocktail);
+    
+    /* 칵테일 수정 */
+	public int cocktailModify(CocktailVO cocktail);
+	
+	/* 칵테일 삭제 */
+	public int cocktailDelete(int cocktailNo);
 }

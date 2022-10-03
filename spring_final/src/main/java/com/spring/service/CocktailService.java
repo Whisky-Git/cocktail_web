@@ -15,4 +15,13 @@ public interface CocktailService {
     
     /* 칵테일 상세 페이지 */
 	public CocktailVO cocktailGetDetail(int cocktailNo) throws Exception;
+	
+	/* 칵테일 등록 */
+    public void cocktailEnroll(CocktailVO cocktail) throws Exception;
+    
+    /* 칵테일 수정 */
+	public int cocktailModify(CocktailVO cocktail) throws Exception;
+	
+	/* 칵테일 삭제 */
+	public int cocktailDelete(int cocktailNo);
 }

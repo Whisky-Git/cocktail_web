@@ -18,7 +18,7 @@
 	<!-- /.Row View -->
 	<!--Footer
 ==========================-->
-
+	<br><br><br><br><br>
 	<footer>
 		<div class="container">
 			<div class="row">

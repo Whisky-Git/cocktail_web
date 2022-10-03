@@ -40,4 +40,28 @@ public class CocktailServiceImp implements CocktailService{
 		return cocktailMapper.cocktailGetDetail(cocktailNo);
 	}
 	
+	/* 칵테일 등록 */
+	@Override
+    public void cocktailEnroll(CocktailVO cocktail) throws Exception {
+        
+        cocktailMapper.cocktailEnroll(cocktail);
+        
+    }
+	
+	/* 칵테일 수정 */
+	@Override
+	public int cocktailModify(CocktailVO cocktail) throws Exception {
+		log.info("(service) cocktialModify........." + cocktail);
+		return cocktailMapper.cocktailModify(cocktail);
+	}
+	
+	/* 칵테일 삭제 */
+	@Override
+	public int cocktailDelete(int cocktailNo) {
+		
+		log.info("cocktailDelete..........");
+		
+		return cocktailMapper.cocktailDelete(cocktailNo);
+	}
+	
 }

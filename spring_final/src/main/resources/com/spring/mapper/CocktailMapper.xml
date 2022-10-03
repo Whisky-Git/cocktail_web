@@ -60,10 +60,24 @@
   	
   	</select>
   	
-      <!-- 키워드 검색 -->
-  	<select id="cocktailGetTag" resultType="com.spring.model.CocktailVO">
+    <!-- 칵테일 등록 -->
+      <insert id="cocktailEnroll">
+      
+          insert into cocktail_recipe(cocktailName, cocktailImage, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel) values(#{cocktailName}, #{cocktailImage}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel} )
+ 
+      </insert>
+      
+      <!-- 칵테일 수정 -->
+	<update id="cocktailModify">
+	
+		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailImage=#{cocktailImage}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel} where cocktailNo = #{cocktailNo}
+	
+	</update>
+	
+	<!-- 칵테일 삭제 -->
+  	<delete id="cocktailDelete">
   	
-  		select * from cocktail_recipe where LIKE ‘%위스키%’
+  		delete from cocktail_recipe where cocktailNo = #{cocktailNo}
   	
-  	</select>
+  	</delete>
   </mapper>

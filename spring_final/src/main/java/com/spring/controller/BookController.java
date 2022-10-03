@@ -61,7 +61,11 @@ public class BookController {
 			/* 칵테일 목록 출력 데이터 */
 	        List list = cocktailService.cocktailGetList(cri);
 	        
-	        model.addAttribute("list", list);
+	        if(!list.isEmpty()) {
+				model.addAttribute("list",list);	// 칵테일 존재 경우
+			} else {
+				model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+			}
 	        
 	        /* 페이지 이동 인터페이스 데이터 */
 	        int total = cocktailService.cocktailGetTotal(cri);
@@ -70,13 +74,11 @@ public class BookController {
 	        
 	        model.addAttribute("pageMaker", pageMaker);
 	        
-	        /* 칵테일 키워드 검색 데이터 */
-	        
 				
 			}
 		
-		/* 작가 상세 페이지 */
-		@GetMapping("/service")
+		/* 칵테일 상세 페이지 */
+		@GetMapping({"/service", "/admin/cocktailModify"})
 		public void authorGetInfoGET(int cocktailNo, CocktailCriteria cri, Model model) throws Exception {
 			
 			Logger.info("authorDetail......." + cocktailNo);

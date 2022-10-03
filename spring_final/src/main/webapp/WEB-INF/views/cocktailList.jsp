@@ -48,35 +48,22 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/side.js"></script>
-<script>
-$.urlParam = function(name){    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    return results[1] || 0;
-}
-var tag = decodeURIComponent($.urlParam('tag'));
-var tags = tag.split(",");
-console.log(tags[1]);
-for (var i=0; tags.length > 0; i++) {
-	console.log(tags[i].replace("+"," "));
-}
-</script>
 </head>
 <body>
-    <%@include file="includes/admin/header.jsp" %>
+    <%@include file="includes/header.jsp" %>
     
     <div class="container">
                     <div class="admin_content_subject"><span>칵테일 목록</span></div>
                     <div class="author_table_wrap">
                     <!-- 게시물 O -->
-						<c:if test="${listCheck == 'empty'}">
-                			<div class="table_empty">
-                				등록된 칵테일이 없습니다.
-                			</div>
-                		</c:if> 
+						<c:if test="${listCheck != 'empty'}">
+                		
                     	<table class="author_table">
                     		<thead>
                     			<tr>
                     				<td class="th_column_1">번호</td>
                     				<td class="th_column_2">이름</td>
+                    				<td class="th_column_2">이미지</td>
                     				<td class="th_column_3">재료</td>
                     				<td class="th_column_4">도수</td>
                     				<td class="th_column_5">난이도</td>
@@ -89,12 +76,20 @@ for (var i=0; tags.length > 0; i++) {
                     				<a class="move" href='<c:out value="${list.cocktailNo}"/>'>
                     					<c:out value="${list.cocktailName}"></c:out></a></td>
                     				</a>
+                    			<td> <img src="../resources/img/cocktail/${list.cocktailImage}.png" height="100" width = "100"></td>
                     			<td><c:out value="${list.cocktailMaterials}"></c:out> </td>
                     			<td><c:out value="${list.cocktailAbv}"></c:out> </td>
                     			<td><c:out value="${list.cocktailLevel}"></c:out> </td>
                     		</tr>
                     		</c:forEach>
-                    	</table>                			
+                    	</table>    
+                    	</c:if> 
+                    	<!-- 게시물 X -->
+                    	 <c:if test="${listCheck == 'empty'}">
+                			<div class="table_empty">
+                				등록된 칵테일이 없습니다.
+                			</div>
+                		</c:if>            			
                     </div>       
                     <!-- 검색 영역 -->
                     <div class="search_wrap">
@@ -142,7 +137,7 @@ for (var i=0; tags.length > 0; i++) {
 					   
                 </div>
     
-    <%@include file="includes/admin/footer.jsp" %>
+    <%@include file="includes/footer.jsp" %>
 <script>
 let moveForm = $('#moveForm');
 

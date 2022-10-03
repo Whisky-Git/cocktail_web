@@ -40,6 +40,8 @@
 	href="ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="ico/apple-touch-icon-57-precomposed.png">
+	
+<link rel="stylesheet" href="../resources/css/admin/main.css">
 
 <style>
 </style>
@@ -54,18 +56,30 @@
 <body>
     <%@include file="../includes/admin/header.jsp" %>
     <div class="container">
-    <div class="admin_navi_wrap">
-                    <ul>
-                  <li >
-                      <a class="admin_list_01" href="/admin/cocktailEnroll">칵테일 등록</a>
-                  </li>
-                  <li>
-                      <a class="admin_list_02" href="/admin/cocktailManage">칵테일 관리</a>
-                  </li>
-                      <a class="admin_list_03" href="/admin/memberManage">회원 관리</a>                            
-                  </lI>                                                                                             
-              </ul>
-                </div>
+    	<div class="wrap">
+            <!-- top_subject_area -->
+            <div class="admin_top_wrap">
+                <span>관리자 페이지</span>
+                
+            </div>
+            <!-- contents-area -->
+            <div class="admin_wrap">
+                <!-- 네비영역 -->
+    			<div class="admin_navi_wrap">
+                	<ul>
+                		<li >
+                      		<a class="admin_list_01" href="/admin/cocktailEnroll">칵테일 등록</a>
+                  		</li>
+                  		<li>
+                      		<a class="admin_list_02" href="/admin/cocktailManage">칵테일 관리</a>
+                		</li>
+                		<li>
+                      		<a class="admin_list_03" href="/admin/memberManage">회원 관리</a>                            
+                  		</li>                                                                                             
+              		</ul>
+              	</div>
+    		</div>
+    	</div>
     </div>
     
     <%@include file="../includes/admin/footer.jsp" %>

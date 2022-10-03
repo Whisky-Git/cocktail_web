@@ -10,6 +10,7 @@ public class CocktailVO {
 	private String cocktailLevel; //난이도
 	private int cocktailCommentNo;	//댓글번호
 	private String cocktailCategory;		//카테고리
+	private String cocktailImage;		//이미지
 	public int getCocktailNo() {
 		return cocktailNo;
 	}
@@ -58,13 +59,22 @@ public class CocktailVO {
 	public void setCocktailCategory(String cocktailCategory) {
 		this.cocktailCategory = cocktailCategory;
 	}
+	public String getCocktailImage() {
+		return cocktailImage;
+	}
+	public void setCocktailImage(String cocktailImage) {
+		this.cocktailImage = cocktailImage;
+	}
 	@Override
 	public String toString() {
 		return "CocktailVO [cocktailNo=" + cocktailNo + ", cocktailName=" + cocktailName + ", cocktailMaterials="
 				+ cocktailMaterials + ", cocktailRecipes=" + cocktailRecipes + ", cocktailAbv=" + cocktailAbv
 				+ ", cocktailLevel=" + cocktailLevel + ", cocktailCommentNo=" + cocktailCommentNo
-				+ ", cocktailCategory=" + cocktailCategory + "]";
+				+ ", cocktailCategory=" + cocktailCategory + ", cocktailImage=" + cocktailImage + "]";
 	}
+	
+	
+	
 	
 	
 	
