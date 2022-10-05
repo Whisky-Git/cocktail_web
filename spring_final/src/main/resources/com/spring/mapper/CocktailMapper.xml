@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.mapper.CocktailMapper">
+  
+		<!-- 칵테일 목록 -->
+    <select id="cocktailGetList" resultType="com.spring.model.CocktailVO">
+    	<choose>
+			<when test = "tag != null">
+				select  *
+       		    from cocktail_recipe
+       		    where
+       		    <foreach collection="tag" item="tag" separator="and">
+       		    cocktailMaterials like concat('%',#{tag}, '%')
+       		    </foreach>
+       		    order by cocktailNo asc 
+        		limit #{skip},#{amount} 
+			</when>
+			<otherwise>
+		   		select  *
+     		    from cocktail_recipe 
+       			 <if test="keyword != null">
+           		 where cocktailName like concat('%',#{keyword}, '%')
+       			 </if>
+       			 order by cocktailNo asc 
+        		limit #{skip},#{amount} 
+        	</otherwise>
+		</choose>
+    </select>
+    
+     <!-- 칵테일 수 -->
+      <select id="cocktailGetTotal" resultType="int">
+      	<choose>
+      		<when test="tag != null">
+      			select count(*) from cocktail_recipe
+      			where
+       		    <foreach collection="tag" item="tag" separator="and">
+       		    cocktailMaterials like concat('%',#{tag}, '%')
+       		    </foreach>
+      		</when>
+      		<otherwise>
+      			select count(*) from cocktail_recipe
+          
+          <if test="keyword != null">
+          
+              where cocktailName like concat('%', #{keyword}, '%');
+          
+          </if>
+      		</otherwise>
+      	</choose>
+          
+          
+      </select>
+      
+      <!-- 칵테일 디테일 페이지 -->
+  	<select id="cocktailGetDetail" resultType="com.spring.model.CocktailVO">
+  	
+  		select * from cocktail_recipe where cocktailNo = #{cocktailNo}
+  	
+  	</select>
+  	
+    <!-- 칵테일 등록 -->
+      <insert id="cocktailEnroll">
+      
+          insert into cocktail_recipe(cocktailName, cocktailImage, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel) values(#{cocktailName}, #{cocktailImage}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel} )
+ 
+      </insert>
+      
+      <!-- 칵테일 수정 -->
+	<update id="cocktailModify">
+	
+		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailImage=#{cocktailImage}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel} where cocktailNo = #{cocktailNo}
+	
+	</update>
+	
+	<!-- 칵테일 삭제 -->
+  	<delete id="cocktailDelete">
+  	
+  		delete from cocktail_recipe where cocktailNo = #{cocktailNo}
+  	
+  	</delete>
+  </mapper>

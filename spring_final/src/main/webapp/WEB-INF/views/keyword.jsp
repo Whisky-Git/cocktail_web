@@ -330,6 +330,13 @@ $(document)
           return word !== "";
         });
     }
+    //서버에 전송
+    $("#tag-form").on("submit", function (e) {
+        var value = marginTag(); // return array
+        $("#rdTag").val(value); 
+
+        $(this).submit();
+    });
 
 //체크박스
     $("#tag")
@@ -525,7 +532,10 @@ $("#tag2")
          <ul id="tag-list">
         </ul>
   </div>
-      <button class="chip-btn"> 검색 </button>
+      <form action="cocktailList" method="GET" id="tag-form">
+            <input type="hidden" value="" name="tag" id="rdTag" />
+            <button type="submit" class="chip-btn">검색</button>
+        </form>
 </div>
    
    

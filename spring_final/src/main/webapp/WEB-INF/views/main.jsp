@@ -201,7 +201,7 @@
 								<ul class="nav">
 									<li><a href="main" style="color: rgb(0, 0, 0);"><b>칵테일
 												설명</b></a></li>
-									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
+									<li><a href="cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
 									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
 									<li><a href="blog.html" style="color: rgb(0, 0, 0);"><b>top100</b></a></li>
 
@@ -412,7 +412,7 @@
 						집에 있는 재료를 찍어서 그 재료가 <br>들어가 있는 칵테일 검색하기
 					</p>
 					<div class="my-f5 mm6">
-						키워드로 검색<a class="btn btn-large btn-danger mm5" href="#">지금
+						키워드로 검색<a class="btn btn-large btn-danger mm5" href="keyword">지금
 							바로가기</a>
 					</div>
 					<br>
