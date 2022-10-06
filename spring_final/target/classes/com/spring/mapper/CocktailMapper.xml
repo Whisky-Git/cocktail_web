@@ -7,14 +7,22 @@
 		<!-- 칵테일 목록 -->
     <select id="cocktailGetList" resultType="com.spring.model.CocktailVO">
     	<choose>
-			<when test = "tag != null">
+			<when test ='tag != null'>
 				select  *
        		    from cocktail_recipe
        		    where
        		    <foreach collection="tag" item="tag" separator="and">
-       		    cocktailMaterials like concat('%',#{tag}, '%')
+	       		    <choose>
+	                  <when test='tag.contains("~")'>
+						<![CDATA[ cocktailAbv >= SUBSTRING_INDEX(#{tag}, '~', 1) and 
+						cocktailAbv <= SUBSTRING_INDEX(SUBSTRING_INDEX(#{tag}, '~', 2), '~', -1)]]>
+	                  </when>
+	                  <otherwise>
+       		    		cocktailMaterials like concat('%',#{tag}, '%')
+	                  </otherwise>
+	              </choose>
        		    </foreach>
-       		    order by cocktailNo asc 
+       		    order by cocktailNo desc 
         		limit #{skip},#{amount} 
 			</when>
 			<otherwise>
@@ -36,17 +44,22 @@
       			select count(*) from cocktail_recipe
       			where
        		    <foreach collection="tag" item="tag" separator="and">
-       		    cocktailMaterials like concat('%',#{tag}, '%')
+	       		    <choose>
+	                  <when test='tag.contains("~")'>
+						<![CDATA[ cocktailAbv >= SUBSTRING_INDEX(#{tag}, '~', 1) and 
+						cocktailAbv <= SUBSTRING_INDEX(SUBSTRING_INDEX(#{tag}, '~', 2), '~', -1)]]>
+	                  </when>
+	                  <otherwise>
+       		    		cocktailMaterials like concat('%',#{tag}, '%')
+	                  </otherwise>
+	              </choose>
        		    </foreach>
       		</when>
       		<otherwise>
       			select count(*) from cocktail_recipe
-          
-          <if test="keyword != null">
-          
-              where cocktailName like concat('%', #{keyword}, '%');
-          
-          </if>
+          		<if test="keyword != null">
+            	  where cocktailName like concat('%', #{keyword}, '%')
+         		</if>
       		</otherwise>
       	</choose>
           

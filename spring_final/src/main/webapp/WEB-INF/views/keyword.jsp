@@ -137,7 +137,7 @@
       <div class="row">
               <!--로그-->
 			  
-              <div class="span3"><a class="brand" href="#"><img src="../resources/img/logo.png"/></a></div>
+              <div class="span3"><a class="brand" href="main"><img src="../resources/img/logo.png"/></a></div>
               <!-- /LOGO -->
 
             <!-- 메뉴 -->  
@@ -155,7 +155,7 @@
 					<div class="nav-collapse collapse navbar-responsive-collapse"><!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
                     <ul class="nav">
                         <li><a href="index.html" style="color:rgb(0, 0, 0);"><b>칵테일 설명</b></a></li>
-                        <li><a href="service.html" style="color:rgb(0, 0, 0);"><b>레시피</b></a></li>
+                        <li><a href="cocktailList" style="color:rgb(0, 0, 0);"><b>레시피</b></a></li>
                         <li><a href="service.html" style="color:rgb(0, 0, 0);"><b>자유게시판</b></a></li>
                         <li><a href="blog.html" style="color:rgb(0, 0, 0);"><b>top100</b></a></li>						
          
@@ -203,46 +203,38 @@
 	
     <div class="slidecontainer">
 	<div class="slider-f1">도수 :  </div>
-	<div class="slider-f2">최대도수 </div>
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        <p><span id="value"></span></p>
+	<div class="slider-f2">최소도수 </div>
+        <input type="range" min="1" max="50" value="25" class="slider" id="dosu1">
+       
 		
-		<div class="slider-f1">최소도수 </div>
-		<input type="range" min="1" max="100" value="50" class="slider" id="a">
+		<div class="slider-f1">최대도수 </div>
+		<input type="range" min="1" max="50" value="25" class="slider" id="dosu2">
 		
-        <div class="slider-f2"> 도수 : <span id="b"></span></div>
+        <div class="slider-f2"> 도수 :  <span id="b"></span>~<span id="d"></span></div>
 		
-		  
-		
-		
-		<a class="btn btn-large btn-danger Search_button" href="#">도수 추가</a><br>
+		  		
+		<a class="btn btn-large btn-danger Search_button" id="tag3">도수 추가</a><br>
     </div>
 
 <!-- 도수-->
     <script>
-		//$("#myRange")
-		//.on("click", function (e) {	
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("value");
-        slider.value;
-        
+		 var slider1 = document.getElementById("dosu1");//최소도수
+        var output1 = document.getElementById("b");
 		
-        slider.oninput = function() {
-            output.innerHTML = this.value;
+        var slider2 = document.getElementById("dosu2");//최대도수
+        var output2 = document.getElementById("d");
+		output1.innerHTML = slider1.value;
+        output2.innerHTML = slider2.value+ '%';
+         
+		  slider1.oninput = function() {
+            output1.innerHTML = this.value;
         }
-		//})
-    </script>
-<!-- 도수-->
-    <script>
-        var slider = document.getElementById("a");
-        var output = document.getElementById("b");
-        output.innerHTML = slider.value;
-        
-        slider.oninput = function() {
-            output.innerHTML = this.value;
+        slider2.oninput = function() {
+            output2.innerHTML = this.value + '%';
         }
+
+		
     </script>
-   
    
    <br><Br>
  
@@ -333,9 +325,14 @@ $(document)
     //서버에 전송
     $("#tag-form").on("submit", function (e) {
         var value = marginTag(); // return array
+        if (value != ""){
         $("#rdTag").val(value); 
-
         $(this).submit();
+        
+        }else{
+        	alert("태그를 선택해주세요.");
+        	return false;
+    	}
     });
 
 //체크박스
@@ -397,7 +394,49 @@ $("#tag2")
         
       });
 
-
+//도수 추가
+$("#tag3")
+      .on("click", function (e) {
+	  var slider1 = document.getElementById("dosu1");
+         var slider2 = document.getElementById("dosu2");
+		 var ss1 =slider1.value;
+      	 var ss2 =slider2.value;  
+			 
+			   var tagValue =slider1.value+ '~'+slider2.value;
+			   
+			   
+			if (tagValue !== "") {
+		     var result = Object.values(tag)
+              .filter(function (word) {
+                return word === tagValue;
+              })
+			if(ss1 <= ss2){
+            // 태그 중복 검사
+            if (result.length == 0) {
+              $("#tag-list")
+                .append(" <li class='chip'>" + tagValue + '%' + " <svg class='chip-svg' idx='" + counter + "'><path d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'></path></svg></li>");
+              addTag(tagValue);
+              tagValue = ""
+           	  document.getElementById("dosu1").value = ss1;
+              document.getElementById("dosu2").value = ss2;
+              document.getElementById("b").value = ss1;
+              document.getElementById("d").value = ss2+"%";
+            }
+             else {
+              alert("중복됩니다.");
+            }
+			}else {
+              alert("최대도수가 최소도수보다 작습니다. 다시 입력해주세요");
+            }
+			
+			
+			
+			
+          }
+          e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        
+      });
+      
     // 삭제 버튼
     $(document)
       .on("click", ".chip-svg", function (e) {
@@ -532,7 +571,7 @@ $("#tag2")
          <ul id="tag-list">
         </ul>
   </div>
-      <form action="cocktailList" method="GET" id="tag-form">
+      <form action="cocktailList2" method="GET" id="tag-form">
             <input type="hidden" value="" name="tag" id="rdTag" />
             <button type="submit" class="chip-btn">검색</button>
         </form>

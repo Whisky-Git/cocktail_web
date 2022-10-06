@@ -128,11 +128,17 @@
 	                    	</c:if>
 	                    </ul>
                     </div>
-                    <form id="moveForm" action="/cocktailList" method="get">
+                    <form id="moveForm" action="/cocktailList2" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+						<input type="hidden" name="tag" value="<% 
+                    String[] tag=request.getParameterValues("tag");
+						if (tag != null){
+                    out.print(tag[0]);}        
+                     %>">
 					</form>   
+					   
                 </div>
     
     <%@include file="includes/footer.jsp" %>

@@ -53,7 +53,7 @@ public class BookController {
 		}
 		
 	//cocktailList 페이지 이동
-		@RequestMapping(value = "cocktailList", method = RequestMethod.GET)
+		@RequestMapping(value = {"/cocktailList", "/cocktailList2"}, method = RequestMethod.GET)
 		public void cocktailListGet(CocktailCriteria cri, Model model) throws Exception{
 			Logger.info("칵테일 목록 페이지 접속" + cri);
 			
