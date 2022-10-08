@@ -11,6 +11,8 @@ public class CocktailVO {
 	private int cocktailCommentNo;	//댓글번호
 	private String cocktailCategory;		//카테고리
 	private String cocktailImage;		//이미지
+	
+	
 	public int getCocktailNo() {
 		return cocktailNo;
 	}

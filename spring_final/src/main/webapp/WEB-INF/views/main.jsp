@@ -180,7 +180,7 @@
 				<!--로그-->
 
 				<div class="span3">
-					<a class="brand" href="#"><img src="../resources/img/logo.png" /></a>
+					<a class="brand" href="main"><img src="../resources/img/logo.png" /></a>
 				</div>
 				<!-- /LOGO -->
 
@@ -331,6 +331,19 @@
 
 				<div class="mm">
 					<div class="f-bg">
+						<c:forEach items="${ls}" var="ls" varStatus="status">
+							<div class="span3">
+								<h2>
+									<B>${status.count}th</B>
+								</h2>
+								<a href="/service?cocktailNo=${ls.cocktailNo}"><img src="../resources/img/cocktail/${ls.cocktailImage}.png" height="220"
+									width="220"></a>
+								<p class="my-f1">
+									<b>${ls.cocktailName}</b>
+								</p>
+							</div>
+						</c:forEach>	
+						<!-- 
 						<div class="span3">
 
 							<h2>
@@ -341,8 +354,9 @@
 							<p class="my-f1">
 								<b>올드팬션드</b>
 							</p>
+							-->
 							<!--<a href="#">Read More &rarr;</a>-->
-
+						<!-- 
 						</div>
 
 						<div class="span3">
@@ -379,6 +393,7 @@
 							</p>
 
 						</div>
+						 -->
 						<div class="v-bg1"></div>
 
 
@@ -534,8 +549,7 @@
 				<div class="active item">
 					<div class="container">
 						<div class="row">
-
-
+						
 							<div class="mm1">
 								<div class="span3">
 									<a href="#"><img src="../resources/img/c1.png"></a>

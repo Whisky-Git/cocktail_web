@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.mapper.CocktailMapper;
 import com.spring.model.CocktailVO;
+import com.spring.model.SelectDTO;
 import com.spring.model.CocktailCriteria;
 
 @Service
@@ -64,4 +65,20 @@ public class CocktailServiceImp implements CocktailService{
 		return cocktailMapper.cocktailDelete(cocktailNo);
 	}
 	
+	/* 칵테일 이름 */
+	@Override
+	public CocktailVO getCocktailNoName(int cocktailNo) {
+		
+		return cocktailMapper.getCocktailNoName(cocktailNo);
+	}
+	
+	/* 평줌순 상품 정보 */
+	@Override
+	public List<SelectDTO> likeSelect() {
+		
+		List<SelectDTO> list = cocktailMapper.likeSelect();	
+		
+		return list;	
+
+	}
 }

@@ -21,7 +21,10 @@ public class CocktailCriteria {
     /* 검색 태그 */
     private String[] tag;
     
-    /* Criteria 생성자 */
+    /* 칵테일 번호(댓글 기능에서 사용) */
+	private int cocktailNo;
+    
+	/* Criteria 생성자 */
     public CocktailCriteria(int pageNum, int amount) {
         this.pageNum = pageNum;
         this.amount = amount;
@@ -87,11 +90,20 @@ public class CocktailCriteria {
 	public void setTag(String[] tag) {
 		this.tag = tag;
 	}
+	
+    public int getCocktailNo() {
+			return cocktailNo;
+		}
+
+	public void setCocktailNo(int cocktailNo) {
+			this.cocktailNo = cocktailNo;
+		}
+
 
 	@Override
 	public String toString() {
 		return "CocktailCriteria [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip + ", type=" + type
-				+ ", keyword=" + keyword + ", tag=" + Arrays.toString(tag) + "]";
+				+ ", keyword=" + keyword + ", tag=" + Arrays.toString(tag) + ", cocktailNo=" + cocktailNo +"]";
 	}
 
 	

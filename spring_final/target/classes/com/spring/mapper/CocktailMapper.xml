@@ -93,4 +93,21 @@
   		delete from cocktail_recipe where cocktailNo = #{cocktailNo}
   	
   	</delete>
+  	
+  	<!-- 칵테일 이름 리턴 -->
+  	<select id="getCocktailNoName" resultType="com.spring.model.CocktailVO">
+	
+		select cocktailNo, cocktailName from cocktail_recipe
+		where cocktailNo = #{cocktailNo}
+		
+	</select>
+	
+	<!-- 칵테일 랭킹 -->
+	<select id="likeSelect" resultType="com.spring.model.SelectDTO">
+	
+	select cocktailNo, cocktailName, cocktailRating, cocktailImage
+	from cocktail_recipe
+	order by cocktailRating desc limit 4		
+	
+	</select>
   </mapper>

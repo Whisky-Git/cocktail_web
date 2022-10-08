@@ -3,6 +3,7 @@ package com.spring.service;
 import java.util.List;
 
 import com.spring.model.CocktailVO;
+import com.spring.model.SelectDTO;
 import com.spring.model.CocktailCriteria;
 
 public interface CocktailService {
@@ -24,4 +25,10 @@ public interface CocktailService {
 	
 	/* 칵테일 삭제 */
 	public int cocktailDelete(int cocktailNo);
+	
+	/* 칵테일 이름 */
+	public CocktailVO getCocktailNoName(int cocktailNo);
+	
+	/* 평줌순 상품 정보 */
+	public List<SelectDTO> likeSelect();
 }

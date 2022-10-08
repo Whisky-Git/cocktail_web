@@ -103,7 +103,7 @@
                     				</a>
                     			<td> <img src="../resources/img/cocktail/${list.cocktailImage}.png" height="100" width = "100"></td>
                     			<td><c:out value="${list.cocktailMaterials}"></c:out> </td>
-                    			<td><c:out value="${list.cocktailAbv}"></c:out>°C</td>
+                    			<td><c:out value="${list.cocktailAbv}"></c:out>%</td>
                     			<td><c:out value="${list.cocktailLevel}"></c:out></td>
                     		</tr>
                     		</c:forEach>
