@@ -43,7 +43,7 @@ input[id="menuicon"]:checked + ul + div {right:0;}
   color: #ffffff;
   text-shadow: 3px 3px #e61610;
   margin: 0;
-  font-family: "���� �ٰռ��� M";
+  font-family: "한컴 바겐세일 M";
   /*text-decoration: underline;*/
 }
 
@@ -144,7 +144,7 @@ height: 40px;
 text-align: center;
 color: #fff;
 font-size: 30px;
- font-family: "���� ���� M";
+ font-family: "한컴 백제 M";
  background: #b71c1c;
  
  }
@@ -163,7 +163,7 @@ font-size: 30px;
 display: block;
 padding: 14px 35px 14px 15px; 
 color: inherit;
- font-family: "���� ���� M";
+font-family: "한컴 백제 M";
  font-size: 26px;
  background:#f3f3f0 url(http://cfile26.uf.tistory.com/image/2417E04D570C5C02256897) no-repeat 95% 15px;
  }
@@ -308,17 +308,16 @@ width : 80px;
 
 
 /*====================*/
-
-/*��� �Է� �˻�*/
+/*재료 입력 검색*/
 .Searchba {
 	height: 35px;
 	width : 100%;
-	/* margin-left: 17px;*/
+
 }
 .Searchba input{
-	font-size:26px;
-	height: 35px;
-	width:73%;
+	font-size:30px;
+	height: 70px;
+	width:75%;
 	padding:10px;
 	border: 0px;
 	outline: none;
@@ -327,16 +326,15 @@ width : 80px;
 }
 
 .Searchba button{
-	width:24%;
+	width:25%;
 	border: 2px solid #c9d3dd;
-	height: 58px;
+	height: 70px;
 
 	background: #ffffff;
 	outline: none;
 	float:left;
 	color: #000000;
 }
-
 
 .Search_button {
 	background-color: #e61610; 
@@ -1070,14 +1068,14 @@ side
 		margin-top:2%;
 		line-height : 100%;
 		font-size: 35px;
-		font-family: "���� �ٰռ��� M";
+		font-family: "한컴 바겐세일 M";
 		color:#000000;
 		}
 		
 		.sidem2-f2{
 line-height : 100%;
 		font-size: 20px;
-		font-family: "���";
+		font-family: "고딕";
 		color:#000000;
 		}
 		
@@ -1167,34 +1165,34 @@ line-height : 100%;
 		.my-f1{
 		margin-top:4%;
 		font-size: 20px;
-		font-family: "���";
+		font-family: "고딕";
 		color:#000000;
 		}
 		.my-f2{
 		margin-top:1%;
 		font-size: 20px;
-		font-family: "���";
+		font-family: "고딕";
 		color:#000000;
 
 		}
 		.my-f3{
 		margin-top:1%;
 		font-size: 20px;
-		font-family: "���� ���� M";
+		font-family: "한컴 백제 M";
 		color:#000000;
 		}
 
 		.my-f4{
 			margin-top:1%;
 			font-size: 20px;
-			font-family: "���";
+			font-family: "고딕";
 			color:#ffffff;
 		}
 
 		.my-f5{
 		margin-top:1%;
 		font-size: 30px;
-		font-family: "���� ���� M";
+		font-family: "한컴 백제 M";
 		color:#000000;
 		}
 		
@@ -1202,7 +1200,7 @@ line-height : 100%;
 		margin-top:2%;
 		line-height : 100%;
 		font-size: 50px;
-		font-family: "���� �ٰռ��� M";
+		font-family: "한컴 바겐세일 M";
 		color:#000000;
 		}
 		.mm{
@@ -1221,7 +1219,7 @@ line-height : 100%;
 		padding-left: 50px;
 		padding-right:50px;
 		width: 170px;
-		font-family: "���� ���� M";
+		font-family: "한컴 백제 M";
 		}
 		.mm23{
 		margin-left:20%;
@@ -1383,7 +1381,7 @@ Carousel
 	font-size: 50px;
 	text-transform: capitalize;
 	margin-bottom: 20px;
-	font-family: "���ʷҹ���";
+	font-family: "함초롬바탕";
 	color:#ffffff;
 	font-weight:200;
 }
@@ -1433,13 +1431,13 @@ Carousel
 .cnt-title2 { text-align: left; margin-bottom: 50px; }
 .cnt-title span {
     color: #000000;
-	font-family: "���� �ٰռ��� M";
+	font-family: "한컴 바겐세일 M";
 	font-size: 48px;
 	font-weight: 100;
 }
 .cnt-title2 span {
 	margin-left: 40px;
-	font-family: "���� �ٰռ��� M";
+	font-family: "한컴 바겐세일 M";
 	font-size: 50px;
 	font-weight: 100;
 }

@@ -1,32 +1,20 @@
 @charset "UTF-8";
 
-* {
-	margin: 0;
-	padding: 0;
-}
-
 /* 화면 전체 렙 */
 .wrapper {
-	width: 1900px;
 }
 
 /* content 랩 */
 .wrap {
-	width: 800px;
-	margin: auto;
 }
 /* 페이지 제목 */
 .subjecet {
-	width: 100%;
-	height: 120px;
-	background-color: #8EC0E4;
+	color:#000000;
+	text-align: center;	
 }
-
 .subjecet span {
-	margin-left: 31px;
-	font-size: 80px;
-	font-weight: 900;
-	color: white;
+	font-size : 50px;
+	font-weight: 1000;
 }
 
 /* 아이디 영역 */
@@ -36,14 +24,20 @@
 }
 
 .id_name {
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
 }
 
 .id_input_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	margin-top: 20px;
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 95%;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .id_input {
@@ -70,14 +64,21 @@
 }
 
 .pw_name {
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
 }
 
 .pw_input_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	
+	margin-top: 20px;
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 95%;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .pw_input {
@@ -94,14 +95,20 @@
 }
 
 .pwck_name {
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
 }
 
 .pwck_input_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	margin-top: 20px;
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 95%;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .pwck_input {
@@ -118,14 +125,20 @@
 }
 
 .user_name {
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
 }
 
 .user_input_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	margin-top: 20px;
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 95%;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .user_input {
@@ -142,14 +155,20 @@
 }
 
 .mail_name {
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
 }
 
 .mail_input_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	margin-top: 20px;
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 95%;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .mail_input {
@@ -164,9 +183,15 @@
 }
 
 .mail_check_input_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	border-color: #c9d3dd;
+	border-radius: 5px;
+
 	width: 61%;
 	float: left;
 }
@@ -187,15 +212,19 @@
 }
 
 .mail_check_button {
-	border: 1px solid black;
+	background-color: #000000; 
+    color: white;
+	border-radius: 5px;
 	height: 51px;
-	width: 30%;
+	width: 31%;
+	margin-top: 2px;
+	margin-right: 19px;
 	float: right;
 	line-height: 50px;
 	text-align: center;
-	font-size: 30px;
-	font-weight: 900;
-	background-color: #ececf7;
+	font-size: 20px;
+	font-weight: 500;
+
 	cursor: pointer;
 }
 
@@ -215,14 +244,22 @@
 }
 
 .address_name {
-	font-size: 25px;
+	margin-bottom: 20px;
+	font-size: 22px;
 	font-weight: bold;
+	
 }
 
 .address_input_1_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	
+
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 	width: 61%;
 	float: left;
 }
@@ -235,15 +272,25 @@
 }
 
 .address_button {
-	border: 1px solid black;
+
+
+
+    background-color: #000000;
+
+  
+    color: white;
+	border-radius: 5px;
+
 	height: 51px;
-	width: 30%;
+	width: 31%;
+	
+	margin-top: 2px;
+	margin-right: 19px;
 	float: right;
 	line-height: 50px;
 	text-align: center;
-	font-size: 30px;
-	font-weight: 900;
-	background-color: #ececf7;
+	font-size: 20px;
+	font-weight: 500;
 	cursor: pointer;
 }
 
@@ -252,9 +299,13 @@
 }
 
 .address_input_2_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+	background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .address_input_2 {
@@ -269,9 +320,13 @@
 }
 
 .address_input_3_box {
-	border: 1px solid black;
-	height: 31px;
-	padding: 10px 14px;
+		background: #ffffff;
+	border: 3px solid;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	border-color: #c9d3dd;
+	border-radius: 5px;
 }
 
 .address_input_3 {
@@ -279,6 +334,8 @@
 	height: 100%;
 	border: none;
 	font-size: 28px;
+	
+	
 }
 
 /* 가입하기 버튼 */
@@ -287,13 +344,19 @@
 	text-align: center;
 }
 
-.join_button {
-	width: 100%;
-	height: 80px;
-	background-color: #6AAFE6;
-	font-size: 40px;
-	font-weight: 900;
-	color: white;
+.join_button {	
+	width : 100%;
+	padding-left: 45%;
+	padding-right: 45%;
+    height:50px;
+    background-color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+	border-radius: 5px;
+
+	
+
 }
 
 /* 유효성 검사 문구 */
@@ -333,6 +396,19 @@
 }
 
   
+.loin-bg{
+		background: #eff0f4;
+		margin-top:100px;
+		margin-bottom:100px;
+		width : 80%;	
+		padding: 100px;
+		padding-bottom: 150px;
+
+		border-width: 3px;
+		border-color: #c9d3dd;
+		border-style: solid;
+		border-radius: 20px;		
+		}
  
 /* float 속성 해제 */
 .clearfix {

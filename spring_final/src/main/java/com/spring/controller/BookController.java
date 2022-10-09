@@ -43,11 +43,11 @@ public class BookController {
 	}
 	
 	//keyword 페이지 이동
-		@RequestMapping(value = "/keyword", method = RequestMethod.GET)
-		public void keywordPageGet() {
-			Logger.info("keyword 페이지 진입");
+	//	@RequestMapping(value = "/keyword", method = RequestMethod.GET)
+	//	public void keywordPageGet() {
+	//		Logger.info("keyword 페이지 진입");
 		
-		}
+	//	}
 		
 		
 		//keyword 페이지 이동
