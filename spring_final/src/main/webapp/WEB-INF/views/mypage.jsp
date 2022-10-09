@@ -239,7 +239,7 @@
       <br><br>
       <div class="Page-Title">MyPage</div>
       <br><br>
-      <div class="myPage2"><b>  ${member.memberName}</b> 님의 페이지</div>
+      <div class="myPage2"><b>${member.memberName}</b> 님의 페이지</div>
       <br>
       <div class="wrapper1">
         <div class="itemGroup1">
@@ -268,14 +268,14 @@
       <div class="wrapper2">
         <div class="itemBox2">
             <div class="items2">내가 쓴 글</div>
-            <div class="items2"><font size=30px>27</font></div>
+            <div class="items2"><font size=30px>null</font></div>
             <div class="items2">
               <button onclick="location.href='#'" class="btn_red">게시판</button >
             </div>
         </div>
         <div class="itemBox2">
             <div class="items2">즐겨찾기</div>
-            <div class="items2"><font size=30px>28</font></div>
+            <div class="items2"><font size=30px>null</font></div>
             <div class="items2">
               <button onclick="location.href='#'" class="btn_red">확인</button >
             </div>
@@ -284,7 +284,7 @@
             <div class="items2">MBTI</div>
             <div class="items2"><font size=30px> ${info.memberMbti}</font></div>
             <div class="items2">
-              <button onclick="location.href='https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC'" class="btn_red">검사</button >
+              <button onclick="location.href='https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC'" class="btn_red">검사</button>
             </div>
         </div>
         <div class="itemBox2">
@@ -308,11 +308,6 @@
   </div>
   <!-- /HEADER ROW -->
 
-  
-
-
-<
-
 
 
 <!--Footer
@@ -331,7 +326,7 @@
 		
             <div class="social pull-right">
                 <p> 연락처 : 010-0000-0000</p>
-				 <p> 책임자: 홍길동</p>
+				 <p> 책임자: 유영주</p>
 				  <p> 이메일: abc@naver.com</p><br>
 				  <!--
 				  <a href="#"><img src="img/social/googleplus.png" alt=""></a>

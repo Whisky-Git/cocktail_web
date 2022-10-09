@@ -10,5 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+<button type="button" onclick="alert('Hello World!')">클릭해 보세요!</button>
 </body>
 </html>

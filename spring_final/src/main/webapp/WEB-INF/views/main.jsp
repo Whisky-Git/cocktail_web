@@ -180,7 +180,7 @@
 				<!--로그-->
 
 				<div class="span3">
-					<a class="brand" href="#"><img src="../resources/img/logo.png" /></a>
+					<a class="brand" href="main"><img src="../resources/img/logo.png" /></a>
 				</div>
 				<!-- /LOGO -->
 

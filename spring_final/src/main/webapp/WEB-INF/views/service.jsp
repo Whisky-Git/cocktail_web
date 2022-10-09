@@ -83,7 +83,7 @@
 
 <div class="container">
 	  <!--PAGE TITLE 상위-->
-	
+
 <!-- 검정색 화면 결과 출력 창-->
   <div class="f-bg2">
     <table class = "my-f1">
@@ -106,8 +106,8 @@
          <div class="media-body">
 					<h4 class="media-heading">
 					</h4> 
-					<h1>레시피 출력문	</h1>
-          <div class="hr-divider2"><h4>재료<h4></div> 
+					<h1>레시피 출력문</h1>
+          <div class="hr-divider2"><h4>재료</h4></div> 
 			<li>조각없음</li>
 			<li>드라이진 50ml</li>
 			<li>레몬주스 20ml</li>
@@ -123,7 +123,7 @@
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/iDjQSdN_ig8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		  <div class="hr-divider2"><h4>댓글</h4></div> 
         </div>		
-
+</div>
 <!--Footer
 ==========================-->
 
