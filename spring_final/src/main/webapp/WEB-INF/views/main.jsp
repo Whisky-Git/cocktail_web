@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ShapeBootstrap Clean Template</title>
+<title>칵테일</title>
+<link rel="icon" href="../resources/img/cocktail/47.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -336,8 +337,8 @@
 								<h2>
 									<B>${status.count}th</B>
 								</h2>
-								<a href="/service?cocktailNo=${ls.cocktailNo}"><img src="../resources/img/cocktail/${ls.cocktailImage}.png" height="220"
-									width="220"></a>
+								<a href="/service?cocktailNo=${ls.cocktailNo}"><div class="image_wrap" data-cocktailno="${ls.imageList[0].cocktailNo}" data-path="${ls.imageList[0].uploadPath}" data-uuid="${ls.imageList[0].uuid}" data-filename="${ls.imageList[0].fileName}">
+									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div></a>
 								<p class="my-f1">
 									<b>${ls.cocktailName}</b>
 								</p>
@@ -404,7 +405,7 @@
 
 			</div>
 			<div class="mm2">
-				<a class="btn btn-large btn-danger" href="#"> 더 보러가기 </a>
+				<a class="btn btn-large btn-danger" href="cocktailList"> 더 보러가기 </a>
 			</div>
 		</div>
 		<br> <br>
@@ -699,6 +700,31 @@
 	</footer>
 
 	<!--/.Footer-->
-
+<script>
+$(document).ready(function(){
+	/* 이미지 삽입 */
+	$(".image_wrap").each(function(i, obj){
+		
+		const bobj = $(obj);
+		
+		console.log(bobj.data("cocktailno"));
+		
+		if(bobj.data("cocktailno")){
+		
+		const uploadPath = bobj.data("path");
+		const uuid = bobj.data("uuid");
+		const fileName = bobj.data("filename");
+		
+		const fileCallPath = encodeURIComponent(uploadPath + "/" + uuid + "_" + fileName);
+		
+		$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+		
+		}else {
+			$(this).find("img").attr('src', '../resources/img/noImage.png');
+		}
+	});
+	
+});
+</script>
 </body>
 </html>

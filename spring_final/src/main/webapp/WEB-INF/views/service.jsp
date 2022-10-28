@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,27 +35,79 @@
 
     <!-- SCRIPT 
     ============================================================-->
-	<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-    <!--  <script src="http://code.jquery.com/jquery.js"></script>  -->
-    <script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/side.js"></script>
+<style>
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+}
+ 
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
+
+#result_card img{
+	width: 220px;
+    height: 220px;
+    display: block;
+    padding: 5px;
+    margin-top: 10px;
+    margin: auto;	
+}
+</style>
 </head>
-
 <body>
-<%@include file="includes/header.jsp" %>
+<script>
+// 재료 배열
+const materialsStr = '${cocktailInfo.cocktailMaterials}';
+const materialsArr = materialsStr.split(", ");
 
-<div class="container">
-	  <!--PAGE TITLE 상위-->
+// 제조법 배열
+const recipesStr = '${cocktailInfo.cocktailRecipes}';
+const recipesArr = recipesStr.split(". ");
+
+</script>
+	<%@include file="includes/header.jsp" %>
 	
-<!-- 검정색 화면 결과 출력 창-->
+<div class="container">
+
   <div class="f-bg2" style="margin-left:0px;">
     <table class = "my-f1" style="margin-left:30px; margin-bottom:20px">
       <tr>
-        <td> <img src="../resources/img/cocktail/${cocktailInfo.cocktailImage}.png" height="220" width = "220"></td>
-        <td> <div class = "my-f4" style="margin-left:20px; margin-right:20px"> <b><c:out value="${cocktailInfo.cocktailName}"/></b> </div>
-        <div class = "my-f4" style="margin:20px 20px 0 20px;">★★★★☆</div/td>
+        <td><div id="uploadResult">
+																		
+									</div></td>
+        <td><div class = "my-f4" style="margin: 0 20px 20px 20px;"><center><b><c:out value="${cocktailInfo.cocktailName}"/></b></center></div>
+        <div class = "my-f4" style="margin-left:20px; margin-right:20px"><c:out value="도수: ${cocktailInfo.cocktailAbv}%"/></div>
+        <div class = "my-f4" style="margin-left:20px; margin-right:20px"><c:out value="난이도: ${cocktailInfo.cocktailLevel}"/></div>
+        <div class="star-ratings" style="margin-left:20px">
+			<span class="star-ratings-fill space-x-2 text-lg" id="rating">
+				<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+			</span>
+			<span class="star-ratings-base space-x-2 text-lg">
+				<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+			</span>
+		<span style="color:white; margin-left:5px;-webkit-text-fill-color:white;-webkit-text-stroke-color: white;-webkit-text-stroke-width: 0px;">${cocktailInfo.cocktailRating}/5.0</span></div>
+        </td>
         <td> <a class="btn btn-large btn-danger" href="#">조회하기</a></td>
       </tr>
       <tr>
@@ -69,18 +124,25 @@
          <div class="media-body">
 					<h4 class="media-heading">
 					</h4><br>
-          <div class="hr-divider2"><h4>재료<h4></div>
-          	<li><c:out value="${cocktailInfo.cocktailMaterials}"/></li>
+          <div class="hr-divider2"><h4>재료</h4></div>
+          	<script>
+          	for ( var i = 0; i < materialsArr.length; i++ ) {
+                document.write( "<li>" + materialsArr[i] + "</li>" );
+             }
+          	</script>
 			<br>
           <div class="hr-divider2"><h4>만드는 법</h4></div>
-          	<h4></h4><c:out value="${cocktailInfo.cocktailRecipes}"/></h4>
+          <ol>
+          	<script>
+          	for ( var i = 0; i < recipesArr.length; i++ ) {
+                document.write( "<li>" + recipesArr[i] + ".</li>" );
+             }
+          	</script>
+          </ol>
           <div class="hr-divider2"><h4>관련 동영상</h4></div><br>
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/iDjQSdN_ig8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		  <div class="hr-divider2"><h4>댓글</h4></div> 
-		  <div class="content_bottom">
-				<div class="reply_subject">
-					<h2>리뷰</h2>
-				</div>
+		  <div class="content_bottom" style="margin:0;">
 				
 				<c:if test="${member != null}">
 					<div class="reply_button_wrap">
@@ -92,43 +154,10 @@
 					
 				</div>
 				<ul class="reply_content_ul">
-					<!-- 
-					<li>
-						<div class="comment_wrap">
-							<div class="reply_top">
-								<span class="id_span">sjinjin7</span>
-								<span class="date_span">2021-10-11</span>
-								<span class="rating_span">평점 : <span class="rating_value_span">4</span>점</span>
-								<a class="update_reply_btn">수정</a><a class="delete_reply_btn">삭제</a>
-							</div>
-							<div class="reply_bottom">
-								<div class="reply_bottom_txt">
-									사실 기대를 많이하고 읽기시작했는데 읽으면서 가가 쓴것이 맞는지 의심들게합니다 문체도그렇고 간결하지 않네요 제가 기대가 크던 작았던간에 책장이 사실 안넘겨집니다.
-								</div>
-							</div>
-						</div>
-					</li>
-					 -->
 				</ul>
 				<div class="repy_pageInfo_div"> 
 					<ul class="pageMaker">
-					<!--					
-						<li class="pageMaker_btn prev">
-							<a>이전</a>
-						</li>
-						<li class="pageMaker_btn">
-							<a>1</a>
-						</li>
-						<li class="pageMaker_btn">
-							<a>2</a>
-						</li>
-						<li class="pageMaker_btn active">
-							<a>3</a>
-						</li>													
-						<li class="pageMaker_btn next">
-							<a>다음</a>
-						</li>
-					 -->						
+											
 					</ul>
 				</div>
 					
@@ -140,6 +169,11 @@
   
 <%@include file="includes/footer.jsp" %>
 <script>
+/* 평점 별표 관련 */
+const rate = "${cocktailInfo.cocktailRating}" * 11.5 + '%';
+$('#rating').css('width', rate);
+
+
 $(document).ready(function(){
 	
 	/* 리뷰 리스트 출력 */
@@ -149,6 +183,40 @@ $(document).ready(function(){
 		
 		makeReplyContent(obj);
 
+	});
+
+	/* 이미지 정보 호출 */
+	let uploadResult = $("#uploadResult");			
+	
+	$.getJSON("/getAttachList", {cocktailNo : cocktailNo}, function(arr){	
+		
+		console.log(arr.length);
+		console.log(arr[0]);
+		console.log(arr);
+		console.log('${cocktailInfo.imageList[0]}');
+		if(arr.length === 0){	
+			let str = "";
+			str += "<div id='result_card'>";
+			str += "<img src='../resources/img/noImage.png'>";
+			str += "</div>";
+			
+			uploadResult.html(str);	
+			
+			return;
+		}
+		
+		let str = "";
+		let obj = arr[0];	
+		
+		let fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+		str += "<div id='result_card'";
+		str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'";
+		str += ">";
+		str += "<img src='/display?fileName=" + fileCallPath +"'>";
+		str += "</div>";		
+		
+		uploadResult.html(str);						
+		
 	});
 	
 });
@@ -255,7 +323,7 @@ $(document).ready(function(){
 		function makeReplyContent(obj){
 			
 			if(obj.list.length === 0){
-				$(".reply_not_div").html('<span>리뷰가 없습니다.</span>');
+				$(".reply_not_div").html('<span>댓글이 없습니다.</span>');
 				$(".reply_content_ul").html('');
 				$(".pageMaker").html('');
 			} else{
@@ -273,13 +341,13 @@ $(document).ready(function(){
 				$(list).each(function(i,obj){
 					reply_list += '<li>';
 					reply_list += '<div class="comment_wrap">';
-					reply_list += '<div class="reply_top">';
+					reply_list += '<div class="reply_top" style="height:20px">';
 					/* 아이디 */
 					reply_list += '<span class="id_span">'+ obj.memberId+'</span>';
 					/* 날짜 */
 					reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
 					/* 평점 */
-					reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
+					reply_list += "<span class='rating_span'><span class='rating_value_span'><span class='star-ratings' style='margin-left:20px'><span class='star-ratings-fill space-x-2 text-lg' style='width:calc("+  obj.rating*20 +"% - 1.3px);' ><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span><span class='star-ratings-base space-x-2 text-lg'><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span></span> "+obj.rating+"/5</span>";
 					if(obj.memberId === userId){
 						reply_list += '<a class="update_reply_btn" href="'+ obj.replyId +'">수정</a><a class="delete_reply_btn" name="'+ obj.replyId +'">삭제</a>';
 					}
@@ -321,14 +389,8 @@ $(document).ready(function(){
 						reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
 						reply_pageMaker += '</li>';	
 					}	
-					
-					console.log(reply_pageMaker);
-				$(".pageMaker").html(reply_pageMaker);				
-				
 			}		
-			
-		}
-
+		};
 	
 </script>
 </body>

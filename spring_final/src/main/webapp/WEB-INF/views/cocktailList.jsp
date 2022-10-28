@@ -45,7 +45,6 @@
 </style>
 <!-- SCRIPT 
     ============================================================-->
-<script src="http://code.jquery.com/jquery.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/side.js"></script>
 <style>
@@ -172,6 +171,32 @@
 .dd{
 	margin-bottom:5px;
 }
+
+.star-ratings {
+  color: #e1e1e1; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+}
+ 
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
 </style>
 </head>
 <body>
@@ -181,26 +206,64 @@
                     <div class="admin_content_subject"><span>칵테일 목록</span></div>
                     <div class="table_wrap">
                     <!-- 게시물 O -->
-						<c:if test="${listCheck != 'empty'}">
+                    	<c:if test="${listCheck != 'empty'}">
                 		 <div class="wrapper2">
-                		 	<c:forEach items="${list}" var="list" begin="0" end="4">
-					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>'" style="cursor:pointer;">
-					            <div class="thumbnailBox"><img class="thumbnail" src="../resources/img/cocktail/${list.cocktailImage}.png"></div>
+                		 	<c:forEach items="${list}" var="list" begin="0" end="4" varStatus="status">
+                		 	<script>
+								function starSize(a){
+								    const rate = a * 20 + '%';
+								    const d = 'calc(' + rate + ' - 1.3px)';
+								    $('#cocktail${status.index}').css('width', d);
+									};
+							</script>
+					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>' style="cursor:pointer;">
+					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
+									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div>
 					            <div class="items2"><b><c:out value="${list.cocktailName}"></c:out></b></div>
 					            <div class="items2 dd">도수 : <c:out value="${list.cocktailAbv}"></c:out>%</div>
 					            <div class="items2 dd">난이도 : <c:out value="${list.cocktailLevel}"></c:out></div>
-					            <div class="items2 dd">★★★★☆</div>
+					            <div class="items2 dd" style="font-size:16px;">
+					            <span class="star-ratings" style="margin-left:20px">
+									<span class="star-ratings-fill space-x-2 text-lg" id="cocktail${status.index}">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</span>
+									<span class="star-ratings-base space-x-2 text-lg">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</span>
+						            <script>
+						            	starSize(${list.cocktailRating});
+									</script>
+								</span><span style="">${list.cocktailRating}/5.0</span></div>
 					        </div>
 					        </c:forEach>
 					        </div>
 					        <div class="wrapper2">
-					        <c:forEach items="${list}" var="list" begin="5" end="9">
+					        <c:forEach items="${list}" var="list" begin="5" end="9" varStatus="status">
+					        <script>
+								function starSize2(a){
+								    const rate = a * 20 + '%';
+								    const d = 'calc(' + rate + ' - 1.3px)';
+								    $('#cocktail${status.index}').css('width', d);
+									};
+							</script>
 					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>'" style="cursor:pointer;">
-					            <div class="thumbnailBox"><img class="thumbnail" src="../resources/img/cocktail/${list.cocktailImage}.png"></div>
+					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
+									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div>
 					            <div class="items2"><b><c:out value="${list.cocktailName}"></c:out></b></div>
 					            <div class="items2 dd">도수 : <c:out value="${list.cocktailAbv}"></c:out>%</div>
 					            <div class="items2 dd">난이도 : <c:out value="${list.cocktailLevel}"></c:out></div>
-					            <div class="items2">★★★★☆</div>
+					            <div class="items2 dd" style="font-size:16px;">
+					            <span class="star-ratings" style="margin-left:20px">
+									<span class="star-ratings-fill space-x-2 text-lg" id="cocktail${status.index}">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</span>
+									<span class="star-ratings-base space-x-2 text-lg">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</span>
+						            <script>
+						            	starSize2(${list.cocktailRating});
+									</script>
+								</span><span style="">${list.cocktailRating}/5.0</span></div>
 					        </div>
 					        </c:forEach>
 					      </div>
@@ -264,9 +327,9 @@
 	                    	
 	                    	<!-- 페이지 번호 -->
 	                    	<c:forEach begin="${pageMaker.pageStart}" end="${pageMaker.pageEnd}" var="num">
-	                    		<li class="pageMaker_btn ${pageMaker.cri.pageNum == num ? "active":""}">
-	                    			<a href="${num}">${num}</a>
-	                    		</li>
+	                    		<a href="${num}" class="pageNumber"><li class="pageMaker_btn ${pageMaker.cri.pageNum == num ? "active":""}">
+	                    			${num}
+	                    		</li></a>
 	                    	</c:forEach>
 	                    	
 	                    	<!-- 다음 버튼 -->
@@ -286,9 +349,34 @@
     
     <%@include file="includes/footer.jsp" %>
 <script>
+$(document).ready(function(){
+	/* 이미지 삽입 */
+	$(".image_wrap").each(function(i, obj){
+		
+		const bobj = $(obj);
+		
+		console.log(bobj.data("cocktailno"));
+		
+		if(bobj.data("cocktailno")){
+		
+		const uploadPath = bobj.data("path");
+		const uuid = bobj.data("uuid");
+		const fileName = bobj.data("filename");
+		
+		const fileCallPath = encodeURIComponent(uploadPath + "/" + uuid + "_" + fileName);
+		
+		$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+		
+		}else {
+			$(this).find("img").attr('src', '../resources/img/noImage.png');
+		}
+	});
+	
+});
+
 let moveForm = $('#moveForm');
 
-$(".pageMaker_btn a").on("click", function(e){
+$(".pageNumber").on("click", function(e){
     
     e.preventDefault();
     

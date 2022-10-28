@@ -75,15 +75,21 @@
   	
     <!-- 칵테일 등록 -->
       <insert id="cocktailEnroll">
-      
-          insert into cocktail_recipe(cocktailName, cocktailImage, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel) values(#{cocktailName}, #{cocktailImage}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel} )
+      		
+      	<selectKey resultType="int" keyProperty="cocktailNo" order="AFTER">
+  		
+  			SELECT LAST_INSERT_ID();
+  		
+  		</selectKey>
+  		
+          insert into cocktail_recipe(cocktailName, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel) values(#{cocktailName}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel} )
  
       </insert>
       
       <!-- 칵테일 수정 -->
 	<update id="cocktailModify">
 	
-		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailImage=#{cocktailImage}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel} where cocktailNo = #{cocktailNo}
+		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel} where cocktailNo = #{cocktailNo}
 	
 	</update>
 	
@@ -105,9 +111,37 @@
 	<!-- 칵테일 랭킹 -->
 	<select id="likeSelect" resultType="com.spring.model.SelectDTO">
 	
-	select cocktailNo, cocktailName, cocktailRating, cocktailImage
+	select cocktailNo, cocktailName, cocktailRating
 	from cocktail_recipe
 	order by cocktailRating desc limit 4		
+	
+	</select>
+	
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+	
+		insert into cocktail_image(cocktailNo, fileName, uploadPath, uuid) values (#{cocktailNo}, #{fileName}, #{uploadPath}, #{uuid})
+	
+	</insert>
+	
+	<!-- 지정 상품 이미지 전체 삭제 --> 
+	<delete id="deleteImageAll">
+	
+		delete from cocktail_image where cocktailNo = #{cocktailNo}
+	
+	</delete>
+	
+	<!-- 어제자 날짜 이미지 리스트 -->
+	<select id="checkFileList" resultType="com.spring.model.CocktailImageVO">
+	
+		select * from cocktail_image where uploadpath = DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 DAY), '%Y\%m\%d')	
+	
+	</select>
+	
+	<!-- 지정 상품 이미지 정보 얻기 -->
+	<select id="getAttachInfo" resultType="com.spring.model.CocktailImageVO">
+	
+		select * from cocktail_image where cocktailNo = #{cocktailNo}
 	
 	</select>
   </mapper>

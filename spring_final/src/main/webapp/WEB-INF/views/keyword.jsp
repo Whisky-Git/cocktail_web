@@ -204,11 +204,11 @@
     <div class="slidecontainer">
 	<div class="slider-f1">도수 :  </div>
 	<div class="slider-f2">최소도수 </div>
-        <input type="range" min="1" max="50" value="25" class="slider" id="dosu1">
+        <input type="range" min="1" max="50" class="slider" id="dosu1">
        
 		
 		<div class="slider-f1">최대도수 </div>
-		<input type="range" min="1" max="50" value="25" class="slider" id="dosu2">
+		<input type="range" min="1" max="50" class="slider" id="dosu2">
 		
         <div class="slider-f2"> 도수 :  <span id="b"></span>~<span id="d"></span></div>
 		
@@ -223,6 +223,7 @@
 		
         var slider2 = document.getElementById("dosu2");//최대도수
         var output2 = document.getElementById("d");
+        
 		output1.innerHTML = slider1.value;
         output2.innerHTML = slider2.value+ '%';
          
@@ -559,7 +560,7 @@ $("#tag3")
    <div class="Searchba">
    
    <input type="text" placeholder="재료 입력" id="inp"/>
-   <button id="tag2"> 검색 </button>
+   <button id="tag2"> 키워드 추가 </button>
    </div>
    
 

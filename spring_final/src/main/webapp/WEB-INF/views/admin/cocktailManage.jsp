@@ -44,6 +44,14 @@
 <link rel="stylesheet" href="../resources/css/admin/cocktailManage.css">
 
 <style>
+#result_card img{
+	width: 100px;
+    height: 100px;
+    display: block;
+    padding: 5px;
+    margin-top: 10px;
+    margin: auto;	
+}
 </style>
 <!-- SCRIPT 
     ============================================================-->
@@ -101,7 +109,8 @@
                     				<a class="move" href='<c:out value="${list.cocktailNo}"/>'>
                     					<c:out value="${list.cocktailName}"></c:out></a></td>
                     				</a>
-                    			<td> <img src="../resources/img/cocktail/${list.cocktailImage}.png" height="100" width = "100"></td>
+                    			<td><div class="image_wrap" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
+									<img></div></td>
                     			<td><c:out value="${list.cocktailMaterials}"></c:out> </td>
                     			<td><c:out value="${list.cocktailAbv}"></c:out>%</td>
                     			<td><c:out value="${list.cocktailLevel}"></c:out></td>
@@ -168,10 +177,28 @@
     <%@include file="../includes/admin/footer.jsp" %>
 <script>
 $(document).ready(function(){
-    
-	let delete_result = '${delete_result}';
-    
-   	console.log(delete_result);
+	/* 이미지 삽입 */
+	$(".image_wrap").each(function(i, obj){
+		
+		const bobj = $(obj);
+		
+		console.log(bobj.data("cocktailno"));
+		
+		if(bobj.data("cocktailno")){
+		
+		const uploadPath = bobj.data("path");
+		const uuid = bobj.data("uuid");
+		const fileName = bobj.data("filename");
+		
+		const fileCallPath = encodeURIComponent(uploadPath + "/" + uuid + "_" + fileName);
+		
+		$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+		
+		}else {
+			$(this).find("img").attr('src', '../resources/img/noImage.png');
+		}
+	});
+	
 });
 
 

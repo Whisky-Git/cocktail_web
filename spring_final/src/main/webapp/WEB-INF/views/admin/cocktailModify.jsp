@@ -44,6 +44,33 @@
 <link rel="stylesheet" href="../resources/css/admin/cocktailModify.css">
 
 <style>
+#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+	#result_card {
+		position: relative;
+	}
+	.imgDeleteBtn{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
 </style>
 <!-- SCRIPT 
     ============================================================-->
@@ -96,11 +123,13 @@
                     		</div>
                     		<div class="form_section">
                     			<div class="form_section_title">
-                    				<label>이미지(파일명)</label>
+                    				<label>상품 이미지</label>
                     			</div>
                     			<div class="form_section_content">
-                    				<input name="cocktailImage" value="<c:out value='${cocktailInfo.cocktailImage }'></c:out>" >
-                    				<span id="warn_cocktailImage">이미지 파일명을 입력 해주세요.</span>
+									<input type="file" id ="fileItem" name='uploadFile' style="height: 40px;">
+									<div id="uploadResult">
+																		
+									</div>									
                     			</div>
                     		</div>
                     		<div class="form_section">
@@ -137,9 +166,9 @@
                     			<div class="form_section_content">
                     				<select name="cocktailLevel">
                     					<option value="none" selected>=== 선택 ===</option>
-                    					<option value="상" <c:out value=" ${cocktailInfo.cocktailLevel eq '상' ?'selected':''}"/>>상</option>
-                    					<option value="중" <c:out value=" ${cocktailInfo.cocktailLevel eq '중' ?'selected':''}"/>>중</option>
-                    					<option value="하" <c:out value=" ${cocktailInfo.cocktailLevel eq '하' ?'selected':''}"/>>하</option>
+                    					<option value="어려움" <c:out value=" ${cocktailInfo.cocktailLevel eq '어려움' ?'selected':''}"/>>어려움</option>
+                    					<option value="보통" <c:out value=" ${cocktailInfo.cocktailLevel eq '보통' ?'selected':''}"/>>보통</option>
+                    					<option value="쉬움" <c:out value=" ${cocktailInfo.cocktailLevel eq '쉬움' ?'selected':''}"/>>쉬움</option>
                     				</select>
                     				<span id="warn_cocktailLevel">난이도을 선택해주세요.</span>
                     			</div>
@@ -165,7 +194,145 @@
     
     <%@include file="../includes/admin/footer.jsp" %>
 <script>
+$(document).ready(function(){
+	/* 기존 이미지 출력 */
+	let cocktailNo = '<c:out value="${cocktailInfo.cocktailNo}"/>';
+	let uploadResult = $("#uploadResult");
+	
+	$.getJSON("/getAttachList", {cocktailNo : cocktailNo}, function(arr){
+		
+		console.log(arr);
+		
+		if(arr.length === 0){
+			
+			
+			let str = "";
+			str += "<div id='result_card'>";
+			str += "<img src='../resources/img/noImage.png'>";
+			str += "</div>";
+			
+			uploadResult.html(str);				
+			return;
+		}
+		
+		let str = "";
+		let obj = arr[0];
+		
+		let fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+		str += "<div id='result_card'";
+		str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'";
+		str += ">";
+		str += "<img src='/display?fileName=" + fileCallPath +"'>";
+		str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
+		str += "<input type='hidden' name='imageList[0].fileName' value='"+ obj.fileName +"'>";
+		str += "<input type='hidden' name='imageList[0].uuid' value='"+ obj.uuid +"'>";
+		str += "<input type='hidden' name='imageList[0].uploadPath' value='"+ obj.uploadPath +"'>";				
+		str += "</div>";
+		
+		uploadResult.html(str);			
+		
+	});// GetJSON
+	
+});
 
+/* 이미지 삭제 버튼 동작 */
+$("#uploadResult").on("click", ".imgDeleteBtn", function(e){
+	
+	deleteFile();
+	
+});
+
+/* 파일 삭제 메서드 */
+function deleteFile(){
+	
+	$("#result_card").remove();
+}
+
+/* 이미지 업로드 */
+$("input[type='file']").on("change", function(e){
+	
+	/* 이미지 존재시 삭제 */
+	if($("#result_card").length > 0){
+		deleteFile();
+	}
+			
+	let formData = new FormData();
+	let fileInput = $('input[name="uploadFile"]');
+	let fileList = fileInput[0].files;
+	let fileObj = fileList[0];
+	
+	if(!fileCheck(fileObj.name, fileObj.size)){
+		return false;
+	}
+	
+	formData.append("uploadFile", fileObj);
+	
+	$.ajax({
+		url: '/admin/uploadAjaxAction',
+    	processData : false,
+    	contentType : false,
+    	data : formData,
+    	type : 'POST',
+    	dataType : 'json',
+    	success : function(result){
+    		console.log(result);
+    		showUploadImage(result);
+    	},
+    	error : function(result){
+    		alert("이미지 파일이 아닙니다.");
+    	}
+	});		
+
+	
+});
+	
+/* var, method related with attachFile */
+let regex = new RegExp("(.*?)\.(jpg|png)$");
+let maxSize = 1048576; //1MB	
+
+function fileCheck(fileName, fileSize){
+
+	if(fileSize >= maxSize){
+		alert("파일 사이즈 초과");
+		return false;
+	}
+		  
+	if(!regex.test(fileName)){
+		alert("해당 종류의 파일은 업로드할 수 없습니다.");
+		return false;
+	}
+	
+	return true;		
+	
+}
+
+/* 이미지 출력 */
+function showUploadImage(uploadResultArr){
+	
+	/* 전달받은 데이터 검증 */
+	if(!uploadResultArr || uploadResultArr.length == 0){return}
+	
+	let uploadResult = $("#uploadResult");
+	
+	let obj = uploadResultArr[0];
+	
+	let str = "";
+	
+	let fileCallPath = encodeURIComponent(obj.uploadPath.replace(/\\/g, '/') + "/" + obj.uuid + "_" + obj.fileName);
+	//replace 적용 하지 않아도 가능
+	//let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+	
+	str += "<div id='result_card'>";
+	str += "<img src='/display?fileName=" + fileCallPath +"'>";
+	str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
+	str += "<input type='hidden' name='imageList[0].fileName' value='"+ obj.fileName +"'>";
+	str += "<input type='hidden' name='imageList[0].uuid' value='"+ obj.uuid +"'>";
+	str += "<input type='hidden' name='imageList[0].uploadPath' value='"+ obj.uploadPath +"'>";		
+	str += "</div>";		
+	
+		uploadResult.append(str);     
+    
+}
 
 /* 수정 버튼 */
 $("#modifyBtn").click(function(){    

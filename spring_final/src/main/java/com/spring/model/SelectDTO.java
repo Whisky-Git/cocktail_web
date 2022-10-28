@@ -1,5 +1,7 @@
 package com.spring.model;
 
+import java.util.List;
+
 public class SelectDTO {
 
 	/* 칵테일 번호 */
@@ -12,7 +14,7 @@ public class SelectDTO {
 	private double cocktailRating;	
 	
 	/* 상품 이미지 */
-	private String cocktailImage;
+	private List<CocktailImageVO> imageList;
 
 	public int getCocktailNo() {
 		return cocktailNo;
@@ -38,19 +40,21 @@ public class SelectDTO {
 		this.cocktailRating = cocktailRating;
 	}
 
-	public String getCocktailImage() {
-		return cocktailImage;
+	public List<CocktailImageVO> getImageList() {
+		return imageList;
 	}
 
-	public void setCocktailImage(String cocktailImage) {
-		this.cocktailImage = cocktailImage;
+	public void setImageList(List<CocktailImageVO> imageList) {
+		this.imageList = imageList;
 	}
 
 	@Override
 	public String toString() {
 		return "SelectDTO [cocktailNo=" + cocktailNo + ", cocktailName=" + cocktailName + ", cocktailRating="
-				+ cocktailRating + ", cocktailImage=" + cocktailImage + "]";
+				+ cocktailRating + ", imageList=" + imageList + "]";
 	}
+
+	
 	
 	
     
