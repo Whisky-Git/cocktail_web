@@ -5,21 +5,21 @@
   <mapper namespace="com.spring.mapper.MemberMapper">
   
 		<insert id="memberJoin">
-  			insert into book_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0, now(), 0, 0 )
+  			insert into cocktail_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0, now(), 0, 0 )
   		<!-- 속성 값 중 0 은 관리자 구분 -->
   		</insert>
   		
   		<!-- 아이디 중복검사 -->
   		<select id="idCheck" resultType="int">
   	
-  		select count(*) from book_member where memberId = #{memberId}
+  		select count(*) from cocktail_member where memberId = #{memberId},...
   	
  	 	</select>
  	 	
  	 	 <!-- 로그인 -->
       <select id="memberLogin" resultType="com.spring.model.MemberVO">
       
-        select memberId, memberPw, memberName,memberMail, adminCk,regDate, money, point from book_member where memberId = #{memberId}
+        select memberId, memberPw, memberName,memberMail, adminCk,regDate, money, point from cocktail_member where memberId = #{memberId}
 
       </select>
   </mapper>

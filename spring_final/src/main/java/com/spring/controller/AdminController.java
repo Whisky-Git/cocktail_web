@@ -17,6 +17,8 @@ public class AdminController {
 	public void adminMainGET() throws Exception{
 		
 		System.out.println("관리자 페이지 이동");
+		
+		
 	}
 		
 	
