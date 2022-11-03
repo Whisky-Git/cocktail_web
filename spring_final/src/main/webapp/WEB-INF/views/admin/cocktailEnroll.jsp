@@ -155,22 +155,28 @@
                     				<span id="warn_cocktailRecipes">제조법을 입력 해주세요.</span>
                     			</div>
                     		</div>
+                    		
+                    		<table style="margin-left:11px;">
+                    		<tr>
+                    		<td style="width:420px;">
                     		<div class="form_section">
-                    			<div class="form_section_title">
+                    			<div class="form_section_title" style="height:25px;">
                     				<label>도수</label>
                     			</div>
-                    			<div class="form_section_content">
-                    				<input name="cocktailAbv">
+                    			<div class="form_section_content" id="dosu" style="height:45px;">
+                    				<input name="cocktailAbv" type="number">
                     				<span id="warn_cocktailAbv">도수를 입력 해주세요.</span>
                     			</div>
                     		</div>
+                    		</td>
+                    		<td style="width:420px;">
                     		<div class="form_section">
                     			<div class="form_section_title">
                     				<label>난이도</label>
                     			</div>
                     			<div class="form_section_content">
                     				<select name="cocktailLevel">
-                    					<option value="none" selected>=== 선택 ===</option>
+                    					<option value="none" selected>== 선택 ==</option>
                     					<option value="어려움">어려움</option>
                     					<option value="보통">보통</option>
                     					<option value="쉬움">쉬움</option>
@@ -178,6 +184,73 @@
                     				<span id="warn_cocktailLevel">난이도을 선택해주세요.</span>
                     			</div>
                     		</div>
+                    		</td>
+                    		</tr>
+                    		<tr>
+                    		<td>
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>MBTI</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<select name="cocktailMbti">
+                    					<option value="none" selected>== 선택 ==</option>
+                    					<option value="ENFJ">ENFJ</option>
+                    					<option value="ENFP">ENFP</option>
+                    					<option value="ENTJ">ENTJ</option>
+                    					<option value="ENTP">ENTP</option>
+                    					<option value="ESFJ">ESFJ</option>
+                    					<option value="ESFP">ESFP</option>
+                    					<option value="ESTJ">ESTJ</option>
+                    					<option value="ESTP">ESTP</option>
+                    					<option value="INFJ">INFJ</option>
+                    					<option value="INFP">INFP</option>
+                    					<option value="INTJ">INTJ</option>
+                    					<option value="INTP">INTP</option>
+                    					<option value="ISFJ">ISFJ</option>
+                    					<option value="ISFP">ISFP</option>
+                    					<option value="ISTJ">ISTJ</option>
+                    					<option value="ISTP">ISTP</option>
+                    				</select>
+                    				<span id="warn_cocktailMbti">MBTI를 선택해주세요.</span>
+                    			</div>
+                    		</div>
+                    		</td>
+                    		<td>
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>계절</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<select name="cocktailSeason">
+                    					<option value="none" selected>== 선택 ==</option>
+                    					<option value="봄">봄</option>
+                    					<option value="여름">여름</option>
+                    					<option value="가을">가을</option>
+                    					<option value="겨울">겨울</option>
+                    				</select>
+                    				<span id="warn_cocktailSeason">계절을 선택해주세요.</span>
+                    			</div>
+                    		</div>
+                    		</td>
+                    		</tr>
+                    		</table>
+                    		<!-- 
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>관계</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<select name="cocktailRelation">
+                    					<option value="none" selected>=== 선택 ===</option>
+                    					<option value="어려움">어려움</option>
+                    					<option value="보통">보통</option>
+                    					<option value="쉬움">쉬움</option>
+                    				</select>
+                    				<span id="warn_cocktaiRelation">난이도을 선택해주세요.</span>
+                    			</div>
+                    		</div>
+                    		 -->
                    		</form>
                    			<div class="btn_section">
                    				<button id="cancelBtn" class="btn">취 소</button>
@@ -200,13 +273,17 @@
         let recipesCheck = false;            // 제조법
         let abvCheck = false;            // 도수
         let levelCheck = false;        // 난이도
+        let mbtiCheck = false;        // mbti
+        let seasonCheck = false;        // 계절
         
         /* 입력값 변수 */
         let cocktailName = $('input[name=cocktailName]').val();        
         let cocktailMaterials = $('input[name=cocktailMaterials]').val();
         let cocktailRecipes = $('.form_section_content textarea').val();  
         let cocktailAbv = $('input[name=cocktailAbv]').val();
-        let cocktailLevel = $('select[name=cocktailLevel]').val(); 
+        let cocktailLevel = $('select[name=cocktailLevel]').val();
+        let cocktailMbti = $('select[name=cocktailMbti]').val();
+        let cocktailSeason = $('select[name=cocktailSeason]').val();
         
         /* 공란 경고 span태그 */
         let wCocktailName = $('#warn_cocktailName');
@@ -214,6 +291,11 @@
         let wCocktailRecipes = $('#warn_cocktailRecipes');
         let wCocktailAbv = $('#warn_cocktailAbv');
         let wCocktailLevel = $('#warn_cocktailLevel');
+        let wCocktailMbti = $('#warn_cocktailMbti');
+        let wCocktailSeason = $('#warn_cocktailSeason');
+        
+        /* 도수입력칸 태그 (높이조절)*/
+        let dosuHeight = $('#dosu');
         
         /* 칵테일 이름 공란 체크 */
         if(cocktailName ===''){
@@ -245,9 +327,11 @@
         /* 도수 공란 체크 */
         if(cocktailAbv ===''){
         	wCocktailAbv.css('display', 'block');
+        	dosuHeight.css('height','76px');
         	abvCheck = false;
         } else{
         	wCocktailAbv.css('display', 'none');
+        	dosuHeight.css('height','45px');
         	abvCheck = true;
         }
         
@@ -261,14 +345,30 @@
         	levelCheck = true;
         } 
         
+        /* mbti 공란 체크 */
+        if(cocktailMbti ==='none'){
+        	wCocktailMbti.css('display', 'block');
+        	mbtiCheck = false;
+        } else{
+        	wCocktailMbti.css('display', 'none');
+        	mbtiCheck = true;
+        } 
+        
+        /* 계절 공란 체크 */
+        if(cocktailSeason ==='none'){
+        	wCocktailSeason.css('display', 'block');
+        	seasonCheck = false;
+        } else{
+        	wCocktailSeason.css('display', 'none');
+        	seasonCheck = true;
+        } 
+        
         /* 최종 검사 */
-        if(nameCheck && materialsCheck && recipesCheck && abvCheck && levelCheck ){
+        if(nameCheck && materialsCheck && recipesCheck && abvCheck && levelCheck && mbtiCheck && seasonCheck ){
             $("#enrollForm").submit();    
         } else{
             return;
         }
-        
-        $("#enrollForm").submit();
     });
      
     /* 취소 버튼 */

@@ -44,4 +44,7 @@ public interface CocktailMapper {
 	
 	/* 지정 상품 이미지 정보 얻기 */
 	public List<CocktailImageVO> getAttachInfo(int cocktailNo);
+	
+	/* 비슷한 칵테일 추천 */
+	public List<CocktailVO> recommandGetList(String recommand);
 }

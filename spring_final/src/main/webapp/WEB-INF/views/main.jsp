@@ -337,7 +337,7 @@
 								<h2>
 									<B>${status.count}th</B>
 								</h2>
-								<a href="/service?cocktailNo=${ls.cocktailNo}"><div class="image_wrap" data-cocktailno="${ls.imageList[0].cocktailNo}" data-path="${ls.imageList[0].uploadPath}" data-uuid="${ls.imageList[0].uuid}" data-filename="${ls.imageList[0].fileName}">
+								<a href="/service?cocktailNo=${ls.cocktailNo}&cocktailName=${ls.cocktailName}"><div class="image_wrap" data-cocktailno="${ls.imageList[0].cocktailNo}" data-path="${ls.imageList[0].uploadPath}" data-uuid="${ls.imageList[0].uuid}" data-filename="${ls.imageList[0].fileName}">
 									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div></a>
 								<p class="my-f1">
 									<b>${ls.cocktailName}</b>

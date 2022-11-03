@@ -13,6 +13,9 @@ public class CocktailVO {
 	private String cocktailCategory;		//카테고리
 	private String cocktailImage;		//이미지
 	private double cocktailRating;		//평점
+	private String cocktailMbti;		//mbti
+	private String cocktailSeason;		//계절
+	private String cocktailRelation;	//관계
 
 	private List<CocktailImageVO> imageList;  	// 이미지 정보 
 	
@@ -76,12 +79,32 @@ public class CocktailVO {
 	public void setImageList(List<CocktailImageVO> imageList) {
 		this.imageList = imageList;
 	}
+	public String getCocktailMbti() {
+		return cocktailMbti;
+	}
+	public void setCocktailMbti(String cocktailMbti) {
+		this.cocktailMbti = cocktailMbti;
+	}
+	public String getCocktailSeason() {
+		return cocktailSeason;
+	}
+	public void setCocktailSeason(String cocktailSeason) {
+		this.cocktailSeason = cocktailSeason;
+	}
+	public String getCocktailRelation() {
+		return cocktailRelation;
+	}
+	public void setCocktailRelation(String cocktailRelation) {
+		this.cocktailRelation = cocktailRelation;
+	}
 	@Override
 	public String toString() {
 		return "CocktailVO [cocktailNo=" + cocktailNo + ", cocktailName=" + cocktailName + ", cocktailMaterials="
 				+ cocktailMaterials + ", cocktailRecipes=" + cocktailRecipes + ", cocktailAbv=" + cocktailAbv
-				+ ", cocktailLevel=" + cocktailLevel + ", cocktailCategory=" + cocktailCategory + ", cocktailImage=" + cocktailImage + ", cocktailRating="
-				+ cocktailRating + ", imageList=" + imageList + "]";
+				+ ", cocktailLevel=" + cocktailLevel + ", cocktailCategory=" + cocktailCategory + ", cocktailImage="
+				+ cocktailImage + ", cocktailRating=" + cocktailRating + ", cocktailMbti=" + cocktailMbti
+				+ ", cocktailSeason=" + cocktailSeason + ", cocktailRelation=" + cocktailRelation + ", imageList="
+				+ imageList + "]";
 	}
 	
 	

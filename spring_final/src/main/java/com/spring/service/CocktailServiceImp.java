@@ -41,7 +41,6 @@ public class CocktailServiceImp implements CocktailService{
 			cocktail.setImageList(imageList);
 			
 		});
-    	
         return list;
     }
     
@@ -145,5 +144,24 @@ public class CocktailServiceImp implements CocktailService{
 		log.info("getAttachInfo........");
 		
 		return cocktailMapper.getAttachInfo(cocktailNo);
+	}
+	
+	/* 비슷한 칵테일 추천 */
+	@Override
+	public List<CocktailVO> recommandGetList(String recommand) throws Exception {
+		
+		List<CocktailVO> list = cocktailMapper.recommandGetList(recommand);
+		
+		list.forEach(cocktail -> {
+		
+		int cocktailNo = cocktail.getCocktailNo();
+		
+		List<CocktailImageVO> imageList = attachMapper.getAttachList(cocktailNo);
+		
+		cocktail.setImageList(imageList);
+			
+		});
+		
+		return list;
 	}
 }

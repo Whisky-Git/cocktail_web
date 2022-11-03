@@ -216,7 +216,7 @@
 								    $('#cocktail${status.index}').css('width', d);
 									};
 							</script>
-					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>' style="cursor:pointer;">
+					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>' id='<c:out value="${list.cocktailName}"/>' style="cursor:pointer;">
 					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
 									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div>
 					            <div class="items2"><b><c:out value="${list.cocktailName}"></c:out></b></div>
@@ -246,7 +246,7 @@
 								    $('#cocktail${status.index}').css('width', d);
 									};
 							</script>
-					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>'" style="cursor:pointer;">
+					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>' id='<c:out value="${list.cocktailName}"/>'" style="cursor:pointer;">
 					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
 									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div>
 					            <div class="items2"><b><c:out value="${list.cocktailName}"></c:out></b></div>
@@ -391,6 +391,7 @@ $(".move").on("click", function(e){
 	e.preventDefault();
 	
 	moveForm.append("<input type='hidden' name='cocktailNo' value='"+ $(this).attr("name") + "'>");
+	moveForm.append("<input type='hidden' name='cocktailName' value='"+ $(this).attr("id") + "'>");
 	moveForm.attr("action", "/service");
 	moveForm.submit();
 	

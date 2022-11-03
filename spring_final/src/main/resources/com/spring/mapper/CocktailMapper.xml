@@ -82,14 +82,14 @@
   		
   		</selectKey>
   		
-          insert into cocktail_recipe(cocktailName, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel) values(#{cocktailName}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel} )
+          insert into cocktail_recipe(cocktailName, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel ,cocktailMbti, cocktailSeason) values(#{cocktailName}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel}, #{cocktailMbti}, #{cocktailSeason} )
  
       </insert>
       
       <!-- 칵테일 수정 -->
 	<update id="cocktailModify">
 	
-		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel} where cocktailNo = #{cocktailNo}
+		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel}, cocktailMbti=#{cocktailMbti}, cocktailSeason=#{cocktailSeason} where cocktailNo = #{cocktailNo}
 	
 	</update>
 	
@@ -144,4 +144,16 @@
 		select * from cocktail_image where cocktailNo = #{cocktailNo}
 	
 	</select>
+	
+	<!-- 비슷한 칵테일 추천 -->
+	<select id="recommandGetList" resultType="com.spring.model.CocktailVO">
+  	
+  		select * from cocktail_recipe where cocktailName in(
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 1), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 2), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 3), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 4), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 5), ',', -1))
+  	
+  	</select>
   </mapper>
