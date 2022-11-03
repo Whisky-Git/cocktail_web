@@ -7,7 +7,7 @@
 		<!-- 칵테일 목록 -->
     <select id="cocktailGetList" resultType="com.spring.model.CocktailVO">
     	<choose>
-			<when test ='tag != null'>
+			<when test ="tag != null">
 				select  *
        		    from cocktail_recipe
        		    where
@@ -22,7 +22,14 @@
 	                  </otherwise>
 	              </choose>
        		    </foreach>
-       		    order by cocktailNo desc 
+       		    order by cocktailNo asc 
+        		limit #{skip},#{amount} 
+			</when>
+			<when test = "level != null and level != ''">
+				select *
+				from cocktail_recipe
+				where cocktailLevel = #{level}
+				order by cocktailNo asc 
         		limit #{skip},#{amount} 
 			</when>
 			<otherwise>
@@ -55,6 +62,11 @@
 	              </choose>
        		    </foreach>
       		</when>
+	   		  <when test = "level != null and level != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailLevel = #{level}
+			  </when>
       		<otherwise>
       			select count(*) from cocktail_recipe
           		<if test="keyword != null">
@@ -156,4 +168,6 @@
 		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 5), ',', -1))
   	
   	</select>
+  	
+  	
   </mapper>

@@ -49,7 +49,8 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/side.js"></script>
-
+<style>
+</style>
 </head>
 <body>
 	<!--HEADER ROW-->
@@ -505,22 +506,20 @@
 					<br>
 					<p class="my-f6">자신의 레벨에 맞는 칵테일을 만들자!!</p>
 					<br> <br>
-					<h4 class="my-f3">
-						<img class="hidden-phone" src="../resources/img/g1.png" alt=""
-							width="100"> &nbsp;&nbsp;&nbsp;칵테일이------ ------ -
+					<h4 class="my-f3" style="margin-top:10px;">
+						<center><a href="cocktailList?level=쉬움"><img class="hidden-phone" src="../resources/img/g1.png" alt=""
+							width="120px" height="120px"></a></center>
 					</h4>
 					<br>
 					<h4 class="my-f3">
-						<img class="hidden-phone" src="../resources/img/g2.png" alt=""
-							width="100">&nbsp;&nbsp;&nbsp;칵테일이------ ------ -
+						<center><a href="cocktailList?level=보통"><img class="hidden-phone" src="../resources/img/g2.png" alt=""
+							width="120px" height="120px"></a></center>
 					</h4>
 					<br>
 					<h4 class="my-f3">
-						<img class="hidden-phone" src="../resources/img/g3.png" alt=""
-							width="100">&nbsp;&nbsp;&nbsp;칵테일이------ ------ -
+						<center><a href="cocktailList?level=어려움"><img class="hidden-phone" src="../resources/img/g3.png" alt=""
+							width="120px" height="120px"></a></center>
 					</h4>
-					<br> <a class="btn btn-large btn-danger mm22" href="#">지금
-						바로가기</a><br>
 				</div>
 			</div>
 		</div>

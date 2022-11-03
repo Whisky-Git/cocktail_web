@@ -164,4 +164,22 @@ public class CocktailServiceImp implements CocktailService{
 		
 		return list;
 	}
+	
+	/* 난이도별 칵테일 목록 */
+	public List<CocktailVO> cocktailLevelGetList(CocktailCriteria cri) throws Exception {
+		
+		List<CocktailVO> list = cocktailMapper.cocktailLevelGetList(cri);
+		
+		list.forEach(cocktail -> {
+			
+			int cocktailNo = cocktail.getCocktailNo();
+			
+			List<CocktailImageVO> imageList = attachMapper.getAttachList(cocktailNo);
+			
+			cocktail.setImageList(imageList);
+			
+		});
+        return list;
+	}
+	
 }

@@ -23,6 +23,9 @@ public class CocktailCriteria {
     
     /* 칵테일 번호(댓글 기능에서 사용) */
 	private int cocktailNo;
+	
+	/* 칵테일 난이도 */
+	private String level;
     
 	/* Criteria 생성자 */
     public CocktailCriteria(int pageNum, int amount) {
@@ -99,12 +102,22 @@ public class CocktailCriteria {
 			this.cocktailNo = cocktailNo;
 		}
 
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
 
 	@Override
 	public String toString() {
 		return "CocktailCriteria [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip + ", type=" + type
-				+ ", keyword=" + keyword + ", tag=" + Arrays.toString(tag) + ", cocktailNo=" + cocktailNo +"]";
+				+ ", keyword=" + keyword + ", tag=" + Arrays.toString(tag) + ", cocktailNo=" + cocktailNo + ", level="
+				+ level + "]";
 	}
+
+	
 
 	
     

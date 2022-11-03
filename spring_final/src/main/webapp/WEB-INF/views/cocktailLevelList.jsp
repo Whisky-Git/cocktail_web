@@ -344,7 +344,6 @@
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="level" value="${pageMaker.cri.level}">
 					</form>   
                 </div>
     
