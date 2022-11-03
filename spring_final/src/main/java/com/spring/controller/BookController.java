@@ -174,10 +174,13 @@ public class BookController {
 				            line = br.readLine();	//엑셀의 3행부터 가져옴 (1행은 칼럼명, 2행은 자기자신이라 패스)
 				            
 				            while((line = br.readLine()) != null) {
-				            	System.out.println("한줄씩 불러온데이터 : " + line);
+				            	System.out.println(i+"번째 데이터  : " + line);
 				            	arr[i] = line.split(",")[1];	//칵테일이름만 배열에 저장
 				            	i++;
 				            }
+				            for (int j = 0; j < arr.length; j++) {	// 배열 출력
+								System.out.println("arr[" + j + "] : " + arr[j]);
+							}
 				        } catch (FileNotFoundException e) {
 				            e.printStackTrace();
 				        }catch (IOException e) {
@@ -192,7 +195,7 @@ public class BookController {
 				            }
 				        }
 				        String recommand = String.join(",", arr);		//arr배열 데이터를 하나의 문자열로 합침
-				        System.out.println("최종 완성된 배열 : " + recommand);	
+				        System.out.println("최종 완성된 문자열 : " + recommand);	
 				        List list = cocktailService.recommandGetList(recommand);
 				        model.addAttribute("recommand", list);
 				}

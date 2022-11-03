@@ -47,7 +47,4 @@ public interface CocktailMapper {
 	
 	/* 비슷한 칵테일 추천 */
 	public List<CocktailVO> recommandGetList(String recommand);
-	
-	/* 난이도별 칵테일 목록 */
-	public List<CocktailVO> cocktailLevelGetList(CocktailCriteria cri);
 }
