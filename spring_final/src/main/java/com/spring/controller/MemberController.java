@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.model.MemberInforVO;
 import com.spring.model.MemberVO;
+import com.spring.service.MemberInforService;
 import com.spring.service.MemberService;
 
 @Controller
@@ -34,6 +36,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberservice;
 
+	@Autowired
+	private MemberInforService memberinfoservice;
+	
+	
+	
 	// mail sender 의존성 주입
 	@Autowired
 	private JavaMailSender mailSender;
@@ -52,7 +59,7 @@ public class MemberController {
 
 	// 회원가입
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinPOST(MemberVO member) throws Exception {
+	public String joinPOST(MemberVO member, MemberInforVO info) throws Exception {
 
 		/*  2022-09-12 프로젝트 [8]
 		 * logger.info("join 진입");
@@ -72,7 +79,7 @@ public class MemberController {
 
 		/* 회원가입 쿼리 진행 */
 		memberservice.memberJoin(member);
-		
+		memberinfoservice.useInfo(info);
 		
 		return "redirect:/main";
 	}
@@ -151,8 +158,9 @@ public class MemberController {
 	}
 	
 	///////////////////////////		로그인		////////////////////////////////////
+
     @RequestMapping(value="login.do", method=RequestMethod.POST)
-    public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
+    public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr,MemberInforVO info) throws Exception{
         
         
         HttpSession session = request.getSession();
@@ -160,7 +168,7 @@ public class MemberController {
         String encodePw = "";
         
         MemberVO lvo = memberservice.memberLogin(member); //제출한 아이디와 일치하는 아이디 확인
-        
+        MemberInforVO Mlvo = memberinfoservice.usePrint(info);
         if(lvo != null) { // 일치하는 아이디 존재 시
             
             rawPw = member.getMemberPw();		//사용자가 제출한 비밀번호
@@ -171,6 +179,7 @@ public class MemberController {
             	
             	lvo.setMemberPw("");
             	session.setAttribute("member", lvo);
+            	session.setAttribute("info", Mlvo);
             	return "redirect:/main";
             	
             }
@@ -189,6 +198,19 @@ public class MemberController {
         
     }
     
+    /* 비동기방식 로그아웃 메소드 */
+    @RequestMapping(value="logout.do", method=RequestMethod.POST)
+    @ResponseBody
+    public void logoutPOST(HttpServletRequest request)throws Exception{
+    	
+    	System.out.println("비동기 로그아웃 메소드 진입");
+    	
+    	HttpSession session = request.getSession();
+    	
+    	session.invalidate();
+    }
+    
+    
     /* 메인페이지 로그아웃 */
     @RequestMapping(value="logout.do", method=RequestMethod.GET)
     public String logoutMainGET(HttpServletRequest request) throws Exception{
@@ -200,18 +222,6 @@ public class MemberController {
     	session.invalidate();
     	
     	return "redirect:/main";
-    }
-    
-    /* 비동기방식 로그아웃 메소드 */
-    @RequestMapping(value="logout.do", method=RequestMethod.POST)
-    @ResponseBody
-    public void logoutPOST(HttpServletRequest request)throws Exception{
-    	
-    	System.out.println("비동기 로그아웃 메소드 진입");
-    	
-    	HttpSession session = request.getSession();
-    	
-    	session.invalidate();
     }
     
 }
