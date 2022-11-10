@@ -172,7 +172,7 @@
 										</c:if>
 										<li><a href="/member/logout.do">로그아웃</a></li>
 										<li><a href="../mypage">마이페이지</a></li>
-										<li><a>장바구니</a></li>
+										
 									</c:if>
 								</ul>
 							</div>

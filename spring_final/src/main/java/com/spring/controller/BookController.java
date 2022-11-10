@@ -162,7 +162,7 @@ public class BookController {
 				        e.printStackTrace();
 				     }
 				     
-				     
+				    
 				   //runtime 생성 
 				     Runtime rt =Runtime.getRuntime();
 				     //python 실행파일 주소값 가져옴
@@ -211,7 +211,7 @@ public class BookController {
 				        String recommand = String.join(",", arr);		//arr배열 데이터를 하나의 문자열로 합침
 				        System.out.println("최종 완성된 문자열 : " + recommand);	
 				        List list = cocktailService.recommandGetList(recommand);
-				        model.addAttribute("recommand", list);
+				        model.addAttribute("recommand", list); //앞에는 이름설정, 뒤에는 위에서 선언한 변수
 				}
 				
 				

@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ShapeBootstrap Clean Template</title>
+<title>칵테일</title>
+<link rel="icon" href="../resources/img/cocktail/47.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -88,7 +89,7 @@
 	height: 800px;
 	padding: 20px;
 	background: #f7f6f6;
-	margin-top: 80px;
+	margin-top: 20px;
 	padding-bottom: 10px;
 	border-width: 2px;
 	border-color: #c0c0c0;
@@ -186,7 +187,12 @@
 	z-index: 0;
 	padding: 0;
 }
-
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 </head>
 <body>
@@ -209,13 +215,14 @@
 	
 	<div class="feature">
 		<div class="row feature-box">
+		<!-- 
 			<div class="span12 cnt-title" style="text-align: center;">
 				<span></span>
 			</div>
-
+			 -->
 			<div class="mm">
-				<div class="table_wrap"
-					style="display: inline-flex; flex-direction: column; overflow: scroll; width: 1500px; height: 700px;">
+				 <span style= " display:flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">Top 30</span>
+				<div class="table_wrap" style="display: inline-flex; flex-direction: column; overflow: scroll; width: 1500px; height: 700px;">
 					<div class="1line" id="aa">
 						<c:forEach items="${ls}" var="ls" begin="0" end="4" varStatus="status">
 							<div class="span3" style=" border:1px solid ; border-radius: 20px; background-color:white;">

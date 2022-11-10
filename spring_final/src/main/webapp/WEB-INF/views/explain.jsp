@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ShapeBootstrap Clean Template</title>
+<title>칵테일</title>
+<link rel="icon" href="../resources/img/cocktail/47.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -205,19 +206,25 @@
 	z-index: 0;
 	padding: 0;
 }
+
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 </head>
 <body>
 	<%@include file="includes/header.jsp"%>
 	<div class="feature">
 		<div class="row feature-box">
+		<!-- 
 			<div class="span12 cnt-title" style="text-align: center;">
 				<span></span>
-			</div>
-
-			<div class="mm">
-				<div class="f-bg"
-					style="display: inline-flex; flex-direction: column; overflow: auto; width: 1500px; height: 700px;">
+			</div> -->		
+			<font style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">칵테일이란?</font>
+			<div class="f-bg" style="display: inline-flex;flex-direction: column; overflow: auto; width: 1500px; height: 700px; margin-top:20px">
 					<div class="txc-textbox">
 						<p style="font-size: 13px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;
 							 text-indent: 0px; line-height: 21px; font-family: 굴림; text-align: justify;">
@@ -275,7 +282,7 @@
 					   </div>
 					   <br><br>
 					   		<div class="history">
-								<font class="Apple-style-span" color="#e31600" style="float: left;  margin-right: 10px;">2. 칵테일(Cocktail)의 역사</font></span>
+								<font class="Apple-style-span" color="#e31600" style="float: left;  margin-right: 10px; font-weight:bold; ">2. 칵테일(Cocktail)의 역사</font></span>
 								<br><br>
 					   				<div class="history1" >
 					   					<span style="FONT-SIZE: 17px; text-align:left;">
@@ -298,7 +305,7 @@
 					   				<br><br>
 					   				<div class="origin">
 					   					<br>
-					   				<font class="Apple-style-span" color="#e31600" style="float: left;  margin-right: 10px;">3. 칵테일(Cocktail)의 유래</font>
+					   				<font class="Apple-style-span" color="#e31600" style="float: left;  margin-right: 10px; font-weight:bold; ">3. 칵테일(Cocktail)의 유래</font>
 					   				<br><br>
 					   				<span style="float: left;">
 					   				&nbsp;&nbsp;

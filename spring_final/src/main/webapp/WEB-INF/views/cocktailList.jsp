@@ -89,7 +89,7 @@
 		height:800px;
 		padding:20px;
 		background: #f7f6f6;
-		margin-top:80px;
+		margin-top:20px;
 		
 		padding-bottom: 10px;
 		
@@ -197,13 +197,20 @@
   z-index: 0;
   padding: 0;
 }
+
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 </head>
 <body>
     <%@include file="includes/header.jsp" %>
     
     <div class="container">
-                    <div class="admin_content_subject"><span>칵테일 목록</span></div>
+                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">칵테일 목록</p></div>
                     <div class="table_wrap">
                     <!-- 게시물 O -->
                     	<c:if test="${listCheck != 'empty'}">

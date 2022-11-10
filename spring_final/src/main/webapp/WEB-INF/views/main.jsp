@@ -224,7 +224,7 @@
 										</c:if>
 										<li><a href="/member/logout.do">로그아웃</a></li>
 										<li><a href="../mypage">마이페이지</a></li>
-										<li><a>장바구니</a></li>
+										
 									</c:if>
 								</ul>
 							</div>
@@ -254,7 +254,7 @@
 
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
-
+			<!--  ========================================== -->
 				<div class="active item">
 
 					<div class="container">
@@ -266,10 +266,10 @@
 											<b>당신과 어울리는 <br>칵테일을 찾아봐요
 											</b>
 										</h1>
-										<p class="lead">Cras justo odio, dapibus ac facilisis in,
-											egestas eget quam. Donec id elit non mi porta gravida at eget
-											metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-										<a class="btn btn-large btn-danger" href="#">Sign up today</a>
+										<p class="lead">
+										aa
+											</p>
+										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
 									<!--버튼 크기 ///버튼 색깔-->
 								</div>
@@ -281,7 +281,7 @@
 						</div>
 					</div>
 				</div>
-
+		<!--  ========================================== -->
 				<div class="item">
 
 					<div class="container">
@@ -293,15 +293,13 @@
 											<b>당신과 어울리는 <br>칵테일을 찾아봐요
 											</b>
 										</h1>
-										<p class="lead">Cras justo odio, dapibus ac facilisis in,
-											egestas eget quam. Donec id elit non mi porta gravida at eget
-											metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-										<a class="btn btn-large btn-danger" href="#">Sign up today</a>
+										<p class="lead">aa
+											</p>
+										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
 								</div>
 								<div>
-									<img src="../resources/img/slide/slide3.png" height="1000"
-										width="600">
+									<img src="../resources/img/slide/cherry.png" height="1000" width="600">
 								</div>
 							</div>
 						</div>
