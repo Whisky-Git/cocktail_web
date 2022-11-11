@@ -155,10 +155,6 @@
                     				<span id="warn_cocktailRecipes">제조법을 입력 해주세요.</span>
                     			</div>
                     		</div>
-                    		
-                    		<table style="margin-left:11px;">
-                    		<tr>
-                    		<td style="width:420px;">
                     		<div class="form_section">
                     			<div class="form_section_title" style="height:25px;">
                     				<label>도수</label>
@@ -168,8 +164,6 @@
                     				<span id="warn_cocktailAbv">도수를 입력 해주세요.</span>
                     			</div>
                     		</div>
-                    		</td>
-                    		<td style="width:420px;">
                     		<div class="form_section">
                     			<div class="form_section_title">
                     				<label>난이도</label>
@@ -184,10 +178,9 @@
                     				<span id="warn_cocktailLevel">난이도을 선택해주세요.</span>
                     			</div>
                     		</div>
-                    		</td>
-                    		</tr>
+                    		<table style="margin-left:11px;">
                     		<tr>
-                    		<td>
+                    		<td width="273.6px">
                     		<div class="form_section">
                     			<div class="form_section_title">
                     				<label>MBTI</label>
@@ -216,7 +209,7 @@
                     			</div>
                     		</div>
                     		</td>
-                    		<td>
+                    		<td width="273.6px">
                     		<div class="form_section">
                     			<div class="form_section_title">
                     				<label>계절</label>
@@ -230,6 +223,22 @@
                     					<option value="겨울">겨울</option>
                     				</select>
                     				<span id="warn_cocktailSeason">계절을 선택해주세요.</span>
+                    			</div>
+                    		</div>
+                    		</td>
+                    		<td width="273.6px">
+                    		<div class="form_section">
+                    			<div class="form_section_title">
+                    				<label>관계</label>
+                    			</div>
+                    			<div class="form_section_content">
+                    				<select name="cocktailRelation">
+                    					<option value="none" selected>== 선택 ==</option>
+                    					<option value="가족">가족</option>
+                    					<option value="연인">연인</option>
+                    					<option value="친구">친구</option>
+                    				</select>
+                    				<span id="warn_cocktailRelation">관계를 선택해주세요.</span>
                     			</div>
                     		</div>
                     		</td>
@@ -275,6 +284,7 @@
         let levelCheck = false;        // 난이도
         let mbtiCheck = false;        // mbti
         let seasonCheck = false;        // 계절
+        let relationCheck = false;        // 관계
         
         /* 입력값 변수 */
         let cocktailName = $('input[name=cocktailName]').val();        
@@ -284,6 +294,7 @@
         let cocktailLevel = $('select[name=cocktailLevel]').val();
         let cocktailMbti = $('select[name=cocktailMbti]').val();
         let cocktailSeason = $('select[name=cocktailSeason]').val();
+        let cocktailRelation = $('select[name=cocktailRelation]').val();
         
         /* 공란 경고 span태그 */
         let wCocktailName = $('#warn_cocktailName');
@@ -293,6 +304,7 @@
         let wCocktailLevel = $('#warn_cocktailLevel');
         let wCocktailMbti = $('#warn_cocktailMbti');
         let wCocktailSeason = $('#warn_cocktailSeason');
+        let wCocktailRelation = $('#warn_cocktailRelation');
         
         /* 도수입력칸 태그 (높이조절)*/
         let dosuHeight = $('#dosu');
@@ -363,8 +375,18 @@
         	seasonCheck = true;
         } 
         
+        /* 계절 공란 체크 */
+        if(cocktailRelation ==='none'){
+        	wCocktailRelation.css('display', 'block');
+        	relationCheck = false;
+        } else{
+        	wCocktailRelation.css('display', 'none');
+        	relationCheck = true;
+        } 
+        
+        
         /* 최종 검사 */
-        if(nameCheck && materialsCheck && recipesCheck && abvCheck && levelCheck && mbtiCheck && seasonCheck ){
+        if(nameCheck && materialsCheck && recipesCheck && abvCheck && levelCheck && mbtiCheck && seasonCheck && relationCheck ){
             $("#enrollForm").submit();    
         } else{
             return;

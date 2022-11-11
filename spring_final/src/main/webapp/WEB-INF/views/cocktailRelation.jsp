@@ -346,10 +346,10 @@
 	                    	</c:if>
 	                    </ul>
                     </div>
-                    <form id="moveForm" action="/cocktailMbti" method="get">
+                    <form id="moveForm" action="/cocktailRelation" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="mbti" value="${pageMaker.cri.mbti}">
+						<input type="hidden" name="relation" value="${pageMaker.cri.relation}">
 					</form>   
                 </div>
     
