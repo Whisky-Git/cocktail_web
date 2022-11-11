@@ -137,6 +137,27 @@ public class CocktailServiceImp implements CocktailService{
 
 	}
 	
+/* top30*/
+	
+	@Override
+	public List<SelectDTO> likeSelect2() {
+		
+		List<SelectDTO> list2 = cocktailMapper.likeSelect2();	
+		
+		list2.forEach(dto -> {
+			
+			int cocktailNo = dto.getCocktailNo();
+			
+			List<CocktailImageVO> imageList = attachMapper.getAttachList(cocktailNo);
+			
+			dto.setImageList(imageList);
+			
+		});	
+		
+		return list2;	
+
+	}
+	
 	/* 지정 상품 이미지 정보 얻기 */
 	@Override
 	public List<CocktailImageVO> getAttachInfo(int cocktailNo) {
@@ -164,5 +185,6 @@ public class CocktailServiceImp implements CocktailService{
 		
 		return list;
 	}
+	
 	
 }

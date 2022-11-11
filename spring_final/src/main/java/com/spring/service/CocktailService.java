@@ -33,6 +33,9 @@ public interface CocktailService {
 	/* 평줌순 상품 정보 */
 	public List<SelectDTO> likeSelect();
 	
+	/* top 30 */
+	public List<SelectDTO> likeSelect2();
+	
 	/* 지정 상품 이미지 정보 얻기 */
 	public List<CocktailImageVO> getAttachInfo(int cocktailNo);
 	

@@ -201,11 +201,11 @@
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
 								<ul class="nav">
-									<li><a href="main" style="color: rgb(0, 0, 0);"><b>칵테일
+									<li><a href="explain" style="color: rgb(0, 0, 0);"><b>칵테일
 												설명</b></a></li>
 									<li><a href="cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
 									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-									<li><a href="blog.html" style="color: rgb(0, 0, 0);"><b>top100</b></a></li>
+									<li><a href="top30" style="color: rgb(0, 0, 0);"><b>Top30</b></a></li>
 
 									<li><a> </a></li>
 									<li><a> </a></li>
@@ -224,7 +224,7 @@
 										</c:if>
 										<li><a href="/member/logout.do">로그아웃</a></li>
 										<li><a href="../mypage">마이페이지</a></li>
-										<li><a>장바구니</a></li>
+										
 									</c:if>
 								</ul>
 							</div>
@@ -254,7 +254,7 @@
 
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
-
+			<!--  ========================================== -->
 				<div class="active item">
 
 					<div class="container">
@@ -266,10 +266,10 @@
 											<b>당신과 어울리는 <br>칵테일을 찾아봐요
 											</b>
 										</h1>
-										<p class="lead">Cras justo odio, dapibus ac facilisis in,
-											egestas eget quam. Donec id elit non mi porta gravida at eget
-											metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-										<a class="btn btn-large btn-danger" href="#">Sign up today</a>
+										<p class="lead">
+										aa
+											</p>
+										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
 									<!--버튼 크기 ///버튼 색깔-->
 								</div>
@@ -281,7 +281,7 @@
 						</div>
 					</div>
 				</div>
-
+		<!--  ========================================== -->
 				<div class="item">
 
 					<div class="container">
@@ -293,15 +293,13 @@
 											<b>당신과 어울리는 <br>칵테일을 찾아봐요
 											</b>
 										</h1>
-										<p class="lead">Cras justo odio, dapibus ac facilisis in,
-											egestas eget quam. Donec id elit non mi porta gravida at eget
-											metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-										<a class="btn btn-large btn-danger" href="#">Sign up today</a>
+										<p class="lead">aa
+											</p>
+										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
 								</div>
 								<div>
-									<img src="../resources/img/slide/slide3.png" height="1000"
-										width="600">
+									<img src="../resources/img/slide/cherry.png" height="1000" width="600">
 								</div>
 							</div>
 						</div>
@@ -459,7 +457,7 @@
 				</div>
 				<div class="mm">
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test1.png"></a>
+						<a href="/cocktailMbti?mbti=INFJ"><img src="../resources/img/test1.png"></a>
 						<h2>
 							<b>MBTI</b>
 						</h2>
@@ -468,7 +466,7 @@
 					</div>
 
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test2.png"></a>
+						<a href="/cocktailSeason?season=봄"><img src="../resources/img/test2.png"></a>
 						<h2>
 							<b>계절별</b>
 						</h2>
@@ -477,7 +475,7 @@
 					</div>
 
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test3.png"></a>
+						<a href="/cocktailRelation?relation=가족"><img src="../resources/img/test3.png"></a>
 						<h2>
 							<b>관계별</b>
 						</h2>

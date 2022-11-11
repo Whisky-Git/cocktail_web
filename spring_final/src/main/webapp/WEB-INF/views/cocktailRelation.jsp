@@ -204,13 +204,21 @@
     font-weight: normal;
     font-style: normal;
 }
+
 </style>
 </head>
 <body>
     <%@include file="includes/header.jsp" %>
     
     <div class="container">
-                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">칵테일 목록</p></div>
+                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">관계별 칵테일</p>
+                    <select class="relation" onchange="window.open('cocktailRelation?relation='+value,'_self');">
+						  <option value="" class="label">관계 선택</option>
+						 		<option value="가족">가족</option>
+								<option value="연인">연인</option>
+								<option value="친구">친구</option>
+					</select> 
+                    </div>
                     <div class="table_wrap">
                     <!-- 게시물 O -->
                     	<c:if test="${listCheck != 'empty'}">
@@ -310,16 +318,6 @@
                 			</div>
                 		</c:if>            			
                     </div>
-                    	         
-                    <!-- 검색 영역 -->
-                    <div class="search_wrap">
-                    	<form id="searchForm" action="/cocktailList" method="get">
-                    		<div class="search_input">
-                    			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
-                    			<button class='btn search_btn'>검 색</button>
-                    		</div>
-                    	</form>
-                    </div>
                     
                     <!-- 페이지 이동 인터페이스 영역 -->
                     <div class="pageMaker_wrap" >
@@ -348,11 +346,10 @@
 	                    	</c:if>
 	                    </ul>
                     </div>
-                    <form id="moveForm" action="/cocktailList" method="get">
+                    <form id="moveForm" action="/cocktailMbti" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="level" value="${pageMaker.cri.level}">
+						<input type="hidden" name="mbti" value="${pageMaker.cri.mbti}">
 					</form>   
                 </div>
     
@@ -381,6 +378,8 @@ $(document).ready(function(){
 		}
 	});
 	
+	//관계 선택
+	$(".relation").val("${param.relation}").attr("selected","selected");
 });
 
 let moveForm = $('#moveForm');

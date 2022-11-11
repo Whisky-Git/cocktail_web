@@ -210,7 +210,27 @@
     <%@include file="includes/header.jsp" %>
     
     <div class="container">
-                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">칵테일 목록</p></div>
+                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">MBTI별 칵테일</p>
+                    <select class="mbti" onchange="window.open('cocktailMbti?mbti='+value,'_self');">
+						  <option value="" class="label">MBTI 선택</option>
+						 		<option value="ENFJ">ENFJ</option>
+								<option value="ENFP">ENFP</option>
+								<option value="ENTJ">ENTJ</option>
+								<option value="ENTP">ENTP</option>
+								<option value="ESFJ">ESFJ</option>
+								<option value="ESFP">ESFP</option>
+								<option value="ESTJ">ESTJ</option>
+								<option value="ESTP">ESTP</option>
+								<option value="INFJ">INFJ</option>
+								<option value="INFP">INFP</option>
+								<option value="INTJ">INTJ</option>
+								<option value="INTP">INTP</option>
+								<option value="ISFJ">ISFJ</option>
+								<option value="ISFP">ISFP</option>
+								<option value="ISTJ">ISTJ</option>
+								<option value="ISTP">ISTP</option>
+					</select> 
+                    </div>
                     <div class="table_wrap">
                     <!-- 게시물 O -->
                     	<c:if test="${listCheck != 'empty'}">
@@ -310,16 +330,6 @@
                 			</div>
                 		</c:if>            			
                     </div>
-                    	         
-                    <!-- 검색 영역 -->
-                    <div class="search_wrap">
-                    	<form id="searchForm" action="/cocktailList" method="get">
-                    		<div class="search_input">
-                    			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
-                    			<button class='btn search_btn'>검 색</button>
-                    		</div>
-                    	</form>
-                    </div>
                     
                     <!-- 페이지 이동 인터페이스 영역 -->
                     <div class="pageMaker_wrap" >
@@ -348,11 +358,10 @@
 	                    	</c:if>
 	                    </ul>
                     </div>
-                    <form id="moveForm" action="/cocktailList" method="get">
+                    <form id="moveForm" action="/cocktailMbti" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="level" value="${pageMaker.cri.level}">
+						<input type="hidden" name="mbti" value="${pageMaker.cri.mbti}">
 					</form>   
                 </div>
     
@@ -381,6 +390,8 @@ $(document).ready(function(){
 		}
 	});
 	
+	//mbti 선택
+	$(".mbti").val("${param.mbti}").attr("selected","selected");
 });
 
 let moveForm = $('#moveForm');

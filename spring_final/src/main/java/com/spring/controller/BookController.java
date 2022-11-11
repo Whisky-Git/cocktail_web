@@ -66,6 +66,20 @@ public class BookController {
 		Logger.info("마이 페이지 진입");
 	
 	}
+	//top30 페이지 이동
+			@RequestMapping(value = "/top30", method = RequestMethod.GET)
+			public void top30PageGet(Model model) {
+				Logger.info("메인 페이지 진입");
+				
+				model.addAttribute("ls", cocktailService.likeSelect2());
+			
+			}
+    //explain페이지 이동
+			@RequestMapping(value = "/explain", method = RequestMethod.GET)
+			public void explainPageGet() {
+				Logger.info("explain 페이지 진입");
+			
+			}
 	
 	//페이지 이동
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
@@ -105,6 +119,78 @@ public class BookController {
 				
 			}
 		
+		//cocktailMbti 페이지 이동
+				@RequestMapping(value = "/cocktailMbti", method = RequestMethod.GET)
+				public void cocktailMbtiGet(CocktailCriteria cri, Model model, String mbti) throws Exception{
+					Logger.info("칵테일 목록 페이지 접속" + cri);
+					
+					/* 칵테일 목록 출력 데이터 */
+			        List list = cocktailService.cocktailGetList(cri);
+			        
+			        if(!list.isEmpty()) {
+						model.addAttribute("list",list);	// 칵테일 존재 경우
+					} else {
+						model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+					}
+			        
+			        /* 페이지 이동 인터페이스 데이터 */
+			        int total = cocktailService.cocktailGetTotal(cri);
+			        
+			        PageDTO pageMaker = new PageDTO(cri, total);
+			        
+			        model.addAttribute("pageMaker", pageMaker);
+			        
+						
+					}
+				
+				//cocktailSeason 페이지 이동
+				@RequestMapping(value = "/cocktailSeason", method = RequestMethod.GET)
+				public void cocktailSeasonGet(CocktailCriteria cri, Model model, String season) throws Exception{
+					Logger.info("칵테일 목록 페이지 접속" + cri);
+					
+					/* 칵테일 목록 출력 데이터 */
+			        List list = cocktailService.cocktailGetList(cri);
+			        
+			        if(!list.isEmpty()) {
+						model.addAttribute("list",list);	// 칵테일 존재 경우
+					} else {
+						model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+					}
+			        
+			        /* 페이지 이동 인터페이스 데이터 */
+			        int total = cocktailService.cocktailGetTotal(cri);
+			        
+			        PageDTO pageMaker = new PageDTO(cri, total);
+			        
+			        model.addAttribute("pageMaker", pageMaker);
+			        
+						
+					}
+				
+				//cocktailRelation 페이지 이동
+				@RequestMapping(value = "/cocktailRelation", method = RequestMethod.GET)
+				public void cocktailRelationGet(CocktailCriteria cri, Model model, String relation) throws Exception{
+					Logger.info("칵테일 목록 페이지 접속" + cri);
+					
+					/* 칵테일 목록 출력 데이터 */
+			        List list = cocktailService.cocktailGetList(cri);
+			        
+			        if(!list.isEmpty()) {
+						model.addAttribute("list",list);	// 칵테일 존재 경우
+					} else {
+						model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+					}
+			        
+			        /* 페이지 이동 인터페이스 데이터 */
+			        int total = cocktailService.cocktailGetTotal(cri);
+			        
+			        PageDTO pageMaker = new PageDTO(cri, total);
+			        
+			        model.addAttribute("pageMaker", pageMaker);
+			        
+						
+					}
+		
 				/* 칵테일 상세 페이지 */
 				@GetMapping("/service")
 				public void cocktailGetInfoGET(int cocktailNo, CocktailCriteria cri, Model model, String cocktailName) throws Exception {
@@ -118,7 +204,7 @@ public class BookController {
 					model.addAttribute("cocktailInfo", cocktailService.cocktailGetDetail(cocktailNo));
 					
 					/* 추천부분 */
-					String filecsv = "C:/csv_test.csv";
+					String filecsv = "C:/Users/openj/Desktop/PythonWorkSpace/algorithm/csv_test.csv";
 				     
 				     File file = null;
 				     //BufferedWriter bw = null;
@@ -148,11 +234,11 @@ public class BookController {
 				        e.printStackTrace();
 				     }
 				     
-				     
-				   //runtime 생성
+				    
+				   //runtime 생성 
 				     Runtime rt =Runtime.getRuntime();
 				     //python 실행파일 주소값 가져옴
-				      String exeFile ="C:/Users/mgjoo/Desktop/python/dist/cocktail_recommand/cocktail_recommand.exe";
+				      String exeFile ="C:/Users/openj/Desktop/Pythonworkspace/dist/cocktail_recommand/cocktail_recommand.exe";
 				      //프로세스 생성
 				      Process p;
 				      //프로세스 진행
@@ -169,7 +255,7 @@ public class BookController {
 				      List<List<String>> ret = new ArrayList<List<String>>();
 				        BufferedReader br = null;
 				        try {
-				            br = Files.newBufferedReader(Paths.get("C:/weneed.csv"));
+				            br = Files.newBufferedReader(Paths.get("C:/Users/openj/Desktop/Pythonworkspace/algorithm/weneed.csv"));
 				            line = br.readLine();
 				            line = br.readLine();	//엑셀의 3행부터 가져옴 (1행은 칼럼명, 2행은 자기자신이라 패스)
 				            
@@ -197,7 +283,7 @@ public class BookController {
 				        String recommand = String.join(",", arr);		//arr배열 데이터를 하나의 문자열로 합침
 				        System.out.println("최종 완성된 문자열 : " + recommand);	
 				        List list = cocktailService.recommandGetList(recommand);
-				        model.addAttribute("recommand", list);
+				        model.addAttribute("recommand", list); //앞에는 이름설정, 뒤에는 위에서 선언한 변수
 				}
 				
 				

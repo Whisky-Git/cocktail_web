@@ -210,7 +210,15 @@
     <%@include file="includes/header.jsp" %>
     
     <div class="container">
-                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">칵테일 목록</p></div>
+                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">계절별 칵테일</p>
+                    <select class="season" onchange="window.open('cocktailSeason?season='+value,'_self');">
+						  <option value="" class="label">계절 선택</option>
+						 		<option value="봄">봄</option>
+								<option value="여름">여름</option>
+								<option value="가을">가을</option>
+								<option value="겨울">겨울</option>
+					</select> 
+                    </div>
                     <div class="table_wrap">
                     <!-- 게시물 O -->
                     	<c:if test="${listCheck != 'empty'}">
@@ -310,16 +318,6 @@
                 			</div>
                 		</c:if>            			
                     </div>
-                    	         
-                    <!-- 검색 영역 -->
-                    <div class="search_wrap">
-                    	<form id="searchForm" action="/cocktailList" method="get">
-                    		<div class="search_input">
-                    			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
-                    			<button class='btn search_btn'>검 색</button>
-                    		</div>
-                    	</form>
-                    </div>
                     
                     <!-- 페이지 이동 인터페이스 영역 -->
                     <div class="pageMaker_wrap" >
@@ -348,11 +346,10 @@
 	                    	</c:if>
 	                    </ul>
                     </div>
-                    <form id="moveForm" action="/cocktailList" method="get">
+                    <form id="moveForm" action="/cocktailMbti" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="level" value="${pageMaker.cri.level}">
+						<input type="hidden" name="mbti" value="${pageMaker.cri.mbti}">
 					</form>   
                 </div>
     
@@ -381,6 +378,8 @@ $(document).ready(function(){
 		}
 	});
 	
+	//계절 선택
+	$(".season").val("${param.season}").attr("selected","selected");
 });
 
 let moveForm = $('#moveForm');

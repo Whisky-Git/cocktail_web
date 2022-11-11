@@ -33,6 +33,9 @@ public interface CocktailMapper {
 	/* 평줌순 상품 정보 */
 	public List<SelectDTO> likeSelect();
 	
+	/* top 30 */
+	public List<SelectDTO> likeSelect2();
+	
 	/* 이미지 등록 */
 	public void imageEnroll(CocktailImageVO vo);
 	
@@ -47,4 +50,7 @@ public interface CocktailMapper {
 	
 	/* 비슷한 칵테일 추천 */
 	public List<CocktailVO> recommandGetList(String recommand);
+	
+	/* mbti 칵테일 리스트 */
+	public List<CocktailVO> cocktailMbtiGetList(CocktailCriteria cri);
 }
