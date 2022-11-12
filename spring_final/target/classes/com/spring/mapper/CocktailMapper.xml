@@ -32,6 +32,21 @@
 				order by cocktailNo asc 
         		limit #{skip},#{amount} 
 			</when>
+			<when test = "mbti != null and mbti != ''">
+				select *
+				from cocktail_recipe
+				where cocktailMbti = #{mbti}
+			  </when>
+			  <when test = "season != null and season != ''">
+				select *
+				from cocktail_recipe
+				where cocktailSeason = #{season}
+			  </when>
+			  <when test = "relation != null and relation != ''">
+				select *
+				from cocktail_recipe
+				where cocktailRelation = #{relation}
+			  </when>
 			<otherwise>
 		   		select  *
      		    from cocktail_recipe 
@@ -67,6 +82,21 @@
 				from cocktail_recipe
 				where cocktailLevel = #{level}
 			  </when>
+			  <when test = "mbti != null and mbti != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailMbti = #{mbti}
+			  </when>
+			   <when test = "season != null and season != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailSeason = #{season}
+			  </when>
+			   <when test = "relation != null and relation != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailRelation = #{relation}
+			  </when>
       		<otherwise>
       			select count(*) from cocktail_recipe
           		<if test="keyword != null">
@@ -94,14 +124,14 @@
   		
   		</selectKey>
   		
-          insert into cocktail_recipe(cocktailName, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel ,cocktailMbti, cocktailSeason) values(#{cocktailName}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel}, #{cocktailMbti}, #{cocktailSeason} )
+          insert into cocktail_recipe(cocktailName, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel ,cocktailMbti, cocktailSeason , cocktailRelation) values(#{cocktailName}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel}, #{cocktailMbti}, #{cocktailSeason}, #{cocktailRelation} )
  
       </insert>
       
       <!-- 칵테일 수정 -->
 	<update id="cocktailModify">
 	
-		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel}, cocktailMbti=#{cocktailMbti}, cocktailSeason=#{cocktailSeason} where cocktailNo = #{cocktailNo}
+		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel}, cocktailMbti=#{cocktailMbti}, cocktailSeason=#{cocktailSeason}, cocktailRelation=#{cocktailRelation} where cocktailNo = #{cocktailNo}
 	
 	</update>
 	

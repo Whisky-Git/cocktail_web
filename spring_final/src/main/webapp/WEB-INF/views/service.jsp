@@ -64,7 +64,6 @@
   z-index: 0;
   padding: 0;
 }
-
 #result_card img{
    width: 220px;
     height: 220px;
@@ -73,11 +72,9 @@
     margin-top: 10px;
     margin: auto;   
 }
-
 .recommand_wrap{
 	width: 160px;
 }
-
 </style>
 </head>
 <body>
@@ -85,11 +82,9 @@
 // 재료 배열
 const materialsStr = '${cocktailInfo.cocktailMaterials}';
 const materialsArr = materialsStr.split(", ");
-
 // 제조법 배열
 const recipesStr = '${cocktailInfo.cocktailRecipes}';
 const recipesArr = recipesStr.split(". ");
-
 </script>
    <%@include file="includes/header.jsp" %>
    
@@ -113,7 +108,7 @@ const recipesArr = recipesStr.split(". ");
          </span>
       <span style="color:white; margin-left:5px;-webkit-text-fill-color:white;-webkit-text-stroke-color: white;-webkit-text-stroke-width: 0px;">${cocktailInfo.cocktailRating}/5.0</span></div>
         </td>
-        <td> <a class="btn btn-large btn-danger" href="#">조회하기</a></td>
+        <!--  <td> <a class="btn btn-large btn-danger" href="#">조회하기</a></td>-->
       </tr>
       <tr>
         
@@ -151,7 +146,8 @@ const recipesArr = recipesStr.split(". ");
         <!-- 추천된 5가지 칵테일이 출력되는 공간 -->
        <c:forEach items="${recommand}" var="recommand" begin="0" end="4" varStatus="status">
        <div class="span3" style="width:160px;">
-			<a href="/service?cocktailNo=${recommand.cocktailNo}&cocktailName=${recommand.cocktailName}"><div class="recommand_wrap" data-cocktailno="${recommand.imageList[0].cocktailNo}" data-path="${recommand.imageList[0].uploadPath}" data-uuid="${recommand.imageList[0].uuid}" data-filename="${recommand.imageList[0].fileName}">
+			<a href="/service?cocktailNo=${recommand.cocktailNo}&cocktailName=${recommand.cocktailName}">
+			<div class="recommand_wrap" data-cocktailno="${recommand.imageList[0].cocktailNo}" data-path="${recommand.imageList[0].uploadPath}" data-uuid="${recommand.imageList[0].uuid}" data-filename="${recommand.imageList[0].fileName}">
 				<img style="width:150px;height:150px;border-radius: 20px;margin-left:10px;"></div></a>
 			<p class="my-f1">
 				<center><b>${recommand.cocktailName}</b></center>
@@ -215,24 +211,18 @@ const recipesArr = recipesStr.split(". ");
 /* 평점 별표 관련 */
 const rate = "${cocktailInfo.cocktailRating}" * 11.5 + '%';
 $('#rating').css('width', rate);
-
-
 $(document).ready(function(){
    
    /* 리뷰 리스트 출력 */
    const cocktailNo = '${cocktailInfo.cocktailNo}';   
-
    $.getJSON("/reply/list", {cocktailNo : cocktailNo}, function(obj){
       
       makeReplyContent(obj);
-
    });
-
    /* 이미지 정보 호출 */
    let uploadResult = $("#uploadResult");         
    
    $.getJSON("/getAttachList", {cocktailNo : cocktailNo}, function(arr){   
-
       if(arr.length === 0){   
          let str = "";
          str += "<div id='result_card'>";
@@ -259,7 +249,6 @@ $(document).ready(function(){
    });
    
 });
-
    /* 리뷰쓰기 */
    $(".reply_button_wrap").on("click", function(e){
       
@@ -357,7 +346,6 @@ $(document).ready(function(){
           
             
        });
-
       /* 댓글(리뷰) 동적 생성 메서드 */
       function makeReplyContent(obj){
          

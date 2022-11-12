@@ -267,7 +267,7 @@
 											</b>
 										</h1>
 										<p class="lead">
-										aa
+										
 											</p>
 										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
@@ -457,7 +457,7 @@
 				</div>
 				<div class="mm">
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test1.png"></a>
+						<a href="/cocktailMbti?mbti=INFJ"><img src="../resources/img/test1.png"></a>
 						<h2>
 							<b>MBTI</b>
 						</h2>
@@ -466,7 +466,7 @@
 					</div>
 
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test2.png"></a>
+						<a href="/cocktailSeason?season=봄"><img src="../resources/img/test2.png"></a>
 						<h2>
 							<b>계절별</b>
 						</h2>
@@ -475,7 +475,7 @@
 					</div>
 
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test3.png"></a>
+						<a href="/cocktailRelation?relation=가족"><img src="../resources/img/test3.png"></a>
 						<h2>
 							<b>관계별</b>
 						</h2>

@@ -50,4 +50,7 @@ public interface CocktailMapper {
 	
 	/* 비슷한 칵테일 추천 */
 	public List<CocktailVO> recommandGetList(String recommand);
+	
+	/* mbti 칵테일 리스트 */
+	public List<CocktailVO> cocktailMbtiGetList(CocktailCriteria cri);
 }

@@ -119,6 +119,78 @@ public class BookController {
 				
 			}
 		
+		//cocktailMbti 페이지 이동
+				@RequestMapping(value = "/cocktailMbti", method = RequestMethod.GET)
+				public void cocktailMbtiGet(CocktailCriteria cri, Model model, String mbti) throws Exception{
+					Logger.info("칵테일 목록 페이지 접속" + cri);
+					
+					/* 칵테일 목록 출력 데이터 */
+			        List list = cocktailService.cocktailGetList(cri);
+			        
+			        if(!list.isEmpty()) {
+						model.addAttribute("list",list);	// 칵테일 존재 경우
+					} else {
+						model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+					}
+			        
+			        /* 페이지 이동 인터페이스 데이터 */
+			        int total = cocktailService.cocktailGetTotal(cri);
+			        
+			        PageDTO pageMaker = new PageDTO(cri, total);
+			        
+			        model.addAttribute("pageMaker", pageMaker);
+			        
+						
+					}
+				
+				//cocktailSeason 페이지 이동
+				@RequestMapping(value = "/cocktailSeason", method = RequestMethod.GET)
+				public void cocktailSeasonGet(CocktailCriteria cri, Model model, String season) throws Exception{
+					Logger.info("칵테일 목록 페이지 접속" + cri);
+					
+					/* 칵테일 목록 출력 데이터 */
+			        List list = cocktailService.cocktailGetList(cri);
+			        
+			        if(!list.isEmpty()) {
+						model.addAttribute("list",list);	// 칵테일 존재 경우
+					} else {
+						model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+					}
+			        
+			        /* 페이지 이동 인터페이스 데이터 */
+			        int total = cocktailService.cocktailGetTotal(cri);
+			        
+			        PageDTO pageMaker = new PageDTO(cri, total);
+			        
+			        model.addAttribute("pageMaker", pageMaker);
+			        
+						
+					}
+				
+				//cocktailRelation 페이지 이동
+				@RequestMapping(value = "/cocktailRelation", method = RequestMethod.GET)
+				public void cocktailRelationGet(CocktailCriteria cri, Model model, String relation) throws Exception{
+					Logger.info("칵테일 목록 페이지 접속" + cri);
+					
+					/* 칵테일 목록 출력 데이터 */
+			        List list = cocktailService.cocktailGetList(cri);
+			        
+			        if(!list.isEmpty()) {
+						model.addAttribute("list",list);	// 칵테일 존재 경우
+					} else {
+						model.addAttribute("listCheck", "empty");	// 칵테일 존재하지 않을 경우
+					}
+			        
+			        /* 페이지 이동 인터페이스 데이터 */
+			        int total = cocktailService.cocktailGetTotal(cri);
+			        
+			        PageDTO pageMaker = new PageDTO(cri, total);
+			        
+			        model.addAttribute("pageMaker", pageMaker);
+			        
+						
+					}
+		
 				/* 칵테일 상세 페이지 */
 				@GetMapping("/service")
 				public void cocktailGetInfoGET(int cocktailNo, CocktailCriteria cri, Model model, String cocktailName) throws Exception {

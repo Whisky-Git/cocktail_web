@@ -42,6 +42,12 @@
 	href="ico/apple-touch-icon-57-precomposed.png">
 
 <style>
+</style>
+<!-- SCRIPT 
+    ============================================================-->
+<script src="../resources/js/bootstrap.min.js"></script>
+<script src="../resources/js/side.js"></script>
+<style>
 		.wrapper2{
 			display: flex;
 			width: 1100px;
@@ -123,11 +129,14 @@
 	border : 2px solid black;
 	font-weight:400;
 }
+
 /* 칵테일 상세페이지 이동 태그*/
 .cocktail_table a{
 	color:#1088ed;
 	font-weight: 500;
 }
+
+
 	/* 검색 영역 */
 .search_wrap{
 	margin-top:15px;
@@ -152,6 +161,7 @@
     margin-left: 15px;
     background-color: #c3daf7;
 }
+
 .table_empty{
 	height: 50px;
     text-align: center;
@@ -161,6 +171,7 @@
 .dd{
 	margin-bottom:5px;
 }
+
 .star-ratings {
   color: #e1e1e1; 
   position: relative;
@@ -186,27 +197,31 @@
   z-index: 0;
   padding: 0;
 }
+
 @font-face {
     font-family: 'MaplestoryOTFBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
+
 </style>
-<!-- SCRIPT 
-    ============================================================-->
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="../resources/js/bootstrap.min.js"></script>
-<script src="../resources/js/side.js"></script>
 </head>
 <body>
     <%@include file="includes/header.jsp" %>
     
     <div class="container">
-                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">칵테일 목록</p></div>
+                    <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">관계별 칵테일</p>
+                    <select class="relation" onchange="window.open('cocktailRelation?relation='+value,'_self');">
+						  <option value="" class="label">관계 선택</option>
+						 		<option value="가족">가족</option>
+								<option value="연인">연인</option>
+								<option value="친구">친구</option>
+					</select> 
+                    </div>
                     <div class="table_wrap">
                     <!-- 게시물 O -->
-						<c:if test="${listCheck != 'empty'}">
+                    	<c:if test="${listCheck != 'empty'}">
                 		 <div class="wrapper2">
                 		 	<c:forEach items="${list}" var="list" begin="0" end="4" varStatus="status">
                 		 	<script>
@@ -216,14 +231,15 @@
 								    $('#cocktail${status.index}').css('width', d);
 									};
 							</script>
-					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>'" id='<c:out value="${list.cocktailName}"/>' style="cursor:pointer;">
-					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
+					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>' id='<c:out value="${list.cocktailName}"/>' style="cursor:pointer;">
+					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}"
+					             data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
 									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div>
 					            <div class="items2"><b><c:out value="${list.cocktailName}"></c:out></b></div>
 					            <div class="items2 dd">도수 : <c:out value="${list.cocktailAbv}"></c:out>%</div>
 					            <div class="items2 dd">난이도 : <c:out value="${list.cocktailLevel}"></c:out></div>
 					            <div class="items2 dd" style="font-size:16px;">
-								<span class="star-ratings" style="margin-left:20px">
+					            <span class="star-ratings" style="margin-left:20px">
 									<span class="star-ratings-fill space-x-2 text-lg" id="cocktail${status.index}">
 										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 									</span>
@@ -246,14 +262,14 @@
 								    $('#cocktail${status.index}').css('width', d);
 									};
 							</script>
-					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>'" id='<c:out value="${list.cocktailName}"/>' style="cursor:pointer;">
+					        <div class="itemBox2 move" name='<c:out value="${list.cocktailNo}"/>' id='<c:out value="${list.cocktailName}"/>'" style="cursor:pointer;">
 					            <div class="image_wrap thumbnailBox" data-cocktailno="${list.imageList[0].cocktailNo}" data-path="${list.imageList[0].uploadPath}" data-uuid="${list.imageList[0].uuid}" data-filename="${list.imageList[0].fileName}">
 									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div>
 					            <div class="items2"><b><c:out value="${list.cocktailName}"></c:out></b></div>
 					            <div class="items2 dd">도수 : <c:out value="${list.cocktailAbv}"></c:out>%</div>
 					            <div class="items2 dd">난이도 : <c:out value="${list.cocktailLevel}"></c:out></div>
 					            <div class="items2 dd" style="font-size:16px;">
-								<span class="star-ratings" style="margin-left:20px">
+					            <span class="star-ratings" style="margin-left:20px">
 									<span class="star-ratings-fill space-x-2 text-lg" id="cocktail${status.index}">
 										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 									</span>
@@ -267,22 +283,40 @@
 					        </div>
 					        </c:forEach>
 					      </div>
-                    	</c:if>  
+                    	</c:if> 
+                		<!-- 
+                    	<table class="author_table">
+                    		<thead>
+                    			<tr>
+                    				<td class="th_column_1">번호</td>
+                    				<td class="th_column_2">이름</td>
+                    				<td class="th_column_2">이미지</td>
+                    				<td class="th_column_3">재료</td>
+                    				<td class="th_column_4">도수</td>
+                    				<td class="th_column_5">난이도</td>
+                    			</tr>
+                    		</thead>
+                    		<c:forEach items="${list}" var="list">
+                    		<tr>
+                    			<td><c:out value="${list.cocktailNo}"></c:out> </td>
+                    			<td>
+                    				<a class="move" href='<c:out value="${list.cocktailNo}"/>'>
+                    					<c:out value="${list.cocktailName}"></c:out></a></td>
+                    				</a>
+                    			<td> <img src="../resources/img/cocktail/${list.cocktailImage}.png" height="100" width = "100"></td>
+                    			<td><c:out value="${list.cocktailMaterials}"></c:out> </td>
+                    			<td><c:out value="${list.cocktailAbv}"></c:out> </td>
+                    			<td><c:out value="${list.cocktailLevel}"></c:out> </td>
+                    		</tr>
+                    		</c:forEach>
+                    	</table>
+                    	 -->  
                     	<!-- 게시물 X -->
                     	 <c:if test="${listCheck == 'empty'}">
                 			<div class="table_empty">
                 				등록된 칵테일이 없습니다.
                 			</div>
                 		</c:if>            			
-                    </div>       
-                    <!-- 검색 영역 -->
-                    <div class="search_wrap">
-                    	<form id="searchForm" action="/cocktailList" method="get">
-                    		<div class="search_input">
-                    			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
-                    			<button class='btn search_btn'>검 색</button>
-                    		</div>
-                    	</form>
                     </div>
                     
                     <!-- 페이지 이동 인터페이스 영역 -->
@@ -312,17 +346,11 @@
 	                    	</c:if>
 	                    </ul>
                     </div>
-                    <form id="moveForm" action="/cocktailList2" method="get">
+                    <form id="moveForm" action="/cocktailRelation" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="tag" value="<% 
-                    String[] tag=request.getParameterValues("tag");
-						if (tag != null){
-                    out.print(tag[0]);}        
-                     %>">
+						<input type="hidden" name="relation" value="${pageMaker.cri.relation}">
 					</form>   
-					   
                 </div>
     
     <%@include file="includes/footer.jsp" %>
@@ -350,8 +378,12 @@ $(document).ready(function(){
 		}
 	});
 	
+	//관계 선택
+	$(".relation").val("${param.relation}").attr("selected","selected");
 });
+
 let moveForm = $('#moveForm');
+
 $(".pageNumber").on("click", function(e){
     
     e.preventDefault();
@@ -360,6 +392,7 @@ $(".pageNumber").on("click", function(e){
     
     moveForm.submit();
 });
+
 /* 칵테일 상세 페이지 이동 */
 $(".move").on("click", function(e){
 	
@@ -371,6 +404,8 @@ $(".move").on("click", function(e){
 	moveForm.submit();
 	
 });
+
+
 </script>
 </body>
 
