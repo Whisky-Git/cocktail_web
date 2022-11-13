@@ -12,28 +12,27 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
   <style>
-  a{
-  	text-decoration : none;
-  }
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+ 
   table{
  	border-collapse: collapse;
  	width: 1000px;    
  	margin-top : 20px;
  	text-align: center;
   }
-  td, th{
-  	border : 1px solid black;
-  	height: 50px;
-  }
+  
   th{
   	font-size : 17px;
   }
   thead{
   	font-weight: 700;
   }
+  
   .table_wrap{
   	margin : 50px 0 0 50px;
   }
+
+  
   .bno_width{
   	width: 12%;
   }
@@ -46,13 +45,21 @@
   .updatedate_width{
   	width: 15%;
   }
+  
   .top_btn{
-  	font-size: 20px;
-    padding: 6px 12px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    font-weight: 600;
+      width: 10%;
+    font-size: 18px;
+    border: 10px solid #FFB53C;
+   
+    border-radius: 10px;
+    margin-left : 200px;
+    
+    background: #FFB53C;
+    color: white;
+    text-decoration: none;
   }
+  
+    
   .pageInfo{
       list-style : none;
       display: inline-block;
@@ -67,45 +74,208 @@
   }
  a:link {color:black; text-decoration: none;}
  a:visited {color:black; text-decoration: none;}
- a:hover {color:black; text-decoration: underline;}
+ a:hover {color:black; text-decoration: none;}
   .active{
       background-color: #cdd5ec;
   }
-  
+  /* 검색 창 */
+  .board_search {
+    width: 85%;
+    margin-left: 17px; 
+	}
+	
+	/* 검색창 input */
+  .board_search input {
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    float: left;
+    border: 2px solid #e7e7e7;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+	}
+
+
   .search_area{
-    display: inline-block;
-    margin-top: 30px;
-    margin-left: 260px;
+    margin-top : 50px; 
+    display: flex;
+   
   }
+  
+  .search_wrap{
+	margin : 100px;  
+  }
+  
   .search_area input{
-      height: 30px;
-    width: 250px;
+     font-size: 20px;
+    height: 20px;
+    width: 96%;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float: left;
+    border: 1px solid #000000;
+    margin-right: 10px;
+    margin-left: 10px;
   }
+  
   .search_area button{
-     width: 100px;
-    height: 36px;
+     width: 10%;
+    font-size: 18px;
+    border: 10px solid #b70f0a;
+   
+    border-radius: 2px;
+    background: #b70f0a;
+    color: white;
+    text-decoration: none;
   }
-  .search_area select{
-  	height: 35px;
+  .search_area select {
+  
+    width: 100px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+
   }
+  
+  #result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+  
+  
+.preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+
+
+
+/* 칵테일 보드 테이블 설정 */
+.board-table {
+    margin-left: 20px;
+    font-size: 13px;
+    width: 95%;
+    border-top: 1px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+
+/* thead 설정 */
+.board-table thead th {
+    background: #000000;
+    color: #ffffff;
+}
+/* tbody 설정 */
+.board-table tbody {
+	border-top: 1px solid #e7e7e7;
+    text-align: center;
+}
+/* td 설정 */
+.board-table tbody td {
+    border-top: 1px solid #e7e7e7;
+    text-align: center;
+}
+
+.board-table th, .board-table td {
+    padding: 14px 0;
+}
+
+/* 테이블 번호 */
+.board-table .bno_width {
+    width: 100px;
+    text-align: center;
+}
+/* 제목 */
+.board-table .title_width {
+    width: 200px;
+    text-align: center;
+}
+/* 작성일 */
+.board-table .regdate_width {
+    width: 100px;
+    text-align: center;
+}
+/* 조회수 */
+.board-table .updatedate_width {
+    width: 100px;
+    text-align: center;
+}
+/* 추천수 */
+.board-table .updatedate_width {
+    width: 100px;
+    text-align: center;
+}
+/* 작성자 */
+.board-table .updatedate_width {
+    width: 100px;
+    text-align: center;
+}
+/* 페이지 타이틀 */
+.board_Page-Title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 60px;
+    width: 100%;
+    height: 50px;
+    font-family: "HY바다M";
+    color: #000000;
+}
+
+
+
+
   </style>
+  
 </head>
 <body>
-<h1>목록페이지입니다.</h1>
+<div class="board_Page-Title">Cocktail Board</div>
 
 <div class="table_wrap">
-	<a href="/forum/enroll" class="top_btn">게시판 등록</a>
-	<table>
+
+
+
+<!--  검색창 쪽 -->
+<div class ="search_area">
+	
+       
+            <select name="type" class="type">
+                <option value="" <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+                <option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+                <option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+                <option value="W" <c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
+                <option value="TC" <c:out value="${pageMaker.cri.type eq 'TC'?'selected':'' }"/>>제목 + 내용</option>
+                <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/>>제목 + 작성자</option>
+                <option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/>>제목 + 내용 + 작성자</option>
+            </select>    
+            <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+            <button>Search</button>
+            
+      
+    </div>    
+
+
+
+	<!--  기존 테이블 -->
+	<table class ="board-table">
 		<thead>
 			<tr>
 				<th class="bno_width">번호</th>
+
 				<th class="title_width">제목</th>
 				<th class="regdate_width">작성일</th>
 				<th class="updatedate_width">조회수</th>
 				<th class="updatedate_width">추천수</th>
 				<th class="updatedate_width">작성자</th>
+
 			</tr>
 		</thead>
+		<tbody>
 			<c:forEach items="${list}" var="list">
             <tr>
                 <td><c:out value="${list.forum_no}"/></td>
@@ -119,8 +289,10 @@
                 <td><c:out value="${list.forum_views}"/></td>
                 <td><c:out value="${list.forum_recommend}"/></td>
                 <td><c:out value="${list.forum_memberID}"/></td>
+				
             </tr>
         </c:forEach>
+        </tbody>
 	</table>
 	
 	<div class="search_wrap">

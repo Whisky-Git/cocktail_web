@@ -114,7 +114,7 @@ public class forumController {
 		}
     	
         /*이미지 업로드*/
-        String uploadFolder = "C:\\forum";
+        String uploadFolder = "C:\\upload\\temp";
         
         /*폴더경로*/
  		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -259,7 +259,7 @@ public class forumController {
 	public ResponseEntity<byte[]> getImage(String fileName){
 		
 		
-		File file = new File("c:\\forum\\" + fileName);
+		File file = new File("C:\\upload\\temp" + fileName);
 		System.out.println(file);
 			ResponseEntity<byte[]> result = null;
 		
@@ -286,7 +286,7 @@ public class forumController {
 		
 		try {
 			/* 썸네일 파일 삭제 */
-			file = new File("c:\\forum\\" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:\\upload\\temp" + URLDecoder.decode(fileName, "UTF-8"));
 			
 			file.delete();
 			

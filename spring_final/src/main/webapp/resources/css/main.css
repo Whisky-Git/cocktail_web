@@ -140,8 +140,7 @@ a{
     color: #606267;    
 }
 
-<<<<<<< HEAD
-=======
+
 /* footer navai 영역 */
 .footer_nav{
     width:100%;
@@ -202,7 +201,7 @@ a{
     margin-left: 70px;
     margin-top : 30px;
 }
->>>>>>> refs/remotes/origin/이종수
+
 /* float 속성 해제 */
 .clearfix{
 	clear: both;

@@ -79,11 +79,8 @@ public class MemberController {
 
 		/* 회원가입 쿼리 진행 */
 		memberservice.memberJoin(member);
-<<<<<<< HEAD
 		memberinfoservice.useInfo(info);
-=======
-		
->>>>>>> refs/remotes/origin/이종수
+
 		
 		return "redirect:/main";
 	}
@@ -162,7 +159,6 @@ public class MemberController {
 	}
 	
 	///////////////////////////		로그인		////////////////////////////////////
-<<<<<<< HEAD
 
     @RequestMapping(value="login.do", method=RequestMethod.POST)
     public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr,MemberInforVO info) throws Exception{
@@ -227,69 +223,7 @@ public class MemberController {
     	session.invalidate();
     	
     	return "redirect:/main";
-=======
-    @RequestMapping(value="login.do", method=RequestMethod.POST)
-    public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
-        
-        
-        HttpSession session = request.getSession();
-        String rawPw ="";
-        String encodePw = "";
-        
-        MemberVO lvo = memberservice.memberLogin(member); //제출한 아이디와 일치하는 아이디 확인
-        
-        if(lvo != null) { // 일치하는 아이디 존재 시
-            
-            rawPw = member.getMemberPw();		//사용자가 제출한 비밀번호
-            encodePw = lvo.getMemberPw();		//DB에 저장한 인코딩된 비밀번호
-            
-            //비밀번호 일치 여부 판단
-            if(true == pwEncoder.matches(rawPw, encodePw)) {		// 아이디가 존재하지 않을 시 (로그인 실패)
-            	
-            	lvo.setMemberPw("");
-            	session.setAttribute("member", lvo);
-            	return "redirect:/main";
-            	
-            }
-            
-            else{
-            	rttr.addFlashAttribute("result", 0);
-                return "redirect:/member/login"; 	
-            }
-                  
-        }
-        else				//일치하지 않는 경우
-        {
-        	   rttr.addFlashAttribute("result", 0);
-               return "redirect:/member/login";
-        }
-        
-    }
-    
-    /* 메인페이지 로그아웃 */
-    @RequestMapping(value="logout.do", method=RequestMethod.GET)
-    public String logoutMainGET(HttpServletRequest request) throws Exception{
-        
-    	logger.info("logoutMainGET 메소드 진입");
-    	
-    	HttpSession session = request.getSession();
-    	
-    	session.invalidate();
-    	
-    	return "redirect:/main";
-    }
-    
-    /* 비동기방식 로그아웃 메소드 */
-    @RequestMapping(value="logout.do", method=RequestMethod.POST)
-    @ResponseBody
-    public void logoutPOST(HttpServletRequest request)throws Exception{
-    	
-    	System.out.println("비동기 로그아웃 메소드 진입");
-    	
-    	HttpSession session = request.getSession();
-    	
-    	session.invalidate();
->>>>>>> refs/remotes/origin/이종수
+
     }
     
 }

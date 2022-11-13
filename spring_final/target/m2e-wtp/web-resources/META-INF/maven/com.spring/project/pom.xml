@@ -282,8 +282,7 @@
             <artifactId>spring-security-config</artifactId>
             <version>5.4.2</version>
         </dependency>
-        
-<<<<<<< HEAD
+
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
@@ -310,7 +309,7 @@
 		    <version>2.3.2</version>
 		</dependency>
 		
-=======
+
 		<!-- thumbnail -->
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
 		<dependency>
@@ -329,9 +328,8 @@
 		<dependency>
 		    <groupId>com.fasterxml.jackson.dataformat</groupId>
 		    <artifactId>jackson-dataformat-xml</artifactId>
-		    <version>2.12.1</version>
+		    <version>2.12.1</version> 
 		</dependency>	
->>>>>>> refs/remotes/origin/이종수
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
