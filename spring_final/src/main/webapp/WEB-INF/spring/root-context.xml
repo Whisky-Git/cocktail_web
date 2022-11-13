@@ -17,7 +17,7 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/user?serverTimezone=Asia/Seoul"></property>
+			value="jdbc:mysql://localhost:3306/cocktail_DB?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="asdqwe123"></property>
 	</bean>

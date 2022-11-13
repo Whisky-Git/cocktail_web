@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.model.Criteria;
 import com.spring.model.forumVO;
+import com.spring.model.forum_imageVO;
 
 public interface forumMapper {
 	
@@ -27,4 +28,12 @@ public interface forumMapper {
     
     /* 게시판 총 갯수 */
     public int getTotal(Criteria cri);	
+    
+    /* 이미지 등록 */
+	public void imageEnroll(forum_imageVO vo);
+	
+	public void viewCount(int forum_no);
+	
+	/* 상품 id 이름 */
+	public forumVO getforumName(int forum_no);
 }

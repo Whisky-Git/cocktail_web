@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.model.Criteria;
 import com.spring.model.forumVO;
+import com.spring.model.forum_imageVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -26,14 +27,17 @@ public class forumMapperTest {
         
         forumVO vo = new forumVO();
         
-        vo.setForum_title("����");
-        vo.setForum_date("����");
-        vo.setForum_content("�з�");
+        vo.setForum_title("asd");
+        //vo.setForum_date(date);
+        vo.setForum_content("asda");
         vo.setForum_views(1);
         vo.setForum_recommend(5);
         vo.setForum_memberID("admin");
-        
+        System.out.println("Before BookVO :" + vo);
+		
+	
         mapper.enroll(vo); 
+    	System.out.println("After BookVO :" + vo);
     }*/
     /* 게시판 목록 테스트 */
     
@@ -90,7 +94,7 @@ public class forumMapperTest {
 //        
 //    }
     
-    
+    /*
     @Test
     public void testGetListPaging() {
         
@@ -100,4 +104,18 @@ public class forumMapperTest {
         
         list.forEach(forum -> System.out.println("" + forum));
     }
+    */
+
+    @Test
+	public void imageEnrollTest() {
+		
+		forum_imageVO vo = new forum_imageVO();
+		vo.setForum_no(100);
+		vo.setForum_uploadPath("test");
+		vo.setForum_fileName("test");
+		vo.setForum_uuid("tesaawsdasda");
+		
+		mapper.imageEnroll(vo);
+		
+	}
 }

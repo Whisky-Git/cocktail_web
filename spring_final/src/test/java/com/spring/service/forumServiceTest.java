@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.model.Criteria;
 import com.spring.model.forumVO;
+import com.spring.model.forum_imageVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -49,8 +51,8 @@ public class forumServiceTest {
 //        System.out.println("result : " + result);	
 //        
 //    }
-    
-    /* 게시판 조회(페이징 적용) */
+    /*
+  게시판 조회(페이징 적용)
     @Test
     public void testGetListPaging() {
         
@@ -61,6 +63,43 @@ public class forumServiceTest {
         list.forEach(forum -> System.out.println("" + forum));
         
         
-    }
+    } 
+     */
+    /* 상품 등록 & 상품 이미지 등록 테스트 */
+	@Test
+	public void bookEnrollTEsts() {
+		forumVO forum = new forumVO();
+		// 상품 정보
+		forum.setForum_title("service 테스트");
+		forum.setForum_recommend(5);
+		forum.setForum_views(5);
+		forum.setForum_memberID("노트북");
+		
+
+		// 이미지 정보
+		List<forum_imageVO> imageList = new ArrayList<forum_imageVO>(); 
+		
+		forum_imageVO image1 = new forum_imageVO();
+		forum_imageVO image2 = new forum_imageVO();
+		
+		image1.setForum_fileName("test Image 1");
+		image1.setForum_uploadPath("test image 1");
+		image1.setForum_uuid("test1111");
+		
+		image2.setForum_fileName("test Image 2");
+		image2.setForum_uploadPath("test image 2");
+		image2.setForum_uuid("test2222");
+		
+		imageList.add(image1);
+		imageList.add(image2);
+		
+		forum.setImageList(imageList);        
+		
+		// bookEnroll() 메서드 호출
+		Service.enroll(forum);
+		
+		System.out.println("등록된 VO : " + forum);
+		
+	}
     
 }

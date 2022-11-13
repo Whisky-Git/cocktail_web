@@ -3,6 +3,10 @@ package com.spring.model;
 import java.util.Arrays;
 
 public class Criteria {
+	
+	/* 게시물 번호(댓글 기능에서 사용) */
+	private int forum_no;
+	
 	/* 현재 페이지 */
     private int pageNum;
     
@@ -86,12 +90,21 @@ public class Criteria {
 		this.typeArr = typeArr;
 	}
 
-	@Override
-	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip + ", keyword=" + keyword
-				+ ", type=" + type + ", typeArr=" + Arrays.toString(typeArr) + "]";
+	public int getForum_no() {
+		return forum_no;
 	}
 
+	public void setForum_no(int forum_no) {
+		this.forum_no = forum_no;
+	}
+
+	@Override
+	public String toString() {
+		return "Criteria [forum_no=" + forum_no + ", pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip
+				+ ", keyword=" + keyword + ", type=" + type + ", typeArr=" + Arrays.toString(typeArr) + "]";
+	}
+
+	
 	
     
     

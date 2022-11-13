@@ -21,6 +21,20 @@ public class forumServicelmp implements forumService{
         
         mapper.enroll(forum);
         
+        if(forum.getImageList() == null || forum.getImageList().size() <= 0) {
+			return;
+		}
+        
+        forum.getImageList().forEach(attach ->{
+			
+        	
+        	attach.setForum_no(forum.getForum_no());
+        	System.out.println("attach : " + attach);
+        	mapper.imageEnroll(attach);
+        	
+        	
+		});
+        
     }
 	@Override
     public List<forumVO> getList() {
@@ -61,5 +75,19 @@ public class forumServicelmp implements forumService{
     public int getTotal(Criteria cri) {
         
         return mapper.getTotal(cri);
-    }    
+    }
+    
+    @Override
+    public void viewCount(int forum_no) {
+    	
+    	 mapper.viewCount(forum_no);
+    }
+    
+    @Override
+	public forumVO getforumName(int forum_no) {
+		
+		return mapper.getforumName(forum_no);
+	}
+    
+    
 }

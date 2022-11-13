@@ -1,6 +1,7 @@
 package com.spring.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class forumVO {
 	
@@ -24,8 +25,55 @@ private int forum_views;
 /*�Խù� ��õ��*/
 private int forum_recommend;
 
+
+
+
+
 /*�Խù� �ۼ���*/
 private String forum_memberID;
+
+private forum_imageVO imageVO;
+
+/* 이미지 정보 */
+private List<forum_imageVO> imageList;
+
+
+
+
+
+public forum_imageVO getImageVO() {
+	return imageVO;
+}
+
+
+
+
+
+
+public void setImageVO(forum_imageVO imageVO) {
+	this.imageVO = imageVO;
+}
+
+
+
+
+
+
+public List<forum_imageVO> getImageList() {
+	return imageList;
+}
+
+
+
+
+
+
+public void setImageList(List<forum_imageVO> imageList) {
+	this.imageList = imageList;
+}
+
+
+
 
 public String getForum_memberID() {
 	return forum_memberID;
@@ -103,12 +151,29 @@ public void setForum_recommend(int forum_recommend) {
 
 
 
+
+
 @Override
 public String toString() {
 	return "forumVO [forum_no=" + forum_no + ", forum_title=" + forum_title + ", forum_date=" + forum_date
 			+ ", forum_content=" + forum_content + ", forum_views=" + forum_views + ", forum_recommend="
-			+ forum_recommend + ", forum_memberID=" + forum_memberID + "]";
+			+ forum_recommend + ", forum_memberID=" + forum_memberID + ", imageList=" + imageList + "]";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

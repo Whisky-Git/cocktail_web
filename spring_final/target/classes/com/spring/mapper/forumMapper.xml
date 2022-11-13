@@ -28,7 +28,13 @@
   
  	<!-- 게시판 등록 -->
  	<insert id="enroll">
-        
+ 	
+       <selectKey resultType="int" keyProperty="forum_no" order="AFTER">
+  		
+		SELECT MAX(forum_no) FROM forum  
+				
+  		</selectKey>
+  		
         insert into forum(forum_title, forum_content,forum_views,forum_recommend,forum_memberID) 
         			values (#{forum_title}, #{forum_content}, #{forum_views}, #{forum_recommend}, #{forum_memberID}) 
         
@@ -86,7 +92,26 @@
         </if>
     </select>
     
+    <!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+
+		insert into forum_image(forum_no, forum_fileName, forum_uploadPath, forum_uuid) values (#{forum_no}, #{forum_fileName}, #{forum_uploadPath}, #{forum_uuid})
+	
+	</insert>
     
+    <update id="viewCount">
+    
+		update forum set forum_views = forum_views+1 where forum_no=#{forum_no};
+    
+    </update>
+    
+    <select id="getforumName" resultType="com.spring.model.forumVO">
+	
+		select forum_no, forum_title from forum 
+		where forum_no = #{forum_no}
+	
+	
+	</select>
     
     
     
