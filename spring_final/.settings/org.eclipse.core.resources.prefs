@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding/<project>=UTF-8
+=======
+encoding//src/main/java/com/spring/mapper/forumMapper.java=UTF-8
+>>>>>>> refs/remotes/origin/이종수

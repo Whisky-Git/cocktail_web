@@ -24,6 +24,7 @@
 	
 	<context:component-scan base-package="com.spring.controller" />
 	
+<<<<<<< HEAD
 	<context:component-scan
 		base-package="com.spring.vision" />
 	
@@ -41,4 +42,18 @@
 	<!-- 업로드 관련 빈 -->
 	 <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
  		
+=======
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/login.do"></mapping>
+			<beans:bean id="LoginInterceptor" class="com.spring.interceptor.LoginInterceptor"></beans:bean>	
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**"></mapping>
+			<beans:bean id ="AdminInterceptor" class="com.spring.interceptor.AdminInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	<!-- 업로드 관련 빈 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>	
+>>>>>>> refs/remotes/origin/이종수
 </beans:beans>

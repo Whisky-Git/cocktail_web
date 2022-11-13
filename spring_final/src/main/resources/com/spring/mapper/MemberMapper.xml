@@ -5,7 +5,11 @@
   <mapper namespace="com.spring.mapper.MemberMapper">
   
 		<insert id="memberJoin">
+<<<<<<< HEAD
   			insert into cocktail_member(memberId, memberPw, memberName, memberMail, memberAddr1, memberAddr2, memberAddr3, adminCk, regDate, money, point) values(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0, now(), 0, 0 )
+=======
+  			insert into book_member values(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, 0, now(), 0, 0 )
+>>>>>>> refs/remotes/origin/이종수
   		<!-- 속성 값 중 0 은 관리자 구분 -->
   		</insert>
   		
@@ -19,7 +23,11 @@
  	 	 <!-- 로그인 -->
       <select id="memberLogin" resultType="com.spring.model.MemberVO">
       
+<<<<<<< HEAD
         select memberId, memberPw, memberName,memberMail, adminCk,regDate, money, point from cocktail_member where memberId = #{memberId}
+=======
+        select memberId, memberPw, memberName, adminCk, money, point from book_member where memberId = #{memberId}
+>>>>>>> refs/remotes/origin/이종수
 
       </select>
   </mapper>

@@ -43,6 +43,7 @@ ul{
 .admin_top_wrap{
     height:110px;
     line-height: 110px;
+<<<<<<< HEAD
     background-color: #5080bd;
     margin-bottom:15px;
 }
@@ -103,3 +104,71 @@ ul{
     line-height: 80px;
     color: white;    
 }
+=======
+    margin-bottom : 15px;
+    background-color: #5080bd;
+}
+.admin_top_wrap>span{
+    margin-left: 30px;
+    display:inline-block;
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+}
+/* 관리자 wrap(네비+컨텐츠) */
+.admin_wrap{
+    
+    
+}
+ 
+/* 관리자페이지 네비 영역 */
+.admin_navi_wrap{
+    width: 20%;
+    height: 300px;
+    float:left;
+    height: 100%;
+}
+.admin_navi_wrap li{
+    display: block;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+.admin_navi_wrap li a{
+    display: block;
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bolder;
+}
+/* 
+.admin_list_01{
+    background-color: #c8c8c8;
+} */
+ 
+ 
+/* 관리자페이지 컨텐츠 영역 */
+.admin_content_wrap{
+    width: 80%;
+    float:left;
+    height: 100%;
+    height: 700px;
+    
+}
+.admin_content_wrap div{
+    margin-top: 280px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+}
+ 
+ 
+ 
+ 
+/* float 속성 해제 */
+.clearfix{
+    clear: both;
+}
+>>>>>>> refs/remotes/origin/이종수

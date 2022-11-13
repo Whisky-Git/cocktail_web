@@ -29,11 +29,20 @@
 		
 		<!-- 업로드 관련 설정 -->
 		<multipart-config>
+<<<<<<< HEAD
 			<location>C:\\upload\\temp</location>		
 			<max-file-size>20971520</max-file-size>					<!-- 1MB * 20 -->
 			<max-request-size>41943040</max-request-size>			<!-- 40MB -->
 			<file-size-threshold>20971520</file-size-threshold>		<!-- 20MB -->
 		</multipart-config>
+=======
+			<location>C:\\forum</location>		
+			<max-file-size>20971520</max-file-size>					<!-- 1MB * 20 -->
+			<max-request-size>41943040</max-request-size>			<!-- 40MB -->
+			<file-size-threshold>20971520</file-size-threshold>		<!-- 20MB -->
+		</multipart-config>
+		
+>>>>>>> refs/remotes/origin/이종수
 	</servlet>
 		
 	<servlet-mapping>

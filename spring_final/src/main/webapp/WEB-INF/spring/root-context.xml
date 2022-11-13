@@ -17,6 +17,7 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl"
+<<<<<<< HEAD
 			value="jdbc:mysql://localhost:3306/cocktail_db?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="1234"></property>
@@ -81,4 +82,61 @@
 		base-package="com.spring.service"></context:component-scan>
 
 	<context:component-scan base-package="com.vam.task"></context:component-scan>
+=======
+			value="jdbc:mysql://localhost:3306/cocktail_DB?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="asdqwe123"></property>
+	</bean>
+
+
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"></property>
+	</bean>
+
+
+	<!-- gmail설정 -->
+	<bean id="mailSender2"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="0j11293" /> <!-- 자신의 이메일 아이디 -->
+		<property name="password" value="youngju1129" /> <!-- 자신의 비밀번호 -->
+		<!-- 보안연결 TLS과 관련된 설정 -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.auth">true </prop>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 네이버 메일 설정 -->
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<property name="host" value="smtp.naver.com"/> 메이서버 호스트 <property name="port" 
+		value="465"/> 메이서버 포트번호 <property name="username" value="0j1129"/> 자신의 이메일 
+		아이디 <property name="password" value="비밀번호"/> 자신의 비밀번호 보안연결 SSL과 관련된 설정 <property 
+		name="javaMailProperties"> <props> <prop key="mail.smtp.auth">true</prop> 
+		<prop key="mail.smtp.starttls.enable">true</prop> <prop key="mail.smtps.checkserveridentity">true</prop> 
+		<prop key="mail.smtps.ssl.trust">*</prop> <prop key="mail.debug">true</prop> 
+		<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> 
+		</props> </property> </bean> -->
+
+
+	<mybatis-spring:scan
+		base-package="com.spring.mapper" />
+	<context:component-scan
+		base-package="com.spring.model"></context:component-scan>
+	<context:component-scan
+		base-package="com.spring.service"></context:component-scan>
+
+>>>>>>> refs/remotes/origin/이종수
 </beans>

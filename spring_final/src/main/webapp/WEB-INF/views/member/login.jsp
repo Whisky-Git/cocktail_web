@@ -10,7 +10,11 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+<<<<<<< HEAD
 <link rel="stylesheet" href="/resources/css/member/login.css">
+=======
+<link rel="stylesheet" href="/resources/css/member/login.css?after">
+>>>>>>> refs/remotes/origin/이종수
 </head>
 
 
@@ -22,7 +26,11 @@
 <div class="wrap">
 		<form id="login_form" method="post">
 			<div class="logo_wrap">
+<<<<<<< HEAD
 				<span>Cocktail</span>
+=======
+				<span>Book Mall</span>
+>>>>>>> refs/remotes/origin/이종수
 			</div>
 			
 			<div class="login_wrap"> 
