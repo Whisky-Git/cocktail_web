@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ShapeBootstrap Clean Template</title>
+<title>칵테일</title>
+<link rel="icon" href="../resources/img/cocktail/47.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -48,7 +49,8 @@
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/side.js"></script>
-
+<style>
+</style>
 </head>
 <body>
 	<!--HEADER ROW-->
@@ -180,7 +182,7 @@
 				<!--로그-->
 
 				<div class="span3">
-					<a class="brand" href="#"><img src="../resources/img/logo.png" /></a>
+					<a class="brand" href="main"><img src="../resources/img/logo.png" /></a>
 				</div>
 				<!-- /LOGO -->
 
@@ -199,11 +201,11 @@
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
 								<ul class="nav">
-									<li><a href="main" style="color: rgb(0, 0, 0);"><b>칵테일
+									<li><a href="explain" style="color: rgb(0, 0, 0);"><b>칵테일
 												설명</b></a></li>
 									<li><a href="cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
 									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-									<li><a href="blog.html" style="color: rgb(0, 0, 0);"><b>top100</b></a></li>
+									<li><a href="top30" style="color: rgb(0, 0, 0);"><b>Top30</b></a></li>
 
 									<li><a> </a></li>
 									<li><a> </a></li>
@@ -222,7 +224,7 @@
 										</c:if>
 										<li><a href="/member/logout.do">로그아웃</a></li>
 										<li><a href="../mypage">마이페이지</a></li>
-										<li><a>장바구니</a></li>
+										
 									</c:if>
 								</ul>
 							</div>
@@ -252,7 +254,7 @@
 
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
-
+			<!--  ========================================== -->
 				<div class="active item">
 
 					<div class="container">
@@ -264,10 +266,10 @@
 											<b>당신과 어울리는 <br>칵테일을 찾아봐요
 											</b>
 										</h1>
-										<p class="lead">Cras justo odio, dapibus ac facilisis in,
-											egestas eget quam. Donec id elit non mi porta gravida at eget
-											metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-										<a class="btn btn-large btn-danger" href="#">Sign up today</a>
+										<p class="lead">
+										
+											</p>
+										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
 									<!--버튼 크기 ///버튼 색깔-->
 								</div>
@@ -279,7 +281,7 @@
 						</div>
 					</div>
 				</div>
-
+		<!--  ========================================== -->
 				<div class="item">
 
 					<div class="container">
@@ -291,15 +293,13 @@
 											<b>당신과 어울리는 <br>칵테일을 찾아봐요
 											</b>
 										</h1>
-										<p class="lead">Cras justo odio, dapibus ac facilisis in,
-											egestas eget quam. Donec id elit non mi porta gravida at eget
-											metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-										<a class="btn btn-large btn-danger" href="#">Sign up today</a>
+										<p class="lead">aa
+											</p>
+										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
 									</div>
 								</div>
 								<div>
-									<img src="../resources/img/slide/slide3.png" height="1000"
-										width="600">
+									<img src="../resources/img/slide/cherry.png" height="1000" width="600">
 								</div>
 							</div>
 						</div>
@@ -331,6 +331,19 @@
 
 				<div class="mm">
 					<div class="f-bg">
+						<c:forEach items="${ls}" var="ls" varStatus="status">
+							<div class="span3">
+								<h2>
+									<B>${status.count}th</B>
+								</h2>
+								<a href="/service?cocktailNo=${ls.cocktailNo}&cocktailName=${ls.cocktailName}"><div class="image_wrap" data-cocktailno="${ls.imageList[0].cocktailNo}" data-path="${ls.imageList[0].uploadPath}" data-uuid="${ls.imageList[0].uuid}" data-filename="${ls.imageList[0].fileName}">
+									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div></a>
+								<p class="my-f1">
+									<b>${ls.cocktailName}</b>
+								</p>
+							</div>
+						</c:forEach>	
+						<!-- 
 						<div class="span3">
 
 							<h2>
@@ -341,8 +354,9 @@
 							<p class="my-f1">
 								<b>올드팬션드</b>
 							</p>
+							-->
 							<!--<a href="#">Read More &rarr;</a>-->
-
+						<!-- 
 						</div>
 
 						<div class="span3">
@@ -379,6 +393,7 @@
 							</p>
 
 						</div>
+						 -->
 						<div class="v-bg1"></div>
 
 
@@ -389,7 +404,7 @@
 
 			</div>
 			<div class="mm2">
-				<a class="btn btn-large btn-danger" href="#"> 더 보러가기 </a>
+				<a class="btn btn-large btn-danger" href="cocktailList"> 더 보러가기 </a>
 			</div>
 		</div>
 		<br> <br>
@@ -442,7 +457,7 @@
 				</div>
 				<div class="mm">
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test1.png"></a>
+						<a href="/cocktailMbti?mbti=INFJ"><img src="../resources/img/test1.png"></a>
 						<h2>
 							<b>MBTI</b>
 						</h2>
@@ -451,7 +466,7 @@
 					</div>
 
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test2.png"></a>
+						<a href="/cocktailSeason?season=봄"><img src="../resources/img/test2.png"></a>
 						<h2>
 							<b>계절별</b>
 						</h2>
@@ -460,7 +475,7 @@
 					</div>
 
 					<div class="span4">
-						<a href="#"><img src="../resources/img/test3.png"></a>
+						<a href="/cocktailRelation?relation=가족"><img src="../resources/img/test3.png"></a>
 						<h2>
 							<b>관계별</b>
 						</h2>
@@ -489,22 +504,20 @@
 					<br>
 					<p class="my-f6">자신의 레벨에 맞는 칵테일을 만들자!!</p>
 					<br> <br>
-					<h4 class="my-f3">
-						<img class="hidden-phone" src="../resources/img/g1.png" alt=""
-							width="100"> &nbsp;&nbsp;&nbsp;칵테일이------ ------ -
+					<h4 class="my-f3" style="margin-top:10px;">
+						<center><a href="cocktailList?level=쉬움"><img class="hidden-phone" src="../resources/img/g1.png" alt=""
+							width="120px" height="120px"></a></center>
 					</h4>
 					<br>
 					<h4 class="my-f3">
-						<img class="hidden-phone" src="../resources/img/g2.png" alt=""
-							width="100">&nbsp;&nbsp;&nbsp;칵테일이------ ------ -
+						<center><a href="cocktailList?level=보통"><img class="hidden-phone" src="../resources/img/g2.png" alt=""
+							width="120px" height="120px"></a></center>
 					</h4>
 					<br>
 					<h4 class="my-f3">
-						<img class="hidden-phone" src="../resources/img/g3.png" alt=""
-							width="100">&nbsp;&nbsp;&nbsp;칵테일이------ ------ -
+						<center><a href="cocktailList?level=어려움"><img class="hidden-phone" src="../resources/img/g3.png" alt=""
+							width="120px" height="120px"></a></center>
 					</h4>
-					<br> <a class="btn btn-large btn-danger mm22" href="#">지금
-						바로가기</a><br>
 				</div>
 			</div>
 		</div>
@@ -534,8 +547,7 @@
 				<div class="active item">
 					<div class="container">
 						<div class="row">
-
-
+						
 							<div class="mm1">
 								<div class="span3">
 									<a href="#"><img src="../resources/img/c1.png"></a>
@@ -685,6 +697,31 @@
 	</footer>
 
 	<!--/.Footer-->
-
+<script>
+$(document).ready(function(){
+	/* 이미지 삽입 */
+	$(".image_wrap").each(function(i, obj){
+		
+		const bobj = $(obj);
+		
+		console.log(bobj.data("cocktailno"));
+		
+		if(bobj.data("cocktailno")){
+		
+		const uploadPath = bobj.data("path");
+		const uuid = bobj.data("uuid");
+		const fileName = bobj.data("filename");
+		
+		const fileCallPath = encodeURIComponent(uploadPath + "/" + uuid + "_" + fileName);
+		
+		$(this).find("img").attr('src', '/display?fileName=' + fileCallPath);
+		
+		}else {
+			$(this).find("img").attr('src', '../resources/img/noImage.png');
+		}
+	});
+	
+});
+</script>
 </body>
 </html>

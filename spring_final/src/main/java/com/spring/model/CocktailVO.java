@@ -1,5 +1,7 @@
 package com.spring.model;
 
+import java.util.List;
+
 public class CocktailVO {
 	
 	private int cocktailNo;	//칵테일번호
@@ -8,9 +10,15 @@ public class CocktailVO {
 	private String cocktailRecipes;	//제조법
 	private int cocktailAbv;	//도수
 	private String cocktailLevel; //난이도
-	private int cocktailCommentNo;	//댓글번호
 	private String cocktailCategory;		//카테고리
 	private String cocktailImage;		//이미지
+	private double cocktailRating;		//평점
+	private String cocktailMbti;		//mbti
+	private String cocktailSeason;		//계절
+	private String cocktailRelation;	//관계
+
+	private List<CocktailImageVO> imageList;  	// 이미지 정보 
+	
 	public int getCocktailNo() {
 		return cocktailNo;
 	}
@@ -47,12 +55,6 @@ public class CocktailVO {
 	public void setCocktailLevel(String cocktailLevel) {
 		this.cocktailLevel = cocktailLevel;
 	}
-	public int getCocktailCommentNo() {
-		return cocktailCommentNo;
-	}
-	public void setCocktailCommentNo(int cocktailCommentNo) {
-		this.cocktailCommentNo = cocktailCommentNo;
-	}
 	public String getCocktailCategory() {
 		return cocktailCategory;
 	}
@@ -65,22 +67,47 @@ public class CocktailVO {
 	public void setCocktailImage(String cocktailImage) {
 		this.cocktailImage = cocktailImage;
 	}
+	public double getCocktailRating() {
+		return cocktailRating;
+	}
+	public void setCocktailRating(double cocktailRating) {
+		this.cocktailRating = cocktailRating;
+	}
+	public List<CocktailImageVO> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<CocktailImageVO> imageList) {
+		this.imageList = imageList;
+	}
+	public String getCocktailMbti() {
+		return cocktailMbti;
+	}
+	public void setCocktailMbti(String cocktailMbti) {
+		this.cocktailMbti = cocktailMbti;
+	}
+	public String getCocktailSeason() {
+		return cocktailSeason;
+	}
+	public void setCocktailSeason(String cocktailSeason) {
+		this.cocktailSeason = cocktailSeason;
+	}
+	public String getCocktailRelation() {
+		return cocktailRelation;
+	}
+	public void setCocktailRelation(String cocktailRelation) {
+		this.cocktailRelation = cocktailRelation;
+	}
 	@Override
 	public String toString() {
 		return "CocktailVO [cocktailNo=" + cocktailNo + ", cocktailName=" + cocktailName + ", cocktailMaterials="
 				+ cocktailMaterials + ", cocktailRecipes=" + cocktailRecipes + ", cocktailAbv=" + cocktailAbv
-				+ ", cocktailLevel=" + cocktailLevel + ", cocktailCommentNo=" + cocktailCommentNo
-				+ ", cocktailCategory=" + cocktailCategory + ", cocktailImage=" + cocktailImage + "]";
+				+ ", cocktailLevel=" + cocktailLevel + ", cocktailCategory=" + cocktailCategory + ", cocktailImage="
+				+ cocktailImage + ", cocktailRating=" + cocktailRating + ", cocktailMbti=" + cocktailMbti
+				+ ", cocktailSeason=" + cocktailSeason + ", cocktailRelation=" + cocktailRelation + ", imageList="
+				+ imageList + "]";
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+

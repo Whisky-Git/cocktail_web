@@ -22,7 +22,7 @@
 <div class="wrap">
 		<form id="login_form" method="post">
 			<div class="logo_wrap">
-				<span>Book Mall</span>
+				<span>Cocktail</span>
 			</div>
 			
 			<div class="login_wrap"> 

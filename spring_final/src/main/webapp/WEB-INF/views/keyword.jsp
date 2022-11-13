@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+<%@page import="com.spring.vision.Detect"%>
 <!DOCTYPE html>
 
-  
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -34,13 +41,53 @@
 
 
 
-    <style>
-      
+	<style>
+	.form_section_content input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+	
+	.form_section_content label {
+		display: inline-block;
+		padding: .5em .75em;
+		margin: 0px 20px 0px 0px;
+		color: #999;
+		font-size: inherit;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #fdfdfd;
+		cursor: pointer;
+		border: 1px solid #ebebeb;
+		border-bottom-color: #e2e2e2;
+		border-radius: .25em;
+	}
+	
+	/* named upload */
+	.form_section_content .choose_file {
+		display: inline-block;
+		padding: .5em .75em; /* label의 패딩값과 일치 */
+		font-size: inherit;
+		font-family: inherit;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #f5f5f5;
+		border: 1px solid #ebebeb;
+		border-bottom-color: #e2e2e2;
+		border-radius: .25em;
+		-webkit-appearance: none; /* 네이티브 외형 감추기 */
+		-moz-appearance: none;
+		appearance: none;
+	}
+	</style>
 
-    </style>
 
-
-    <!-- SCRIPT 
+<!-- SCRIPT 
     ============================================================-->  
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../resources/js/bootstrap.min.js"></script>
@@ -64,134 +111,195 @@
 
 
 
-<div class="sidebar">
+	<div class="sidebar">
 
-	<div class="sidem">
-	<div class="sidem_a ">
-    <div class="items sidem_mm">
-	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
-    <div class="items my-f1  sidem_mm1"> 홍길동</div>
-	</div>
-	
-	<div class="sidem_b ">
-    <div class="items sidem_mm">
-	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
-	<div class="items sidem_mm">
-	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
-	 <div class="items sidem_mm">
-	<a><img src="../resources/img/icon10.jpg" height="40" width = "40"/></a></div>
-	</div>	
-	</div>
-	 
-	<div class="sidem-bg"></div> 
-	 
-	 
-	<div class="sidem2">	
-    <div class="items2 items2-mm1">
-	<div class="sidem2-f">등급</div> <br>
-	<a><img src="../resources/img/grade/gold.png" height="90" width = "90"/></a><br><br>
-	gold	
-	</div>
-		
-    <div class=" sidem-bg2"></div>
-	
-	 <div class="items2 items2-mm2">
-	<div class="sidem2-f">내가 쓴 글</div>  <br><br>
-	<div class="sidem2-f">21</div>  <br><br>
-	 <a class="btn btn-large btn-danger" href="#">  더 보러가기  </a>
-	 </div>	
-	</div>
-	 
-	 <div class="sidem-bg3"></div> 
-	 
-	 
-	  
-	 <div  class="sidem-mm4 sidem2-f2 "><a href="index.html" style="color:rgb(0, 0, 0);"><b>칵테일 바 찾기</b></a></div >
-	 <div class="sidem-bg3"></div> 
-	 
-     <div  class="sidem-mm5 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>츨겨찾기</b></a></div >
-	<div class="sidem-bg3"></div> 
-	
-    <div  class="sidem-mm4 sidem2-f2"> <a href="service.html" style="color:rgb(0, 0, 0);"><b>Q & A</b></a></div >
-	<div class="sidem-bg3"></div> 
-	
-    <div  class="sidem-mm5 sidem2-f2"><a href="blog.html" style="color:rgb(0, 0, 0);"><b>공지사항</b></a></div >	
-	 <div class="sidem-bg3"></div> 
-	 
-     <div  class="sidem-mm4 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>고객센터</b></a></div >
-	<div class="sidem-bg3"></div> 
-	
-    <div  class="sidem-mm5 sidem2-f2"><a href="service.html" style="color:rgb(0, 0, 0);"><b>자유게시판</b></a></div >
-	<div class="sidem-bg3"></div> 
-	
-    <div  class="sidem-mm4 sidem2-f2"><a href="blog.html" style="color:rgb(0, 0, 0);"><b>로그아웃</b></a></div >	
-	  
-	 
- </div>
+		<div class="sidem">
+			<div class="sidem_a ">
+				<div class="items sidem_mm">
+					<a><img src="../resources/img/icon10.jpg" height="40"
+						width="40" /></a>
+				</div>
+				<div class="items my-f1  sidem_mm1">홍길동</div>
+			</div>
+
+			<div class="sidem_b ">
+				<div class="items sidem_mm">
+					<a><img src="../resources/img/icon10.jpg" height="40"
+						width="40" /></a>
+				</div>
+				<div class="items sidem_mm">
+					<a><img src="../resources/img/icon10.jpg" height="40"
+						width="40" /></a>
+				</div>
+				<div class="items sidem_mm">
+					<a><img src="../resources/img/icon10.jpg" height="40"
+						width="40" /></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="sidem-bg"></div>
 
 
-  <!-- 메뉴 색깔 ------------------------------------------------------------------------------------------>
-  <div id="header-row">
-  
-    <div class="container">
-      <div class="row">
-              <!--로그-->
-			  
-              <div class="span3"><a class="brand" href="#"><img src="../resources/img/logo.png"/></a></div>
-              <!-- /LOGO -->
+		<div class="sidem2">
+			<div class="items2 items2-mm1">
+				<div class="sidem2-f">등급</div>
+				<br> <a><img src="../resources/img/grade/gold.png"
+					height="90" width="90" /></a><br>
+				<br> gold
+			</div>
 
-            <!-- 메뉴 -->  
-              <div class="">
-                <div class="navbar  pull-right">
-                  <div class="navbar-inner">
-				  
-                    <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</a>
-                    
-					
-					<div class="nav-collapse collapse navbar-responsive-collapse"><!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
-                    <ul class="nav">
-                        <li><a href="index.html" style="color:rgb(0, 0, 0);"><b>칵테일 설명</b></a></li>
-                        <li><a href="service.html" style="color:rgb(0, 0, 0);"><b>레시피</b></a></li>
-                        <li><a href="service.html" style="color:rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-                        <li><a href="blog.html" style="color:rgb(0, 0, 0);"><b>top100</b></a></li>						
-         
-                        <li><a>  </a></li>
-						<li><a>  </a></li>
-						<li><a>  </a></li>
-						<li><a>  </a></li>
-						<li><a>  </a></li>
-						
-                        <li><a href="#">ㅁ</a></li>
-                        <li><a href="#">ㅁ</a></li>
-                        <li><a href="#">ㅁ</a></li>	
-						<li><a href="#">ㅁ</a></li>
-                        <li><a href="blog.html">ㅁ</a></li>	
-		 
-                    </ul>
-                  
-					</div>
-					
-					
-					<!-- ================================================================================= -->
-					<!--<div class="nav-collapse collapse navbar-responsive-collapse" >
+			<div class=" sidem-bg2"></div>
+
+			<div class="items2 items2-mm2">
+				<div class="sidem2-f">
+					<!-- 로그인 XXXXXXXXXXXX -->
+					<c:if test="${member == null }">
+						<div class="login_button">
+							<a href="/member/login">로그인 후 이용해보세요.</a>
+						</div>
+						<span><a href="/member/join">회원가입</a></span>
+					</c:if>
+					<!-- 로그인 OOOOOOOOOOOO -->
+					<c:if test="${member != null }">
+						<div class="login_success_area">
+							<span> 회원 : ${member.memberName}</span> <span> 충전금액 : <fmt:formatNumber
+									value="${member.money}" pattern="\#,###.##" /></span> <span>
+								포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###" />
+							</span> <a href="/member/logout.do">로그아웃</a>
+						</div>
+					</c:if>
+					<!-- <a class="btn btn-large btn-danger" href="mypage">  </a> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="sidem-bg3"></div>
+
+
+		<!--  login off -->
+		<c:if test="${member == null}">
+			<div class="sidem-mm4 sidem2-f2">
+				<a href="/member/login">로그인</a>
+			</div>
+			<div class="sidem-bg3"></div>
+			<div class="sidem-mm5 sidem2-f2">
+				<a href="/member/join">회원가입</a>
+			</div>
+		</c:if>
+		<!-- login on -->
+		<c:if test="${member != null}">
+			<c:if test="${member.adminCk == 1}">
+				<div class="sidem-mm4 sidem2-f2">
+					<a href="/admin/main">관리자 페이지</a>
+				</div>
+				<div class="sidem-bg3"></div>
+			</c:if>
+			<div class="sidem-mm4 sidem2-f2">
+				<a id="gnb_logout_button" style="color: rgb(0, 0, 0);"><b>로그아웃</b></a>
+			</div>
+			<div class="sidem-bg3"></div>
+			<div class="sidem-mm5 sidem2-f2">
+				<a href="service.html" style="color: rgb(0, 0, 0);"><b>츨겨찾기</b></a>
+			</div>
+		</c:if>
+		<div class="sidem-bg3"></div>
+
+		<div class="sidem-mm4 sidem2-f2">
+			<a href="service.html" style="color: rgb(0, 0, 0);"><b>Q & A</b></a>
+		</div>
+		<div class="sidem-bg3"></div>
+
+		<div class="sidem-mm5 sidem2-f2">
+			<a href="blog.html" style="color: rgb(0, 0, 0);"><b>공지사항</b></a>
+		</div>
+		<div class="sidem-bg3"></div>
+
+		<div class="sidem-mm4 sidem2-f2">
+			<a href="service.html" style="color: rgb(0, 0, 0);"><b>고객센터</b></a>
+		</div>
+		<div class="sidem-bg3"></div>
+
+		<div class="sidem-mm5 sidem2-f2">
+			<a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a>
+		</div>
+		<div class="sidem-bg3"></div>
+
+
+	</div>
+
+
+	<!-- 메뉴 색깔 ------------------------------------------------------------------------------------------>
+	<div id="header-row">
+
+		<div class="container">
+			<div class="row">
+				<!--로그-->
+
+				<div class="span3">
+					<a class="brand" href="main"><img src="../resources/img/logo.png" /></a>
+				</div>
+				<!-- /LOGO -->
+
+				<!-- 메뉴 -->
+				<div class="">
+					<div class="navbar  pull-right">
+						<div class="navbar-inner">
+
+							<a data-target=".navbar-responsive-collapse"
+								data-toggle="collapse" class="btn btn-navbar"> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+							</a>
+
+
+							<div class="nav-collapse collapse navbar-responsive-collapse">
+								<!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
+								<ul class="nav">
+									<li><a href="main" style="color: rgb(0, 0, 0);"><b>칵테일
+												설명</b></a></li>
+									<li><a href="cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
+									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
+									<li><a href="blog.html" style="color: rgb(0, 0, 0);"><b>top100</b></a></li>
+
+									<li><a> </a></li>
+									<li><a> </a></li>
+
+									<!-- 우상단 비어있는 공간 -->
+
+									<!-- login off -->
+									<c:if test="${member == null}">
+										<li><a href="/member/login"> 로그인 </a></li>
+										<li><a href="/member/join">회원가입</a></li>
+									</c:if>
+									<!-- login on -->
+									<c:if test="${member != null}">
+										<c:if test="${member.adminCk == 1}">
+											<li><a href="/admin/main">관리자 페이지</a></li>
+										</c:if>
+										<li><a href="/member/logout.do">로그아웃</a></li>
+										<li><a href="../mypage">마이페이지</a></li>
+										<li><a>장바구니</a></li>
+									</c:if>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ================================================================================= -->
+						<!--<div class="nav-collapse collapse navbar-responsive-collapse" >
 						<ul class="nav">
 						<li><a href="service.html">레시피</a></li>
                         <li><a href="service.html">자유게시판</a></li>
                         <li><a href="blog.html">top100</a></li>	
 							</ul>
 					</div>	-->
-                  </div>
-                </div>
-              </div>
-            <!-- MAIN NAVIGATION -->  
-      </div>
-    </div>
-  </div>
-  <!-- /HEADER ROW -->
+					</div>
+				</div>
+			</div>
+			<!-- MAIN NAVIGATION -->
+		</div>
+	</div>
+	<!-- /HEADER ROW -->
 
   
   <div class="container">
@@ -203,46 +311,39 @@
 	
     <div class="slidecontainer">
 	<div class="slider-f1">도수 :  </div>
-	<div class="slider-f2">최대도수 </div>
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        <p><span id="value"></span></p>
+	<div class="slider-f2">최소도수 </div>
+        <input type="range" min="1" max="50" class="slider" id="dosu1">
+       
 		
-		<div class="slider-f1">최소도수 </div>
-		<input type="range" min="1" max="100" value="50" class="slider" id="a">
+		<div class="slider-f1">최대도수 </div>
+		<input type="range" min="1" max="50" class="slider" id="dosu2">
 		
-        <div class="slider-f2"> 도수 : <span id="b"></span></div>
+        <div class="slider-f2"> 도수 :  <span id="b"></span>~<span id="d"></span></div>
 		
-		  
-		
-		
-		<a class="btn btn-large btn-danger Search_button" href="#">도수 추가</a><br>
+		  		
+		<a class="btn btn-large btn-danger Search_button" id="tag3">도수 추가</a><br>
     </div>
 
 <!-- 도수-->
     <script>
-		//$("#myRange")
-		//.on("click", function (e) {	
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("value");
-        slider.value;
-        
+		 var slider1 = document.getElementById("dosu1");//최소도수
+        var output1 = document.getElementById("b");
 		
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-        }
-		//})
-    </script>
-<!-- 도수-->
-    <script>
-        var slider = document.getElementById("a");
-        var output = document.getElementById("b");
-        output.innerHTML = slider.value;
+        var slider2 = document.getElementById("dosu2");//최대도수
+        var output2 = document.getElementById("d");
         
-        slider.oninput = function() {
-            output.innerHTML = this.value;
+		output1.innerHTML = slider1.value;
+        output2.innerHTML = slider2.value+ '%';
+         
+		  slider1.oninput = function() {
+            output1.innerHTML = this.value;
         }
+        slider2.oninput = function() {
+            output2.innerHTML = this.value + '%';
+        }
+
+		
     </script>
-   
    
    <br><Br>
  
@@ -333,9 +434,14 @@ $(document)
     //서버에 전송
     $("#tag-form").on("submit", function (e) {
         var value = marginTag(); // return array
+        if (value != ""){
         $("#rdTag").val(value); 
-
         $(this).submit();
+        
+        }else{
+        	alert("태그를 선택해주세요.");
+        	return false;
+    	}
     });
 
 //체크박스
@@ -397,7 +503,50 @@ $("#tag2")
         
       });
 
-
+//도수 추가
+$("#tag3")
+      .on("click", function (e) {
+	  var slider1 = document.getElementById("dosu1");
+         var slider2 = document.getElementById("dosu2");
+		 var ss1 =slider1.value;
+      	 var ss2 =slider2.value;  
+			 
+			   var tagValue =slider1.value+ '~'+slider2.value;
+			   
+			   
+			if (tagValue !== "") {
+		     var result = Object.values(tag)
+              .filter(function (word) {
+                return word === tagValue;
+              })
+			if(ss1 <= ss2){
+            // 태그 중복 검사
+            if (result.length == 0) {
+              $("#tag-list")
+                .append(" <li class='chip'>" + tagValue + '%' + " <svg class='chip-svg' idx='" + counter + "'><path d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'></path></svg></li>");
+              addTag(tagValue);
+              tagValue = ""
+           	  document.getElementById("dosu1").value = ss1;
+              document.getElementById("dosu2").value = ss2;
+              document.getElementById("b").value = ss1;
+              document.getElementById("d").value = ss2+"%";
+            }
+             else {
+              alert("중복됩니다.");
+            }
+			}else {
+              alert("최대도수가 최소도수보다 작습니다. 다시 입력해주세요");
+            }
+			
+			
+			
+			
+          }
+          e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        
+      });
+      
+      
     // 삭제 버튼
     $(document)
       .on("click", ".chip-svg", function (e) {
@@ -408,8 +557,182 @@ $("#tag2")
           .parent()
           .remove();
       });
+      
+     	
+ // 이미지 업로드
+    $("input[type='file']").on("change", function(e){
+    	
+    	let formData = new FormData();
+    	let fileInput = $('input[name="uploadFile"]');
+		let fileList = fileInput[0].files;
+		let fileObj = fileList[0];
+		
+		
+		if(!fileCheck(fileObj.name, fileObj.size)){
+			return false;
+		}
+		
+		formData.append("uploadFile", fileObj);
+		
+		// 이미지 업로드
+		$.ajax({
+			url: '/uploadAjaxImg',
+	    	processData : false,
+	    	contentType : false,
+	    	data : formData,
+	    	type : 'POST',
+	    	dataType : 'text',
+	    	async : false,
+	    	success:function(data){
+	    		//alert(data);
+	    		result_data = data; // result_data : 업로드된 파일 경로
+	    	}
+		
+		});	
+		
+		//alert(result_data); // 이미지 경로 확인용 alert
+		
+		var result_data2 = new Array(); //이미지 인식후 초기 리턴값 *영어
+		var result_data3 = new Array(); //이미지 인식후 변환 리턴값 *영어 -> 한글
+		
+		// 이미지 객체 인식
+		$.ajax({
+			url : "/DetectImg",
+			type : "post",
+			data : {
+				filePath : result_data,
+			},
+			dataType: "json",
+			async : false,
+			success : function(data) {
+				alert(data); // 리턴값 확인용 alert
+
+				//result_data2 = data; // 감지된 객체 이름
+				
+				for(var i=0; data[i] != null; i++) {
+					result_data2[i] = data[i];
+				}
+				
+		     },
+			 error : function() {
+				alert("이미지 인식중 문제가 발생했습니다");
+			 }
+		     
+		});
+				
+		//var tagValue = result_data2;
+		
+		//영문 한글 변환, 키워드 체크박스에 있는 과일들, 코코넛은 결과 x
+		for(var i = 0; i<result_data2.length; i++){
+        		
+        		switch (result_data2[i]) {
+				case "Orange":
+					result_data3[i] = "오렌지";
+					break;
+					
+				case "Apple":
+					result_data3[i] = "사과";
+					break;
+					
+				case "Lemon":
+					result_data3[i] = "레몬";
+					break;
+					
+				case "Grapefruit":
+					result_data3[i] = "자몽";
+					break;
+					
+				case "Pineapple":
+					result_data3[i] = "파인애플";
+					break;
+					
+				case "Coconut":
+					result_data3[i] = "코코넛";
+					break;
+				
+				case "Cantaloupe":
+					result_data3[i] = "멜론";
+					break;
+					
+				case "Cantaloupe":
+					result_data3[i] = "멜론";
+					break;
+					
+				case "Packaged goods":
+					result_data3[i] = "위스키";
+					break;
+					
+				default:
+					result_data3[i] = "";
+					break;
+				}
+        		
+        	}
+		
+		// 인식 태그 추가
+		var  tagValue = ""
+		
+		for (var i=0; i<result_data3.length ; i++) {
+        //if (result_data2[i].checked == true) 
+        	
+        	
+           	//tagValue = result_data2[i];
+			tagValue = result_data3[i];
+           	
+			if (tagValue !== "") {
+	            var result = Object.values(tag)
+	             .filter(function (word) {
+	               return word === tagValue;
+	             })
+
+	           // 태그 중복 검사
+	           if (result.length == 0) {
+	             $("#tag-list")
+	               .append(" <li class='chip'>" + tagValue + " <svg class='chip-svg' idx='" + counter + "'><path d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'></path></svg></li>");
+	             addTag(tagValue);
+	             tagValue = ""
+	           }
+	       
+	         e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+	       	}
+		}
+		
+		if(window.FileReader){  // modern browser
+		      var filename = $(this)[0].files[0].name;
+		    } 
+		    else {  // old IE
+		      var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+		    }
+		    
+		    // 추출한 파일명 삽입
+		    $(this).siblings('.choose_file').val(filename);
+		
+		    // value reset
+		    event.target.value = '';
+  	});
+      
+    /* var, method related with attachFile */
+	let regex = new RegExp("(.*?)\.(jpg|png)$");
+	let maxSize = 1048576; //1MB	
+	
+	function fileCheck(fileName, fileSize){
+
+		if(fileSize >= maxSize){
+			alert("파일 사이즈 초과");
+			return false;
+		}
+			  
+		if(!regex.test(fileName)){
+			alert("해당 종류의 파일은 업로드할 수 없습니다.");
+			return false;
+		}
+		
+		return true;		
+		
+	}
+ 
   })
-    </script>
+  </script>
 	
 	  
 <!-- 세로 메뉴-->
@@ -509,7 +832,16 @@ $("#tag2")
 
  <!-- 카메라, 추가버튼-->
    <div class="came_bnt_mm ">
-    <img src="../resources/img/camera2.jpg" width="25px" height="25px" class="camera2">
+				<div class="form_section">
+					<div class="form_section_content">
+						<input class="choose_file" value="선택한 파일" disabled="disabled" >
+					
+						<label for="fileItem">파일선택</label> 
+						<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
+					</div>
+				</div>
+
+				<!-- <img src="../resources/img/camera2.jpg" width="25px" height="25px" class="camera2"> -->
 	<a type="button" class="btn btn-large btn-danger Search_bnt  " id="tag" >추가</a><br>
 	</div>
    </div>
@@ -520,7 +852,7 @@ $("#tag2")
    <div class="Searchba">
    
    <input type="text" placeholder="재료 입력" id="inp"/>
-   <button id="tag2"> 검색 </button>
+   <button id="tag2"> 키워드 추가 </button>
    </div>
    
 
@@ -530,9 +862,10 @@ $("#tag2")
 
 <!-- chip이 들어가는 부분-->
          <ul id="tag-list">
+         
         </ul>
   </div>
-      <form action="cocktailList" method="GET" id="tag-form">
+      <form action="cocktailList2" method="GET" id="tag-form">
             <input type="hidden" value="" name="tag" id="rdTag" />
             <button type="submit" class="chip-btn">검색</button>
         </form>
@@ -548,16 +881,23 @@ $("#tag2")
    
    <br><br><br><br><br>
 
-   
-   
-   
-</div>
+	<script>
+		/* gnb_area 로그아웃 버튼 작동 */
+		$("#gnb_logout_button").click(function() {
+			//alert("버튼 작동");
+			$.ajax({
+				type : "POST",
+				url : "/member/logout.do",
+				success : function(data) {
+					alert("로그아웃 성공");
+					document.location.reload();
+				}
+			}); // ajax 
+		});
+	</script>
 
 
 <!-- /.Row View -->
-
-
-
 <!--Footer
 ==========================-->
 

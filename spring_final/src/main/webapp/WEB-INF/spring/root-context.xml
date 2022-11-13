@@ -19,7 +19,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:mysql://localhost:3306/cocktail_db?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="q1w2e3r4"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 
 
@@ -53,6 +53,7 @@
 			</props>
 		</property>
 	</bean>
+	
 	<!-- 네이버 메일 설정 -->
 	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
 		<property name="host" value="smtp.naver.com"/> 메이서버 호스트 <property name="port" 
@@ -65,6 +66,13 @@
 		</props> </property> </bean> -->
 
 
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"></property>
+	</bean>
+	
+	<tx:annotation-driven />
+	<task:annotation-driven/>
+	
 	<mybatis-spring:scan
 		base-package="com.spring.mapper" />
 	<context:component-scan
@@ -72,4 +80,5 @@
 	<context:component-scan
 		base-package="com.spring.service"></context:component-scan>
 
+	<context:component-scan base-package="com.vam.task"></context:component-scan>
 </beans>

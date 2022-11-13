@@ -149,11 +149,11 @@
 							<div class="nav-collapse collapse navbar-responsive-collapse">
 								<!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
 								<ul class="nav">
-									<li><a href="main" style="color: rgb(0, 0, 0);"><b>칵테일
+									<li><a href="../explain" style="color: rgb(0, 0, 0);"><b>칵테일
 												설명</b></a></li>
 									<li><a href="../cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
 									<li><a href="../service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-									<li><a href="blog.html" style="color: rgb(0, 0, 0);"><b>top100</b></a></li>
+									<li><a href="../top30" style="color: rgb(0, 0, 0);"><b>Top30</b></a></li>
 
 									<li><a> </a></li>
 									<li><a> </a></li>
@@ -172,7 +172,7 @@
 										</c:if>
 										<li><a href="/member/logout.do">로그아웃</a></li>
 										<li><a href="../mypage">마이페이지</a></li>
-										<li><a>장바구니</a></li>
+										
 									</c:if>
 								</ul>
 							</div>
