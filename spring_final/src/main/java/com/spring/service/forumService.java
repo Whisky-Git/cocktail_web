@@ -28,7 +28,7 @@ public interface forumService {
     /* 게시판 총 갯수 */
     public int getTotal(Criteria cri);
     
-    public void viewCount(int forum_no);
+ public void viewCount(int forum_no);
     
     /* 상품 id 이름 */
 	public forumVO getforumName(int forum_no);

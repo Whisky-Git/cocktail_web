@@ -57,24 +57,36 @@ public class Criteria {
 		this.amount = amount;
 	}
 
-	public int getSkip() {
-		return skip;
+	public int getForum_no() {
+		return forum_no;
 	}
 
-	public void setSkip(int skip) {
-		this.skip = skip;
+	public int getSkip() {
+		return skip;
 	}
 
 	public String getKeyword() {
 		return keyword;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
 	public String getType() {
 		return type;
+	}
+
+	public String[] getTypeArr() {
+		return typeArr;
+	}
+
+	public void setForum_no(int forum_no) {
+		this.forum_no = forum_no;
+	}
+
+	public void setSkip(int skip) {
+		this.skip = skip;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	public void setType(String type) {
@@ -82,20 +94,8 @@ public class Criteria {
 		this.typeArr = type.split("");
 	}
 
-	public String[] getTypeArr() {
-		return typeArr;
-	}
-
 	public void setTypeArr(String[] typeArr) {
 		this.typeArr = typeArr;
-	}
-
-	public int getForum_no() {
-		return forum_no;
-	}
-
-	public void setForum_no(int forum_no) {
-		this.forum_no = forum_no;
 	}
 
 	@Override
@@ -103,6 +103,7 @@ public class Criteria {
 		return "Criteria [forum_no=" + forum_no + ", pageNum=" + pageNum + ", amount=" + amount + ", skip=" + skip
 				+ ", keyword=" + keyword + ", type=" + type + ", typeArr=" + Arrays.toString(typeArr) + "]";
 	}
+
 
 	
 	

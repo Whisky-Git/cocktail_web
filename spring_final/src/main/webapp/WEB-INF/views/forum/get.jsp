@@ -49,10 +49,16 @@ textarea{
 	padding-left : 80px;
 	margin-top : 50px;
 }
-
-
-
- /* 리뷰쓰기 버튼 */
+#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+	
+	/* 리뷰쓰기 버튼 */
   .reply_button_wrap{
   	padding : 10px;
   }
@@ -175,7 +181,6 @@ textarea{
     color: white; 
   	cursor: pointer;
   }
-
 </style>
 </head>
 <body>
@@ -187,6 +192,11 @@ textarea{
 	<div class="input_wrap">
 		<label>게시판 제목</label>
 		<input name="" readonly="readonly" value='<c:out value="${pageInfo.forum_title}"/>' >
+	</div>
+    <div class="input_wrap">
+        <label>상품 이미지</label>
+			<div id="uploadReslut">
+			
 	</div>
 	<div class="input_wrap">
 		<label>게시판 내용</label>
@@ -204,14 +214,13 @@ textarea{
 		<label>게시판 작성자</label>
 		<input name="updateDate" readonly="readonly" value='<c:out value="${pageInfo.forum_memberID}"/>' >
 	</div>	
-
+	
 	<div class="reply_button_wrap">
 					<button>댓글 쓰기</button>
 	</div>
 	<div class="reply_not_div">
-					
-				</div>
-				<ul class="reply_content_ul">
+	</div>
+	<ul class="reply_content_ul">
 				<!--
 				<li>
 						<div class="comment_wrap">
@@ -229,7 +238,7 @@ textarea{
 						</div>
 					</li>
 					-->
-				</ul>
+	</ul>
 				<div class="repy_pageInfo_div">
 					<ul class="pageMaker">
 					
@@ -252,7 +261,6 @@ textarea{
 						 -->
 					</ul>
 				</div>
- 
 	<div class="btn_wrap">
 		<a class="btn" id="list_btn">목록 페이지</a> 
 		<a class="btn" id="modify_btn">수정 하기</a>
@@ -266,6 +274,41 @@ textarea{
 		
 	</form>
 <script>
+
+$(document).ready(function() {
+/* 이미지 정보 호출 */
+let forum_no = '<c:out value="${pageInfo.forum_no}"/>';
+let uploadReslut = $("#uploadReslut");			
+
+	$.getJSON("getAttachList", {forum_no : forum_no}, function(arr){	
+	
+	if(arr.length === 0){			
+		let str = "";
+		str += "<div id='result_card'>";
+		str += "<img src='/resources/img/noname.png'>";
+		str += "</div>";
+		
+		uploadReslut.html(str);	
+	}	
+	
+	let str = "";
+	let obj = arr[0];	
+	
+	let fileCallPath = encodeURIComponent(obj.forum_uploadPath + "/s_" + obj.forum_uuid + "_" + obj.forum_fileName);
+	str += "<div id='result_card'";
+	str += "data-path='" + obj.forum_uploadPath + "' data-uuid='" + obj.forum_uuid + "' data-filename='" + obj.forum_fileName + "'";
+	str += ">";
+	str += "<img src='display?fileName=" + fileCallPath +"'>";
+	str += "</div>";		
+	
+	uploadReslut.html(str);						
+	
+	});	
+});
+
+
+
+
 	let form = $("#infoForm");
 	
 	$("#list_btn").on("click", function(e){
@@ -409,6 +452,39 @@ textarea{
 			
 			replyListInit();
 				
+		 });
+	 
+		/* 리뷰 수정 버튼 */
+		 $(document).on('click', '.update_reply_btn', function(e){
+				
+				e.preventDefault();
+				let forum_replyId = $(this).attr("href");		 
+				let popUrl = "/forum/replyUpdate?forum_replyId=" + forum_replyId + "&forum_no=" + '${pageInfo.forum_no}';	
+				let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"	
+				
+				window.open(popUrl,"리뷰 수정",popOption);			
+			 
+				
+		 });
+		
+			/* 리뷰 삭제 버튼 */
+		 $(document).on('click', '.delete_reply_btn', function(e){
+
+			 e.preventDefault();
+				let forum_replyId = $(this).attr("href");	
+				
+				$.ajax({
+					data : {
+						forum_replyId : forum_replyId,
+						forum_no : '${pageInfo.forum_no}'
+					},
+					url : '/forumreply/delete',
+					type : 'POST',
+					success : function(result){
+						replyListInit();
+						alert('삭제가 완료되엇습니다.');
+					}
+				});	
 		 });
 	
 </script>	

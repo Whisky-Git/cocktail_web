@@ -11,6 +11,7 @@ public interface forumMapper {
 	
 	public void enroll(forumVO forum);
 	
+
 	/* 寃뚯떆�뙋 紐⑸줉 */
     public List<forumVO> getList();
     
@@ -36,4 +37,8 @@ public interface forumMapper {
 	
 	/* 상품 id 이름 */
 	public forumVO getforumName(int forum_no);
+
+	
+	/* 지정 상품 이미지 전체 삭제 */
+	public void deleteImageAll(int forum_no);
 }

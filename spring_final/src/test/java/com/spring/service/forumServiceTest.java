@@ -86,7 +86,8 @@ public class forumServiceTest {
 		image1.setForum_uploadPath("test image 1");
 		image1.setForum_uuid("test1111");
 		
-		image2.setForum_fileName("test Image 2");
+		 // 수정 코드
+        image2.setForum_fileName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		image2.setForum_uploadPath("test image 2");
 		image2.setForum_uuid("test2222");
 		

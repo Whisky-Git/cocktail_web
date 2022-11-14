@@ -26,18 +26,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.mapper.forum_AttachMapper;
 import com.spring.model.Criteria;
 import com.spring.model.PageMakerDTO;
 import com.spring.model.forumVO;
 import com.spring.model.forum_imageVO;
+import com.spring.model.forum_replyDTO;
 import com.spring.service.forumService;
+import com.spring.service.forum_replyService;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -50,6 +52,12 @@ public class forumController {
     @Autowired
     private forumService bservice;
     
+    
+    @Autowired
+	private forum_AttachMapper attachMapper;
+    
+    @Autowired
+	private forum_replyService replyService;
     
     /* 게시판 목록 페이지 접속(페이징 적용) */
     @GetMapping("/list")
@@ -208,19 +216,11 @@ public class forumController {
     /* 게시판 조회 */
     @GetMapping("/get")
     public void forumGetPageGET(int forum_no, Model model,Criteria cri) {
-        bservice.viewCount(forum_no);
+
+    	bservice.viewCount(forum_no);
         model.addAttribute("pageInfo", bservice.getPage(forum_no));
         model.addAttribute("cri",cri);
     }
-    
-    /* 리뷰 쓰기 */
-	@GetMapping("/replyEnroll")
-	public String replyEnrollWindowGET(int forum_no, Model model) {
-		forumVO forum = bservice.getforumName(forum_no);
-		model.addAttribute("pageInfo", forum);
-		
-		return "/forum/replyEnroll";
-	}
     
     /* 수정 페이지 이동 */
     @GetMapping("/modify")
@@ -310,6 +310,33 @@ public class forumController {
 		
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 		
+	}
+	
+	/* 이미지 정보 반환 */
+	@GetMapping(value="/getAttachList")
+	public ResponseEntity<List<forum_imageVO>> getAttachList(int forum_no){
+			log.info("getAttachList.........." + forum_no);
+		
+			return new ResponseEntity<List<forum_imageVO>>(attachMapper.getAttachList(forum_no), HttpStatus.OK);
+	}
+	
+	/* 리뷰 쓰기 */
+	@GetMapping("/replyEnroll")
+	public String replyEnrollWindowGET(int forum_no, Model model) {
+		forumVO forum = bservice.getforumName(forum_no);
+		model.addAttribute("pageInfo", forum);
+		
+		return "/forum/replyEnroll";
+	}
+	
+	/* 리뷰 수정 팝업창 */
+	@GetMapping("/replyUpdate")
+	public String replyUpdateWindowGET(forum_replyDTO dto, Model model) {
+		forumVO forum = bservice.getforumName(dto.getForum_no());
+		model.addAttribute("pageInfo", forum);
+		model.addAttribute("replyInfo", replyService.getUpdateReply(dto.getForum_replyId()));
+		
+		return "/forum/replyUpdate";
 	}
     
 }

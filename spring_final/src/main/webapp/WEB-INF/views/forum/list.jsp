@@ -88,7 +88,19 @@
   .search_area select{
   	height: 35px;
   }
+  
+  #result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+  
   </style>
+  
+  
 </head>
 <body>
 <h1>목록페이지입니다.</h1>
@@ -99,11 +111,13 @@
 		<thead>
 			<tr>
 				<th class="bno_width">번호</th>
+
 				<th class="title_width">제목</th>
 				<th class="regdate_width">작성일</th>
 				<th class="updatedate_width">조회수</th>
 				<th class="updatedate_width">추천수</th>
 				<th class="updatedate_width">작성자</th>
+
 			</tr>
 		</thead>
 			<c:forEach items="${list}" var="list">
@@ -119,6 +133,7 @@
                 <td><c:out value="${list.forum_views}"/></td>
                 <td><c:out value="${list.forum_recommend}"/></td>
                 <td><c:out value="${list.forum_memberID}"/></td>
+				
             </tr>
         </c:forEach>
 	</table>
@@ -165,10 +180,14 @@
         <input type="hidden" name="type" value="${pageMaker.cri.type }">
     </form>
 </div>
+
 <script>
 
     $(document).ready(function(){
     
+
+    	
+    	
     	let result = '<c:out value="${result}"/>';
     	
     		checkAlert(result);
@@ -188,7 +207,8 @@
             if(result === "delete success"){
                 alert("삭제가 완료되었습니다.");
             }
-        }    
+        } 
+	
     });
     
     

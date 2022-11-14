@@ -99,6 +99,13 @@
 	
 	</insert>
     
+    <!-- 지정 상품 이미지 전체 삭제 --> 
+	<delete id="deleteImageAll">
+	
+		delete FROM forum_image where forum_no = #{forum_no}
+	
+	</delete>
+    
     <update id="viewCount">
     
 		update forum set forum_views = forum_views+1 where forum_no=#{forum_no};
@@ -112,7 +119,6 @@
 	
 	
 	</select>
-    
     
     
   </mapper>

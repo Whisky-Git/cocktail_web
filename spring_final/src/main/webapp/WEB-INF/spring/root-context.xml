@@ -17,12 +17,18 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost:3306/cocktail_DB?serverTimezone=Asia/Seoul"></property>
+			value="jdbc:mysql://localhost:3306/cocktail_db?serverTimezone=Asia/Seoul"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="asdqwe123"></property>
 	</bean>
 
-
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"></property>
+	</bean>
+	
+	<tx:annotation-driven />
+	
+	
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>

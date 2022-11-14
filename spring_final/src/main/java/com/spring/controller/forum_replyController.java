@@ -35,4 +35,16 @@ public class forum_replyController {
 		return service.forum_replyList(cri);
 	}
 	
+	/* 댓글 수정 */
+	@PostMapping("/update")
+	public void replyModifyPOST(forum_replyDTO dto) {
+		service.updateReply(dto);
+	}
+	
+	/* 댓글 삭제 */
+	@PostMapping("/delete")
+	public void replyDeletePOST(forum_replyDTO dto) {
+		service.deleteReply(dto);
+	}
+	
 }

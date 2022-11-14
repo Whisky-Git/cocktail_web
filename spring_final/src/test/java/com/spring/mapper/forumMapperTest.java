@@ -106,16 +106,27 @@ public class forumMapperTest {
     }
     */
 
-    @Test
-	public void imageEnrollTest() {
+//    @Test
+//	public void imageEnrollTest() {
+//		
+//		forum_imageVO vo = new forum_imageVO();
+//		vo.setForum_no(100);
+//		vo.setForum_uploadPath("test");
+//		vo.setForum_fileName("test");
+//		vo.setForum_uuid("tesaawsdasda");
+//		
+//		mapper.imageEnroll(vo);
+//		
+//	}
+    /* 지정 상품 이미지 삭제 */
+	@Test
+	public void deleteImageAllTest() {
 		
-		forum_imageVO vo = new forum_imageVO();
-		vo.setForum_no(100);
-		vo.setForum_uploadPath("test");
-		vo.setForum_fileName("test");
-		vo.setForum_uuid("tesaawsdasda");
+		int forum_no = 6;
 		
-		mapper.imageEnroll(vo);
+		mapper.deleteImageAll(forum_no);
 		
 	}
+    
+   
 }

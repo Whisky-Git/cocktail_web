@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.mapper.forumMapper;
 import com.spring.model.Criteria;
@@ -29,8 +30,9 @@ public class forumServicelmp implements forumService{
 			
         	
         	attach.setForum_no(forum.getForum_no());
-        	System.out.println("attach : " + attach);
+        	
         	mapper.imageEnroll(attach);
+        	System.out.println("attach : " + attach);
         	
         	
 		});
@@ -50,10 +52,26 @@ public class forumServicelmp implements forumService{
     }    
     
     /* 게시판 수정 */
+    @Transactional
     @Override
     public int modify(forumVO forum) {
-        
-        return mapper.modify(forum);
+    	int result = mapper.modify(forum);
+		
+		if(result == 1 && forum.getImageList() != null && forum.getImageList().size() > 0) {
+			
+			mapper.deleteImageAll(forum.getForum_no());
+			
+			forum.getImageList().forEach(attach -> {
+				
+				attach.setForum_no(forum.getForum_no());
+				mapper.imageEnroll(attach);
+				
+			});
+			
+		}
+		
+		return result;
+     //   return mapper.modify(forum);
     }
     
     /* 게시판 삭제 */
@@ -75,8 +93,7 @@ public class forumServicelmp implements forumService{
     public int getTotal(Criteria cri) {
         
         return mapper.getTotal(cri);
-    }
-    
+    }    
     @Override
     public void viewCount(int forum_no) {
     	
@@ -88,6 +105,4 @@ public class forumServicelmp implements forumService{
 		
 		return mapper.getforumName(forum_no);
 	}
-    
-    
 }

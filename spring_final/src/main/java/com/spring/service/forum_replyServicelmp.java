@@ -36,4 +36,26 @@ public class forum_replyServicelmp implements forum_replyService {
 	}
 	
 	
+	@Override
+	public int updateReply(forum_replyDTO dto) {
+		
+		int result = mapper.updateReply(dto); 
+		
+		return result;
+	}
+	
+	@Override
+	public forum_replyDTO getUpdateReply(int replyId) {
+		
+		return mapper.getUpdateReply(replyId);
+	}
+	
+	@Override
+	public int deleteReply(forum_replyDTO dto) {
+		
+		int result = mapper.deleteReply(dto.getForum_replyId()); 
+		
+		return result;
+	}
+	
 }
