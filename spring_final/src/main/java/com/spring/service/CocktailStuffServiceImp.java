@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.mapper.CocktailStuffMapper;
 import com.spring.model.CocktailStuffVO;
+import com.spring.model.CocktailVO;
 
 @Service
 public class CocktailStuffServiceImp implements CocktailStuffService {
@@ -30,4 +31,14 @@ public class CocktailStuffServiceImp implements CocktailStuffService {
 	 }
 	
 	
+	 
+		/* 칵테일 등록 */
+		@Override
+	    public void cocktailstuffEnroll(CocktailStuffVO cocktailstuff) throws Exception {
+	        
+			stuffmapper.cocktailstuffEnroll(cocktailstuff);
+	        	        			
+	        
+	    }
+	 
 }

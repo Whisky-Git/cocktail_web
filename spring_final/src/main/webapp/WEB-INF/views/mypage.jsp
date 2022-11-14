@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -30,6 +36,12 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
       <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
+
+
+<script src="../resources/js/side2.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<link href="../resources/css/style2.css" rel="stylesheet">
 		<style>       
 	.wrapper1{
 			width: 1172px;
@@ -158,82 +170,20 @@
     
     
 		</style>
+
     <!-- SCRIPT 
     ============================================================-->  
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../resources/js/bootstrap.min.js"></script>
-      
+      <script src="../resources/js/side.js"></script>
+	  
+	  
       
   </head>
   <body>
   <!--HEADER ROW-->
   
-  <!-- 메뉴 색깔 ------------------------------------------------------------------------------------------>
-  <div id="header-row">
-  
-    <div class="container">
-      <div class="row">
-              <!--로그-->
-              <div class="span3"><a class="brand" href="#"><img src="../resources/img/logo.png"/></a></div>
-              <!-- /LOGO -->
-
-            <!-- 메뉴 -->  
-              <div class="span9">
-                <div class="navbar  pull-right">
-                  <div class="navbar-inner">
-				  
-                    <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</a>
-                    
-					
-					<div class="nav-collapse collapse navbar-responsive-collapse"><!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
-                    <ul class="nav">
-                        <li><a href="index.html" style="color:rgb(0, 0, 0);"><b>칵테일 설명</b></a></li>
-                        <li><a href="service.html" style="color:rgb(0, 0, 0);"><b>레시피</b></a></li>
-                        <li><a href="service.html" style="color:rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-                        <li><a href="blog.html" style="color:rgb(0, 0, 0);"><b>top100</b></a></li>						
-         
-                        <li><a>  </a></li>
-						<li><a>  </a></li>
-						<li><a>  </a></li>
-						<li><a>  </a></li>
-						<li><a>  </a></li>
-						
-                        <li><a href="#">ㅁ</a></li>
-                        <li><a href="#">ㅁ</a></li>
-                        <li><a href="#">ㅁ</a></li>	
-						<li><a href="#">ㅁ</a></li>
-                        <li><a href="blog.html">ㅁ</a></li>	
-		 
-                    </ul>
-                  
-					</div>
-					
-					
-					<!-- ================================================================================= -->
-					<!--<div class="nav-collapse collapse navbar-responsive-collapse" >
-						<ul class="nav">
-						<li><a href="service.html">레시피</a></li>
-                        <li><a href="service.html">자유게시판</a></li>
-                        <li><a href="blog.html">top100</a></li>	
-							</ul>
-					</div>	-->
-
-
-
-
-
-                  </div>
-                </div>
-              </div>
-            <!-- MAIN NAVIGATION -->  
-			
-      </div>
-	  </div></div>
-	  
+  <%@include file="includes/header2.jsp" %>
 	  
 	      <div class="container">
       <br><br>

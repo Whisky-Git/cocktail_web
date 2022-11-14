@@ -20,7 +20,7 @@ public class MemberInforServiceImp implements MemberInforService{
 		
 	}
 	
-	
+	//정보 수정
 	@Override
 	public void updateInfo(MemberInforVO info) throws Exception{
 		
