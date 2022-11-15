@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.mapper.forumMapper">
+  
+  <!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="where (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            forum_title like concat('%',#{keyword},'%') 
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            forum_content like concat('%',#{keyword},'%') 
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            forum_memberID like concat('%',#{keyword},'%' )
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    
+    </sql>
+  
+ 	<!-- 게시판 등록 -->
+ 	<insert id="enroll">
+ 	
+       <selectKey resultType="int" keyProperty="forum_no" order="AFTER">
+  		
+		SELECT MAX(forum_no) FROM forum  
+				
+  		</selectKey>
+  		
+        insert into forum(forum_title, forum_content,forum_views,forum_recommend,forum_memberID) 
+        			values (#{forum_title}, #{forum_content}, #{forum_views}, #{forum_recommend}, #{forum_memberID}) 
+        
+    </insert>
+    
+     <!-- 게시판 목록 -->
+    <select id="getList" resultType="com.spring.model.forumVO">
+    
+        select * from forum
+    
+    </select>
+    
+    <!-- 게시판 조회 -->
+    <select id="getPage" resultType="com.spring.model.forumVO">
+    
+        select * from forum where forum_no = #{forum_no}
+    
+    </select>
+    
+    <!-- 게시판 수정 -->
+    <update id="modify" >
+        update forum set forum_title = #{forum_title},forum_content = #{forum_content} where forum_no = #{forum_no}
+    </update>
+    
+    <!-- 게시판 삭제 -->
+    <delete id="delete">
+    
+        delete from forum where forum_no = #{forum_no}
+    
+    </delete>
+    
+    <!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" resultType="com.spring.model.forumVO">
+    
+        select * from (
+                select forum_no, forum_title, forum_date, forum_content, forum_views,forum_recommend,forum_memberID
+                from forum
+                <if test="keyword != null">
+                    <include refid="criteria"></include>
+                </if>
+                
+                order by forum_no desc) as T1 
+                
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip},#{amount}
+    
+    </select>
+    
+    <!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+    
+        select count(*) from forum
+    	<if test="keyword != null">
+           <include refid="criteria"></include>
+        </if>
+    </select>
+    
+    <!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+
+		insert into forum_image(forum_no, forum_fileName, forum_uploadPath, forum_uuid) values (#{forum_no}, #{forum_fileName}, #{forum_uploadPath}, #{forum_uuid})
+	
+	</insert>
+    
+    <!-- 지정 상품 이미지 전체 삭제 --> 
+	<delete id="deleteImageAll">
+	
+		delete FROM forum_image where forum_no = #{forum_no}
+	
+	</delete>
+    
+    <update id="viewCount">
+    
+		update forum set forum_views = forum_views+1 where forum_no=#{forum_no};
+    
+    </update>
+    
+    <select id="getforumName" resultType="com.spring.model.forumVO">
+	
+		select forum_no, forum_title from forum 
+		where forum_no = #{forum_no}
+	
+	
+	</select>
+    
+    <!-- 지정 게시글 이미지 정보 얻기 -->
+	<select id="getAttachInfo" resultType="com.spring.model.forum_imageVO">
+	
+		select * from forum_image where forum_no = #{forum_no}
+	
+	</select>
+  </mapper>

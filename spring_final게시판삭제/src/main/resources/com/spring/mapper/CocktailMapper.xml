@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.mapper.CocktailMapper">
+  
+		<!-- 칵테일 목록 -->
+    <select id="cocktailGetList" resultType="com.spring.model.CocktailVO">
+    	<choose>
+			<when test ="tag != null">
+				select  *
+       		    from cocktail_recipe
+       		    where
+       		    <foreach collection="tag" item="tag" separator="and">
+	       		    <choose>
+	                  <when test='tag.contains("~")'>
+						<![CDATA[ cocktailAbv >= SUBSTRING_INDEX(#{tag}, '~', 1) and 
+						cocktailAbv <= SUBSTRING_INDEX(SUBSTRING_INDEX(#{tag}, '~', 2), '~', -1)]]>
+	                  </when>
+	                  <otherwise>
+       		    		cocktailMaterials like concat('%',#{tag}, '%')
+	                  </otherwise>
+	              </choose>
+       		    </foreach>
+       		    order by cocktailNo asc 
+        		limit #{skip},#{amount} 
+			</when>
+			<when test = "level != null and level != ''">
+				select *
+				from cocktail_recipe
+				where cocktailLevel = #{level}
+				order by cocktailNo asc 
+        		limit #{skip},#{amount} 
+			</when>
+			<when test = "mbti != null and mbti != ''">
+				select *
+				from cocktail_recipe
+				where cocktailMbti = #{mbti}
+			  </when>
+			  <when test = "season != null and season != ''">
+				select *
+				from cocktail_recipe
+				where cocktailSeason = #{season}
+			  </when>
+			  <when test = "relation != null and relation != ''">
+				select *
+				from cocktail_recipe
+				where cocktailRelation = #{relation}
+			  </when>
+			<otherwise>
+		   		select  *
+     		    from cocktail_recipe 
+       			 <if test="keyword != null">
+           		 where cocktailName like concat('%',#{keyword}, '%')
+       			 </if>
+       			 order by cocktailNo asc 
+        		limit #{skip},#{amount} 
+        	</otherwise>
+		</choose>
+    </select>
+    
+     <!-- 칵테일 수 -->
+      <select id="cocktailGetTotal" resultType="int">
+      	<choose>
+      		<when test="tag != null">
+      			select count(*) from cocktail_recipe
+      			where
+       		    <foreach collection="tag" item="tag" separator="and">
+	       		    <choose>
+	                  <when test='tag.contains("~")'>
+						<![CDATA[ cocktailAbv >= SUBSTRING_INDEX(#{tag}, '~', 1) and 
+						cocktailAbv <= SUBSTRING_INDEX(SUBSTRING_INDEX(#{tag}, '~', 2), '~', -1)]]>
+	                  </when>
+	                  <otherwise>
+       		    		cocktailMaterials like concat('%',#{tag}, '%')
+	                  </otherwise>
+	              </choose>
+       		    </foreach>
+      		</when>
+	   		  <when test = "level != null and level != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailLevel = #{level}
+			  </when>
+			  <when test = "mbti != null and mbti != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailMbti = #{mbti}
+			  </when>
+			   <when test = "season != null and season != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailSeason = #{season}
+			  </when>
+			   <when test = "relation != null and relation != ''">
+				select count(*)
+				from cocktail_recipe
+				where cocktailRelation = #{relation}
+			  </when>
+      		<otherwise>
+      			select count(*) from cocktail_recipe
+          		<if test="keyword != null">
+            	  where cocktailName like concat('%', #{keyword}, '%')
+         		</if>
+      		</otherwise>
+      	</choose>
+          
+          
+      </select>
+      
+      <!-- 칵테일 디테일 페이지 -->
+  	<select id="cocktailGetDetail" resultType="com.spring.model.CocktailVO">
+  	
+  		select * from cocktail_recipe where cocktailNo = #{cocktailNo}
+  	
+  	</select>
+  	
+    <!-- 칵테일 등록 -->
+      <insert id="cocktailEnroll">
+      		
+      	<selectKey resultType="int" keyProperty="cocktailNo" order="AFTER">
+  		
+  			SELECT LAST_INSERT_ID();
+  		
+  		</selectKey>
+  		
+          insert into cocktail_recipe(cocktailName, cocktailMaterials, cocktailRecipes, cocktailAbv, cocktailLevel ,cocktailMbti, cocktailSeason , cocktailRelation) values(#{cocktailName}, #{cocktailMaterials}, #{cocktailRecipes}, #{cocktailAbv}, #{cocktailLevel}, #{cocktailMbti}, #{cocktailSeason}, #{cocktailRelation} )
+ 
+      </insert>
+      
+      <!-- 칵테일 수정 -->
+	<update id="cocktailModify">
+	
+		update cocktail_recipe set cocktailName=#{cocktailName}, cocktailMaterials=#{cocktailMaterials}, cocktailRecipes=#{cocktailRecipes}, cocktailAbv=#{cocktailAbv}, cocktailLevel=#{cocktailLevel}, cocktailMbti=#{cocktailMbti}, cocktailSeason=#{cocktailSeason}, cocktailRelation=#{cocktailRelation} where cocktailNo = #{cocktailNo}
+	
+	</update>
+	
+	<!-- 칵테일 삭제 -->
+  	<delete id="cocktailDelete">
+  	
+  		delete from cocktail_recipe where cocktailNo = #{cocktailNo}
+  	
+  	</delete>
+  	
+  	<!-- 칵테일 이름 리턴 -->
+  	<select id="getCocktailNoName" resultType="com.spring.model.CocktailVO">
+	
+		select cocktailNo, cocktailName from cocktail_recipe
+		where cocktailNo = #{cocktailNo}
+		
+	</select>
+	
+	<!-- 칵테일 랭킹 -->
+	<select id="likeSelect" resultType="com.spring.model.SelectDTO">
+	
+	select cocktailNo, cocktailName, cocktailRating, cocktailLevel
+	from cocktail_recipe
+	order by cocktailRating desc limit 4		
+	
+	</select>
+	
+	<!-- top 30 -->
+	<select id="likeSelect2" resultType="com.spring.model.SelectDTO">
+	
+	select cocktailNo, cocktailName, cocktailRating
+	from cocktail_recipe
+	order by cocktailRating desc limit 30		
+	
+	</select>
+	
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+	
+		insert into cocktail_image(cocktailNo, fileName, uploadPath, uuid) values (#{cocktailNo}, #{fileName}, #{uploadPath}, #{uuid})
+	
+	</insert>
+	
+	<!-- 지정 상품 이미지 전체 삭제 --> 
+	<delete id="deleteImageAll">
+	
+		delete from cocktail_image where cocktailNo = #{cocktailNo}
+	
+	</delete>
+	
+	<!-- 어제자 날짜 이미지 리스트 -->
+	<select id="checkFileList" resultType="com.spring.model.CocktailImageVO">
+	
+		select * from cocktail_image where uploadpath = DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 DAY), '%Y\%m\%d')	
+	
+	</select>
+	
+	<!-- 지정 상품 이미지 정보 얻기 -->
+	<select id="getAttachInfo" resultType="com.spring.model.CocktailImageVO">
+	
+		select * from cocktail_image where cocktailNo = #{cocktailNo}
+	
+	</select>
+	
+	<!-- 비슷한 칵테일 추천 -->
+	<select id="recommandGetList" resultType="com.spring.model.CocktailVO">
+  	
+  		select * from cocktail_recipe where cocktailName in(
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 1), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 2), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 3), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 4), ',', -1),
+		SUBSTRING_INDEX(SUBSTRING_INDEX(#{recommand}, ',', 5), ',', -1))
+  	
+  	</select>
+  	
+  	
+  </mapper>
