@@ -88,12 +88,7 @@ public class BookController {
 	
 	}
 	
-	//keyword 페이지 이동
-		@RequestMapping(value = "/keyword", method = RequestMethod.GET)
-		public void keywordPageGet() {
-			Logger.info("keyword 페이지 진입");
-		
-		}
+
 		
 	//cocktailList 페이지 이동
 		@RequestMapping(value = {"/cocktailList", "/cocktailList2"}, method = RequestMethod.GET)

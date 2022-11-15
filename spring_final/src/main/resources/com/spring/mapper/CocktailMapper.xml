@@ -153,7 +153,7 @@
 	<!-- 칵테일 랭킹 -->
 	<select id="likeSelect" resultType="com.spring.model.SelectDTO">
 	
-	select cocktailNo, cocktailName, cocktailRating
+	select cocktailNo, cocktailName, cocktailRating, cocktailLevel
 	from cocktail_recipe
 	order by cocktailRating desc limit 4		
 	

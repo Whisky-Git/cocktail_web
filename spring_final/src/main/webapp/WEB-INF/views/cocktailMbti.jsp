@@ -40,6 +40,10 @@
 	href="ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="ico/apple-touch-icon-57-precomposed.png">
+<script src="../resources/js/side2.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<link href="../resources/css/style2.css" rel="stylesheet">
 
 <style>
 </style>
@@ -207,7 +211,7 @@
 </style>
 </head>
 <body>
-    <%@include file="includes/header.jsp" %>
+    <%@include file="includes/header2.jsp" %>
     
     <div class="container">
                     <div class="admin_content_subject"><p style= " display: flex; justify-content: center; font-family: 'MaplestoryOTFBold'; margin-top:20px; font-weight:lighter; font-size:50px ">MBTI별 칵테일</p>

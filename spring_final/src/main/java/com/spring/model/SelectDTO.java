@@ -13,8 +13,21 @@ public class SelectDTO {
 	/* 칵테일 평점 */
 	private double cocktailRating;	
 	
+
+	private String cocktailLevel; //난이도
+	
 	/* 상품 이미지 */
 	private List<CocktailImageVO> imageList;
+
+	
+	
+	public String getCocktailLevel() {
+		return cocktailLevel;
+	}
+
+	public void setCocktailLevel(String cocktailLevel) {
+		this.cocktailLevel = cocktailLevel;
+	}
 
 	public int getCocktailNo() {
 		return cocktailNo;
@@ -48,14 +61,19 @@ public class SelectDTO {
 		this.imageList = imageList;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "SelectDTO [cocktailNo=" + cocktailNo + ", cocktailName=" + cocktailName + ", cocktailRating="
+//				+ cocktailRating + ", imageList=" + imageList + "]";
+//	}
+
+	
 	@Override
 	public String toString() {
 		return "SelectDTO [cocktailNo=" + cocktailNo + ", cocktailName=" + cocktailName + ", cocktailRating="
-				+ cocktailRating + ", imageList=" + imageList + "]";
+				+ cocktailRating + ", cocktailLevel=" + cocktailLevel + ", imageList=" + imageList + "]";
 	}
 
-	
-	
 	
     
 }

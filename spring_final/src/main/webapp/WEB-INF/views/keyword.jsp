@@ -13,15 +13,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ShapeBootstrap Clean Template</title>
+<title>칵테일</title>
+<link rel="icon" href="../resources/img/cocktail/47.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Bootstrap -->
     <link href="../resources/css/bootstrap.css?after" rel="stylesheet">
     <link href="../resources/css/bootstrap-responsive.css?after" rel="stylesheet">
-    <link href="../resources/css/style.css?after" rel="stylesheet"> 
-    
+    <link href="../resources/css/style.css" rel="stylesheet"> 
+    <link href="../resources/css/btn.css" rel="stylesheet"> 
     <!--Font-->
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
     
@@ -40,8 +41,67 @@
       <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
 
-
+		<script src="../resources/js/side2.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<link href="../resources/css/style2.css" rel="stylesheet">
+		
 	<style>
+	      /*재료 입력 검색*/
+.Searchba {
+	height: 35px;
+	width : 100%;
+	/* margin-left: 17px;*/
+}
+.Searchba input{
+	font-size:26px;
+	height: 58px;
+	width:73%;
+	padding:10px;
+	border: 0px;
+	outline: none;
+	float:left;
+	border: 2px solid #c9d3dd;
+}
+
+.Searchba button{
+	width:24%;
+	border: 2px solid #c9d3dd;
+	height: 58px;
+
+	background: #ffffff;
+	outline: none;
+	float:left;
+	color: #000000;
+}
+      
+.text-box  {
+
+  font-size: 40px;
+  text-align: center;
+  color: #000000;
+
+  margin: 0;
+
+  /*text-decoration: underline;*/
+}
+.Search-bg2{
+       box-shadow: 5px 5px 5px 5px #E6E6E6;
+		background: #000000;
+		margin-top:30px;
+		margin-bottom:30px;
+		width : 100%;	
+
+		padding-bottom: 10px;
+		border-width: 3px;
+		border-color: #c9d3dd;
+		border-style: solid;
+			border-radius: 20px;
+		}
+ 
+
+ 
+ 
 	.form_section_content input[type="file"] {
 		position: absolute;
 		width: 1px;
@@ -98,217 +158,16 @@
       
   </head>
   <body>
-  <!--HEADER ROW-->
-  <input type="checkbox" id="menuicon">
-<ul>
-	<li>
-		<label for="menuicon">
-			<span></span><span></span><span></span>
-		</label>
-	</li>
-</ul>
-
-
-
-
-	<div class="sidebar">
-
-		<div class="sidem">
-			<div class="sidem_a ">
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-				<div class="items my-f1  sidem_mm1">홍길동</div>
-			</div>
-
-			<div class="sidem_b ">
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-			</div>
-		</div>
-
-		<div class="sidem-bg"></div>
-
-
-		<div class="sidem2">
-			<div class="items2 items2-mm1">
-				<div class="sidem2-f">등급</div>
-				<br> <a><img src="../resources/img/grade/gold.png"
-					height="90" width="90" /></a><br>
-				<br> gold
-			</div>
-
-			<div class=" sidem-bg2"></div>
-
-			<div class="items2 items2-mm2">
-				<div class="sidem2-f">
-					<!-- 로그인 XXXXXXXXXXXX -->
-					<c:if test="${member == null }">
-						<div class="login_button">
-							<a href="/member/login">로그인 후 이용해보세요.</a>
-						</div>
-						<span><a href="/member/join">회원가입</a></span>
-					</c:if>
-					<!-- 로그인 OOOOOOOOOOOO -->
-					<c:if test="${member != null }">
-						<div class="login_success_area">
-							<span> 회원 : ${member.memberName}</span> <span> 충전금액 : <fmt:formatNumber
-									value="${member.money}" pattern="\#,###.##" /></span> <span>
-								포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###" />
-							</span> <a href="/member/logout.do">로그아웃</a>
-						</div>
-					</c:if>
-					<!-- <a class="btn btn-large btn-danger" href="mypage">  </a> -->
-				</div>
-			</div>
-		</div>
-
-		<div class="sidem-bg3"></div>
-
-
-		<!--  login off -->
-		<c:if test="${member == null}">
-			<div class="sidem-mm4 sidem2-f2">
-				<a href="/member/login">로그인</a>
-			</div>
-			<div class="sidem-bg3"></div>
-			<div class="sidem-mm5 sidem2-f2">
-				<a href="/member/join">회원가입</a>
-			</div>
-		</c:if>
-		<!-- login on -->
-		<c:if test="${member != null}">
-			<c:if test="${member.adminCk == 1}">
-				<div class="sidem-mm4 sidem2-f2">
-					<a href="/admin/main">관리자 페이지</a>
-				</div>
-				<div class="sidem-bg3"></div>
-			</c:if>
-			<div class="sidem-mm4 sidem2-f2">
-				<a id="gnb_logout_button" style="color: rgb(0, 0, 0);"><b>로그아웃</b></a>
-			</div>
-			<div class="sidem-bg3"></div>
-			<div class="sidem-mm5 sidem2-f2">
-				<a href="service.html" style="color: rgb(0, 0, 0);"><b>츨겨찾기</b></a>
-			</div>
-		</c:if>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm4 sidem2-f2">
-			<a href="service.html" style="color: rgb(0, 0, 0);"><b>Q & A</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm5 sidem2-f2">
-			<a href="blog.html" style="color: rgb(0, 0, 0);"><b>공지사항</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm4 sidem2-f2">
-			<a href="service.html" style="color: rgb(0, 0, 0);"><b>고객센터</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm5 sidem2-f2">
-			<a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-
-	</div>
-
-
-	<!-- 메뉴 색깔 ------------------------------------------------------------------------------------------>
-	<div id="header-row">
-
-		<div class="container">
-			<div class="row">
-				<!--로그-->
-
-				<div class="span3">
-					<a class="brand" href="main"><img src="../resources/img/logo.png" /></a>
-				</div>
-				<!-- /LOGO -->
-
-				<!-- 메뉴 -->
-				<div class="">
-					<div class="navbar  pull-right">
-						<div class="navbar-inner">
-
-							<a data-target=".navbar-responsive-collapse"
-								data-toggle="collapse" class="btn btn-navbar"> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-							</a>
-
-
-							<div class="nav-collapse collapse navbar-responsive-collapse">
-								<!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
-								<ul class="nav">
-									<li><a href="main" style="color: rgb(0, 0, 0);"><b>칵테일
-												설명</b></a></li>
-									<li><a href="cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
-									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-									<li><a href="blog.html" style="color: rgb(0, 0, 0);"><b>top100</b></a></li>
-
-									<li><a> </a></li>
-									<li><a> </a></li>
-
-									<!-- 우상단 비어있는 공간 -->
-
-									<!-- login off -->
-									<c:if test="${member == null}">
-										<li><a href="/member/login"> 로그인 </a></li>
-										<li><a href="/member/join">회원가입</a></li>
-									</c:if>
-									<!-- login on -->
-									<c:if test="${member != null}">
-										<c:if test="${member.adminCk == 1}">
-											<li><a href="/admin/main">관리자 페이지</a></li>
-										</c:if>
-										<li><a href="/member/logout.do">로그아웃</a></li>
-										<li><a href="../mypage">마이페이지</a></li>
-										<li><a>장바구니</a></li>
-									</c:if>
-								</ul>
-							</div>
-						</div>
-
-						<!-- ================================================================================= -->
-						<!--<div class="nav-collapse collapse navbar-responsive-collapse" >
-						<ul class="nav">
-						<li><a href="service.html">레시피</a></li>
-                        <li><a href="service.html">자유게시판</a></li>
-                        <li><a href="blog.html">top100</a></li>	
-							</ul>
-					</div>	-->
-					</div>
-				</div>
-			</div>
-			<!-- MAIN NAVIGATION -->
-		</div>
-	</div>
-	<!-- /HEADER ROW -->
-
+  
+<%@include file="includes/header2.jsp" %>
   
   <div class="container">
-  <div class="Search-bg">
+ 
   
-  
-  
-  <div class="text-box">집에 있는 재료로 만들 수 있는 칵테일 검색</div>
-	
+  <br>
+  <br>
+  <div class="text-box">Search Cocktails By Ingredients</div><hr>
+	 <div class="Search-bg2">
     <div class="slidecontainer">
 	<div class="slider-f1">도수 :  </div>
 	<div class="slider-f2">최소도수 </div>
@@ -319,9 +178,9 @@
 		<input type="range" min="1" max="50" class="slider" id="dosu2">
 		
         <div class="slider-f2"> 도수 :  <span id="b"></span>~<span id="d"></span></div>
-		
+		<a class="custom-btn btn-14 Search_button" id="tag3">도수 추가</a>
 		  		
-		<a class="btn btn-large btn-danger Search_button" id="tag3">도수 추가</a><br>
+		<!--<a class="btn btn-large btn-danger Search_button" id="tag3">도수 추가</a>--><br>
     </div>
 
 <!-- 도수-->
@@ -734,102 +593,39 @@ $("#tag3")
   })
   </script>
 	
-	  
-<!-- 세로 메뉴-->
+	<!-- 세로 메뉴-->
 <div class="lnb-bg">
 <div id="lnb">
   <h1>칵테일 재료</h1>
   <ul >
-  
-    <li><a>과일</a>
-      <ul>
+
+       <c:forEach items="${tlist}" var="tlist">
+    
+         <li><a><c:out value="${tlist.stuffType}"/></a>
+      	<ul>
         <li><a><div  class="ingredient">
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-<tr><td><input type="checkbox" name="subject" value="오렌지" />오렌지</td></tr>
-<tr><td><input type="checkbox" name="subject" value="사과" />사과</td></tr>
-<tr><td><input type="checkbox" name="subject" value="레몬" />레몬</td></tr>
-<tr><td><input type="checkbox" name="subject" value="코코넛" />코코넛</td></tr>
-<tr><td><input type="checkbox" name="subject" value="자몽" />자몽</td></tr>
-<tr><td><input type="checkbox" name="subject" value="파인애플" />파인애플</td></tr></table></div></a>        
-        </li>  
-	</ul>
-    </li>
-         <li><a>술</a>
-      <ul>
-        <li><a><div  class="ingredient">
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-<tr><td><input type="checkbox" name="subject" value="소주" />소주</td></tr>
-<tr><td><input type="checkbox" name="subject" value="위스키" />위스키</td></tr>
-<tr><td><input type="checkbox" name="subject" value="데킬라" />데킬라</td></tr>
-<tr><td><input type="checkbox" name="subject" value="조니워커" />조니워커</td></tr>
-<tr><td><input type="checkbox" name="subject" value="보드카" />보드카</td></tr>
-<tr><td><input type="checkbox" name="subject" value="럼" />럼</td></tr></table></div></a>        
-        </li>  
-	</ul>
-    </li>
-      
-	     <li><a>시럽</a>
-      <ul>
-        <li><a><div  class="ingredient">
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-<tr><td><input type="checkbox" name="subject" value="골든 시럽" />골든 시럽</td></tr>
-<tr><td><input type="checkbox" name="subject" value="민트 시럽" />민트 시럽</td></tr>
-<tr><td><input type="checkbox" name="subject" value="바닐라 시럽" />바닐라 시럽</td></tr>
-<tr><td><input type="checkbox" name="subject" value="그레나딘 시럽" />그레나딘 시럽</td></tr>
-<tr><td><input type="checkbox" name="subject" value="딸기 시럽" />딸기 시럽</td></tr>
-<tr><td><input type="checkbox" name="subject" value="아몬드 시럽" />아몬드 시럽 </td></tr></table></div></a>        
-        </li>  
-	</ul>
-    </li>
-      
-	     <li><a>음료</a>
-      <ul>
-        <li><a><div  class="ingredient">
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-<tr><td><input type="checkbox" name="subject" value="레몬주스" />레몬주스</td></tr>
-<tr><td><input type="checkbox" name="subject" value="오렌지주스" />오렌지주스</td></tr>
-<tr><td><input type="checkbox" name="subject" value="파인애플주스" />파인애플주스</td></tr>
-<tr><td><input type="checkbox" name="subject" value="코코넛주스" />코코넛주스</td></tr>
-<tr><td><input type="checkbox" name="subject" value="자몽주스" />자몽주스</td></tr>
-<tr><td><input type="checkbox" name="subject" value="토닉워터" />토닉워터</td></tr></table></div></a>        
-        </li>  
-	</ul>
-    </li>
-      
-    	<li><a>비터스</a>
-      <ul>
-        <li><a><div  class="ingredient">
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-<tr><td><input type="checkbox" name="subject" value="캄파리" />캄파리</td></tr>
-<tr><td><input type="checkbox" name="subject" value="아페롤" />아페롤</td></tr>
-<tr><td><input type="checkbox" name="subject" value="이탈리쿠스" />이탈리쿠스</td></tr>
-<tr><td><input type="checkbox" name="subject" value="아베르나" />아베르나</td></tr>
-<tr><td><input type="checkbox" name="subject" value="시나" />시나</td></tr>
-<tr><td><input type="checkbox" name="subject" value="샤르트뢰즈" />샤르트뢰즈</td></tr></table></div></a>        
-        </li>  
-	</ul>
-    </li>
-      	 <li><a>기타</a>
-      <ul>
-        <li><a><div  class="ingredient">
-<table width="100%" border="1" cellspacing="0" cellpadding="0">
-<tr><td><input type="checkbox" name="subject" value="허브" />허브</td></tr>
-<tr><td><input type="checkbox" name="subject" value="민트" />민트</td></tr>
-<tr><td><input type="checkbox" name="subject" value="소금" />소금</td></tr>
-<tr><td><input type="checkbox" name="subject" value="시나몬" />시나몬</td></tr>
-<tr><td><input type="checkbox" name="subject" value="페퍼" />페퍼</td></tr>
-<tr><td><input type="checkbox" name="subject" value="너츠맥" />너츠맥</td></tr></table></div></a>        
-        </li>  
-	</ul>
-    </li>
-      
+		<table width="100%" border="1" cellspacing="0" cellpadding="0">
+
+
+       <c:forEach items="${slist}" var="slist">
+       <c:if test="${slist.stuffType == tlist.stuffType}">	
+            <tr><td><input type="checkbox" name="subject" value="${slist.stuffName}" /><c:out value="${slist.stuffName}"/></td></tr>
+       </c:if>
+      </c:forEach>
+
+     </table></div></a> 
+		 </li>  
+		</ul>
+    	</li>
+    
+       </c:forEach>
     
 
 	
   </ul>
 </div>
 </div>
-
+	
  <!-- 카메라, 추가버튼-->
    <div class="came_bnt_mm ">
 				<div class="form_section">
@@ -842,7 +638,11 @@ $("#tag3")
 				</div>
 
 				<!-- <img src="../resources/img/camera2.jpg" width="25px" height="25px" class="camera2"> -->
-	<a type="button" class="btn btn-large btn-danger Search_bnt  " id="tag" >추가</a><br>
+	<a type="button" class="custom-btn btn-14 mm2_2" id="tag">추가</a>
+	
+	
+	
+	<br>
 	</div>
    </div>
    

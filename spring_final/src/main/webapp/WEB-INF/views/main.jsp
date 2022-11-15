@@ -18,14 +18,16 @@
 <link href="../resources/css/bootstrap.css?after" rel="stylesheet">
 <link href="../resources/css/bootstrap-responsive.css?after"
 	rel="stylesheet">
-<link href="../resources/css/style.css?after" rel="stylesheet">
-
+<link href="../resources/css/style.css" rel="stylesheet">
+<link href="../resources/css/style2.css" rel="stylesheet">
+<link href="../resources/css/btn.css" rel="stylesheet">
 <!--Font-->
 <link
 	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600'
 	rel='stylesheet' type='text/css'>
 
-
+		 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+		   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -43,270 +45,601 @@
 	href="ico/apple-touch-icon-57-precomposed.png">
 
 <style>
+
+.mm2_2{
+margin-right:2%;
+margin-top:1%;
+float: right;
+		}
+
+
+.mm100{
+padding-left: 5%;
+
+
+
+
 </style>
+
+
+
+<style>       
+
+@import url("https://fonts.googleapis.com/css?family=Exo+2:900");
+
+.container11 h2 {
+   margin-left: 10%;
+  font-family: "Exo 2", sans-serif;
+  font-size: 20px;
+  color: white;
+  padding: 5rem 0;
+  text-shadow: 0px 4px 48px rgba(255, 255, 255, 0.2);
+  
+}
+
+.container11 {
+padding-top:18px;
+
+  justify-content: left;
+  background-image: url("../resources/img/slide/1011.png");
+
+  background-size: cover;
+  overflow: hidden;
+}
+
+.bubbles-container {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 100%;
+  max-width: 15rem;
+  transform: translateX(-50%);
+  opacity: 0.75;
+  overflow: visible;
+}
+
+.bubbles {
+  width: 100%;
+  height: auto;
+}
+.bubbles circle {
+  stroke: white;
+  fill: none;
+}
+.bubbles > a > g:nth-of-type(3n) circle {
+  stroke: #87f5fb;
+}
+.bubbles > g > g:nth-of-type(4n) circle {
+  stroke: #8be8cb;
+}
+
+.bubbles-large {
+  overflow: visible;
+}
+.bubbles-large > g {
+  transform: translateY(2048px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.bubbles-large g:nth-of-type(1) {
+  animation: up 6.5s infinite;
+}
+.bubbles-large g:nth-of-type(1) g {
+  transform: translateX(350px);
+}
+.bubbles-large g:nth-of-type(1) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+.bubbles-large g:nth-of-type(2) {
+  animation: up 5.25s 250ms infinite;
+}
+.bubbles-large g:nth-of-type(2) g {
+  transform: translateX(450px);
+}
+.bubbles-large g:nth-of-type(2) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+.bubbles-large g:nth-of-type(3) {
+  animation: up 6s 750ms infinite;
+}
+.bubbles-large g:nth-of-type(3) g {
+  transform: translateX(700px);
+}
+.bubbles-large g:nth-of-type(3) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+.bubbles-large g:nth-of-type(4) {
+  animation: up 5.5s 1.5s infinite;
+}
+.bubbles-large g:nth-of-type(4) g {
+  transform: translateX(500px);
+}
+.bubbles-large g:nth-of-type(4) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+.bubbles-large g:nth-of-type(5) {
+  animation: up 6.5s 4s infinite;
+}
+.bubbles-large g:nth-of-type(5) g {
+  transform: translateX(675px);
+}
+.bubbles-large g:nth-of-type(5) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+
+.bubbles-small {
+  overflow: visible;
+}
+.bubbles-small > g {
+  transform: translateY(2048px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.bubbles-small g circle {
+  transform: scale(0);
+}
+.bubbles-small g:nth-of-type(1) {
+  animation: up 5.25s infinite;
+}
+.bubbles-small g:nth-of-type(1) g {
+  transform: translateX(350px);
+}
+.bubbles-small g:nth-of-type(1) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(2) {
+  animation: up 5.75s infinite;
+}
+.bubbles-small g:nth-of-type(2) g {
+  transform: translateX(750px);
+}
+.bubbles-small g:nth-of-type(2) circle {
+  animation: wobble 3s infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(3) {
+  animation: up 5.25s 250ms infinite;
+}
+.bubbles-small g:nth-of-type(3) g {
+  transform: translateX(350px);
+}
+.bubbles-small g:nth-of-type(3) circle {
+  animation: wobble 3s 250ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(4) {
+  animation: up 5.75s 325ms infinite;
+}
+.bubbles-small g:nth-of-type(4) g {
+  transform: translateX(180px);
+}
+.bubbles-small g:nth-of-type(4) circle {
+  animation: wobble 3s 325ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(5) {
+  animation: up 6s 125ms infinite;
+}
+.bubbles-small g:nth-of-type(5) g {
+  transform: translateX(350px);
+}
+.bubbles-small g:nth-of-type(5) circle {
+  animation: wobble 3s 250ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(6) {
+  animation: up 5.13s 250ms infinite;
+}
+.bubbles-small g:nth-of-type(6) g {
+  transform: translateX(650px);
+}
+.bubbles-small g:nth-of-type(6) circle {
+  animation: wobble 3s 125ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(7) {
+  animation: up 6.25s 350ms infinite;
+}
+.bubbles-small g:nth-of-type(7) g {
+  transform: translateX(480px);
+}
+.bubbles-small g:nth-of-type(7) circle {
+  animation: wobble 3s 325ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(8) {
+  animation: up 7s 200ms infinite;
+}
+.bubbles-small g:nth-of-type(8) g {
+  transform: translateX(330px);
+}
+.bubbles-small g:nth-of-type(8) circle {
+  animation: wobble 3s 325ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(9) {
+  animation: up 6.25s 233ms infinite;
+}
+.bubbles-small g:nth-of-type(9) g {
+  transform: translateX(230px);
+}
+.bubbles-small g:nth-of-type(9) circle {
+  animation: wobble 3s 275ms infinite ease-in-out;
+}
+.bubbles-small g:nth-of-type(10) {
+  animation: up 6s 900ms infinite;
+}
+.bubbles-small g:nth-of-type(10) g {
+  transform: translateX(730px);
+}
+.bubbles-small g:nth-of-type(10) circle {
+  animation: wobble 2s 905ms infinite ease-in-out;
+}
+
+@keyframes wobble {
+  33% {
+    transform: translateX(-50px);
+  }
+  66% {
+    transform: translateX(50px);
+  }
+}
+@keyframes up {
+  0% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-1024px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+<!-- 눈 -->
+
+	
+@import url("https://fonts.googleapis.com/css?family=Corben:700");
+.sl {
+  color: white;
+  letter-spacing: 0.1rem;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.66);
+}
+
+
+.hero__content {
+  position: relative;
+  align-self: center;
+  padding: 3rem 0;
+}
+
+.snow {
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.snow .svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#snow-top-layer {
+  will-change: transform;
+  transform: translateY(-768px);
+  animation: fall 22.5s infinite linear;
+}
+
+#snow-bottom-layer {
+  will-change: transform;
+  transform: translateY(-768px);
+  animation: fall 45s infinite linear;
+}
+
+@keyframes fall {
+  100% {
+    transform: translateY(0);
+  }
+}
+
+		.carousel-bg2 {
+		  background-image: radial-gradient(60% 176%, #1b0820 40%, #000000 100%);
+		width: 100%
+
+
+		}
+
+
+
+		</style>
+  
+  
+ 
+
+
+
 <!-- SCRIPT 
     ============================================================-->
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/side.js"></script>
+<script src="../resources/js/side2.js"></script>
 <style>
 </style>
 </head>
 <body>
-	<!--HEADER ROW-->
-	<input type="checkbox" id="menuicon">
-	<ul>
-		<li><label for="menuicon"> <span></span><span></span><span></span>
-		</label></li>
-	</ul>
 
-	<div class="sidebar">
-		<div class="sidem">
-			<div class="sidem_a ">
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-				<div class="items my-f1  sidem_mm1">홍길동</div>
-			</div>
-
-			<div class="sidem_b ">
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-				<div class="items sidem_mm">
-					<a><img src="../resources/img/icon10.jpg" height="40"
-						width="40" /></a>
-				</div>
-			</div>
-		</div>
-
-		<div class="sidem-bg"></div>
-
-
-		<div class="sidem2">
-			<div class="items2 items2-mm1">
-				<div class="sidem2-f">등급</div>
-				<br> <a><img src="../resources/img/grade/gold.png"
-					height="90" width="90" /></a><br> <br> gold
-			</div>
-
-			<div class=" sidem-bg2"></div>
-
-			<div class="items2 items2-mm2">
-				<div class="sidem2-f">
-					<!-- 로그인 XXXXXXXXXXXX -->
-					<c:if test="${member == null }">
-						<div class="login_button">
-							<a href="/member/login">로그인 후 이용해보세요.</a>
-						</div>
-						<span><a href="/member/join">회원가입</a></span>
-					</c:if>
-					<!-- 로그인 OOOOOOOOOOOO -->
-					<c:if test="${member != null }">
-						<div class="login_success_area">
-							<span> 회원 : ${member.memberName}</span> <span> 충전금액 : <fmt:formatNumber
-									value="${member.money}" pattern="\#,###.##" /></span> <span>
-								포인트 : <fmt:formatNumber value="${member.point}" pattern="#,###" />
-							</span> <a href="/member/logout.do">로그아웃</a>
-						</div>
-					</c:if>
-					<!-- <a class="btn btn-large btn-danger" href="mypage">  </a> -->
-				</div>
-			</div>
-		</div>
-
-		<div class="sidem-bg3"></div>
-
-
-		<!--  login off -->
-		<c:if test="${member == null}">
-			<div class="sidem-mm4 sidem2-f2">
-				<a href="/member/login">로그인</a>
-			</div>
-			<div class="sidem-bg3"></div>
-			<div class="sidem-mm5 sidem2-f2">
-				<a href="/member/join">회원가입</a>
-			</div>
-		</c:if>
-		<!-- login on -->
-		<c:if test="${member != null}">
-			<c:if test="${member.adminCk == 1}">
-				<div class="sidem-mm4 sidem2-f2">
-					<a href="/admin/main">관리자 페이지</a>
-				</div>
-				<div class="sidem-bg3"></div>
-			</c:if>
-			<div class="sidem-mm4 sidem2-f2">
-				<a id="gnb_logout_button" style="color: rgb(0, 0, 0);"><b>로그아웃</b></a>
-			</div>
-			<div class="sidem-bg3"></div>
-			<div class="sidem-mm5 sidem2-f2">
-				<a href="service.html" style="color: rgb(0, 0, 0);"><b>츨겨찾기</b></a>
-			</div>
-		</c:if>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm4 sidem2-f2">
-			<a href="service.html" style="color: rgb(0, 0, 0);"><b>Q & A</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm5 sidem2-f2">
-			<a href="blog.html" style="color: rgb(0, 0, 0);"><b>공지사항</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm4 sidem2-f2">
-			<a href="service.html" style="color: rgb(0, 0, 0);"><b>고객센터</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-
-		<div class="sidem-mm5 sidem2-f2">
-			<a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a>
-		</div>
-		<div class="sidem-bg3"></div>
-	</div>
-
-
-	<!-- 메뉴 색깔 ------------------------------------------------------------------------------------------>
-	<div id="header-row">
-
-		<div class="container">
-			<div class="row">
-				<!--로그-->
-
-				<div class="span3">
-					<a class="brand" href="main"><img src="../resources/img/logo.png" /></a>
-				</div>
-				<!-- /LOGO -->
-
-				<!-- 메뉴 -->
-				<div class="">
-					<div class="navbar  pull-right">
-						<div class="navbar-inner">
-
-							<a data-target=".navbar-responsive-collapse"
-								data-toggle="collapse" class="btn btn-navbar"> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-							</a>
-
-
-							<div class="nav-collapse collapse navbar-responsive-collapse">
-								<!--<div class="nav-collapse collapse navbar-responsive-collapse" -->
-								<ul class="nav">
-									<li><a href="explain" style="color: rgb(0, 0, 0);"><b>칵테일
-												설명</b></a></li>
-									<li><a href="cocktailList" style="color: rgb(0, 0, 0);"><b>레시피</b></a></li>
-									<li><a href="service.html" style="color: rgb(0, 0, 0);"><b>자유게시판</b></a></li>
-									<li><a href="top30" style="color: rgb(0, 0, 0);"><b>Top30</b></a></li>
-
-									<li><a> </a></li>
-									<li><a> </a></li>
-
-									<!-- 우상단 비어있는 공간 -->
-
-									<!-- login off -->
-									<c:if test="${member == null}">
-										<li><a href="/member/login"> 로그인 </a></li>
-										<li><a href="/member/join">회원가입</a></li>
-									</c:if>
-									<!-- login on -->
-									<c:if test="${member != null}">
-										<c:if test="${member.adminCk == 1}">
-											<li><a href="/admin/main">관리자 페이지</a></li>
-										</c:if>
-										<li><a href="/member/logout.do">로그아웃</a></li>
-										<li><a href="../mypage">마이페이지</a></li>
-										
-									</c:if>
-								</ul>
-							</div>
-						</div>
-
-						<!-- ================================================================================= -->
-						<!--<div class="nav-collapse collapse navbar-responsive-collapse" >
-						<ul class="nav">
-						<li><a href="service.html">레시피</a></li>
-                        <li><a href="service.html">자유게시판</a></li>
-                        <li><a href="blog.html">top100</a></li>	
-							</ul>
-					</div>	-->
-					</div>
-				</div>
-			</div>
-			<!-- MAIN NAVIGATION -->
-		</div>
-	</div>
-	<!-- /HEADER ROW -->
-
+      <%@include file="includes/header2.jsp" %>
 
 	<div class="container">
+
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+									  <defs>
+										  <symbol id="arrow" viewBox="0 0 100 100">
+										  	<path d="M12.5 45.83h64.58v8.33H12.5z"/>
+									    		<path d="M59.17 77.92l-5.84-5.84L75.43 50l-22.1-22.08 5.84-5.84L87.07 50z"/>
+										  </symbol>
+									  </defs>
+									</svg>
+
+
 
 		<!--Carousel
   ==================================================-->
 
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
-			<!--  ========================================== -->
+
 				<div class="active item">
 
 					<div class="container">
 						<div class="row">
-							<div class="carousel-bg">
-								<div class="span6">
-									<div class="carousel-caption">
-										<h1>
-											<b>당신과 어울리는 <br>칵테일을 찾아봐요
-											</b>
-										</h1>
-										<p class="lead">
-										
-											</p>
-										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
-									</div>
-									<!--버튼 크기 ///버튼 색깔-->
+						
+					  <div class="carousel-bg2" >
+			 
+											 
+								<div class="hero">
+								
+								    <div class="snow">
+								        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMax slice">
+										    <g fill="#FFF" fill-opacity=".15" transform="translate(55 42)">
+											   <g id="snow-bottom-layer">
+												  <ellipse cx="6" cy="1009.5" rx="6" ry="5.5"/>
+												  <ellipse cx="138" cy="1110.5" rx="6" ry="5.5"/>
+												  <ellipse cx="398" cy="1055.5" rx="6" ry="5.5"/>
+												  <ellipse cx="719" cy="1284.5" rx="6" ry="5.5"/>
+												  <ellipse cx="760" cy="1155.5" rx="6" ry="5.5"/>
+												  <ellipse cx="635" cy="1459.5" rx="6" ry="5.5"/>
+												  <ellipse cx="478" cy="1335.5" rx="6" ry="5.5"/>
+												  <ellipse cx="322" cy="1414.5" rx="6" ry="5.5"/>
+												  <ellipse cx="247" cy="1234.5" rx="6" ry="5.5"/>
+												  <ellipse cx="154" cy="1425.5" rx="6" ry="5.5"/>
+												  <ellipse cx="731" cy="773.5" rx="6" ry="5.5"/>
+												  <ellipse cx="599" cy="874.5" rx="6" ry="5.5"/>
+												  <ellipse cx="339" cy="819.5" rx="6" ry="5.5"/>
+												  <ellipse cx="239" cy="1004.5" rx="6" ry="5.5"/>
+												  <ellipse cx="113" cy="863.5" rx="6" ry="5.5"/>
+												  <ellipse cx="102" cy="1223.5" rx="6" ry="5.5"/>
+												  <ellipse cx="395" cy="1155.5" rx="6" ry="5.5"/>
+												  <ellipse cx="826" cy="943.5" rx="6" ry="5.5"/>
+												  <ellipse cx="626" cy="1054.5" rx="6" ry="5.5"/>
+												  <ellipse cx="887" cy="1366.5" rx="6" ry="5.5"/>
+												  <ellipse cx="6" cy="241.5" rx="6" ry="5.5"/>
+												  <ellipse cx="138" cy="342.5" rx="6" ry="5.5"/>
+												  <ellipse cx="398" cy="287.5" rx="6" ry="5.5"/>
+												  <ellipse cx="719" cy="516.5" rx="6" ry="5.5"/>
+												  <ellipse cx="760" cy="387.5" rx="6" ry="5.5"/>
+												  <ellipse cx="635" cy="691.5" rx="6" ry="5.5"/>
+												  <ellipse cx="478" cy="567.5" rx="6" ry="5.5"/>
+												  <ellipse cx="322" cy="646.5" rx="6" ry="5.5"/>
+												  <ellipse cx="247" cy="466.5" rx="6" ry="5.5"/>
+												  <ellipse cx="154" cy="657.5" rx="6" ry="5.5"/>
+												  <ellipse cx="731" cy="5.5" rx="6" ry="5.5"/>
+												  <ellipse cx="599" cy="106.5" rx="6" ry="5.5"/>
+												  <ellipse cx="339" cy="51.5" rx="6" ry="5.5"/>
+												  <ellipse cx="239" cy="236.5" rx="6" ry="5.5"/>
+												  <ellipse cx="113" cy="95.5" rx="6" ry="5.5"/>
+												  <ellipse cx="102" cy="455.5" rx="6" ry="5.5"/>
+												  <ellipse cx="395" cy="387.5" rx="6" ry="5.5"/>
+												  <ellipse cx="826" cy="175.5" rx="6" ry="5.5"/>
+												  <ellipse cx="626" cy="286.5" rx="6" ry="5.5"/>
+												  <ellipse cx="887" cy="598.5" rx="6" ry="5.5"/>
+											   </g>
+										    </g>
+										    <g fill="#FFF" fill-opacity=".3" transform="translate(65 63)">
+											   <g id="snow-top-layer">
+												  <circle cx="8" cy="776" r="8"/>
+												  <circle cx="189" cy="925" r="8"/>
+												  <circle cx="548" cy="844" r="8"/>
+												  <circle cx="685" cy="1115" r="8"/>
+												  <circle cx="858" cy="909" r="8"/>
+												  <circle cx="874" cy="1438" r="8" transform="rotate(180 874 1438)"/>
+												  <circle cx="657" cy="1256" r="8" transform="rotate(180 657 1256)"/>
+												  <circle cx="443" cy="1372" r="8" transform="rotate(180 443 1372)"/>
+												  <circle cx="339" cy="1107" r="8" transform="rotate(180 339 1107)"/>
+												  <circle cx="24" cy="1305" r="8" transform="rotate(180 24 1305)"/>
+												  <circle cx="8" cy="8" r="8"/>
+												  <circle cx="189" cy="157" r="8"/>
+												  <circle cx="548" cy="76" r="8"/>
+												  <circle cx="685" cy="347" r="8"/>
+												  <circle cx="858" cy="141" r="8"/>
+												  <circle cx="874" cy="670" r="8" transform="rotate(180 874 670)"/>
+												  <circle cx="657" cy="488" r="8" transform="rotate(180 657 488)"/>
+												  <circle cx="443" cy="604" r="8" transform="rotate(180 443 604)"/>
+												  <circle cx="339" cy="339" r="8" transform="rotate(180 339 339)"/>
+												  <circle cx="24" cy="537" r="8" transform="rotate(180 24 537)"/>
+											   </g>
+										    </g>
+										</svg>
+								    </div>
+								
+								
 								</div>
-								<div>
-									<img src="../resources/img/slide/slide3.png" height="1000"
-										width="600">
-								</div>
+											 
+											<div class="sl">
+												<div class="span6">
+													<div class="carousel-caption">
+														<h1>
+															<b>당신과 어울리는 <br>칵테일을 찾아보세요</b>
+														</h1>
+														<p class="lead">Cras justo odio, dapibus ac facilisis in,
+															egestas eget quam. Donec id elit non mi porta gravida at eget
+															metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>									
+					
+														<a href="member/join" class="button20"   style=" color: #fff;">
+															SIGN UP TODAY
+															<span>
+																<svg>
+																	<use xlink:href="#arrow" href="#arrow"></use>
+																</svg>
+															</span>
+														</a>																												
+													</div>
+												</div>
+												<div>
+													<img src="../resources/img/slide/slide3.png" height="1000"
+														width="600">
+												</div>
+												</div>	
+								
 							</div>
 						</div>
 					</div>
+					
+
+					
+			
+			
 				</div>
-		<!--  ========================================== -->
+
+
+			
+	
 				<div class="item">
 
-					<div class="container">
+					
+						<div class="container">
 						<div class="row">
-							<div class="carousel-bg">
-								<div class="span6">
-									<div class="carousel-caption">
-										<h1>
-											<b>당신과 어울리는 <br>칵테일을 찾아봐요
-											</b>
-										</h1>
-										<p class="lead">aa
-											</p>
-										<a class="btn btn-large btn-danger" href="../member/join">Sign up today</a>
+							<div class="">
+
+									<div class="container11">
+						
+							<div class="bubbles-container">
+								<svg class="bubbles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701 1024" style="overflow: visible;">
+						
+						        <g class="bubbles-large" stroke-width="7">
+						            <g>
+						                <g transform="translate(10 940)">
+						                    <circle cx="35" cy="35" r="35"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(373 940)">
+						                    <circle cx="35" cy="35" r="35"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(408 940)">
+						                    <circle cx="35" cy="35" r="35"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(621 940)">
+						                    <circle cx="35" cy="35" r="35"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(179 940)">
+						                    <circle cx="35" cy="35" r="35"/>
+						                </g>
+						            </g>
+						        </g>
+						
+						        <g class="bubbles-small" stroke-width="4">
+						            <g>
+						                <g transform="translate(147 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(255 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(573 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(429 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(91 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(640 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(321 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(376 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(376 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						            <g>
+						                <g transform="translate(497 984)">
+						                    <circle cx="15" cy="15" r="15"/>
+						                </g>
+						            </g>
+						        </g>
+						
+						    </svg>
 									</div>
-								</div>
-								<div>
-									<img src="../resources/img/slide/cherry.png" height="1000" width="600">
-								</div>
+							
+									<h2><p style=" font-size: 80px;">Mojito!</P><br>	    
+									The refreshing taste of mint gives<br>
+									it a refreshing taste.<br>
+									The bright green color of lime and mint stands<br>
+									out and givesa refreshing feeling visually.
+								
+									</h2><br>
+						
+										</div>
+
+
 							</div>
 						</div>
 					</div>
-
+			
+			
+					
+					
+					
 				</div>
-
 			</div>
 			<!-- Carousel nav -->
 			<a class="carousel-control left " href="#myCarousel"
@@ -322,93 +655,107 @@
 
 		<!-- Feature 
   ==============================================-->
-		<!--111111111111111111111111111111111111111111111111111-->
+		<!--칵테일 베스트 4개-->
 		<div class="feature">
-			<div class="row feature-box">
-				<div class="span12 cnt-title">
+		  <div class="row feature-box">
+		<div class="span12 cnt-title">
 					<span>Best Cocktail</span>
 				</div>
-
-				<div class="mm">
-					<div class="f-bg">
+				
+					<div class="f-bg222">
+					<div class="gallerylist">
+					<ul>
 						<c:forEach items="${ls}" var="ls" varStatus="status">
-							<div class="span3">
-								<h2>
-									<B>${status.count}th</B>
-								</h2>
-								<a href="/service?cocktailNo=${ls.cocktailNo}&cocktailName=${ls.cocktailName}"><div class="image_wrap" data-cocktailno="${ls.imageList[0].cocktailNo}" data-path="${ls.imageList[0].uploadPath}" data-uuid="${ls.imageList[0].uuid}" data-filename="${ls.imageList[0].fileName}">
-									<img style="width:200px;height:200px;border-radius: 20px;margin-left:10px;"></div></a>
-								<p class="my-f1">
-									<b>${ls.cocktailName}</b>
-								</p>
+						<li>
+						<a href="/service?cocktailNo=${ls.cocktailNo}&cocktailName=${ls.cocktailName}">
+						
+							<div>
+								<h2><B>${status.count}th</B></h2>
 							</div>
-						</c:forEach>	
-						<!-- 
-						<div class="span3">
-
-							<h2>
-								<B>1th</B>
-							</h2>
-							<a href="#"><img src="../resources/img/c1.png" height="220"
-								width="220"></a>
-							<p class="my-f1">
-								<b>올드팬션드</b>
-							</p>
-							-->
-							<!--<a href="#">Read More &rarr;</a>-->
-						<!-- 
-						</div>
-
-						<div class="span3">
-							<h2>
-								<B>2nd</B>
-							</h2>
-							<a href="#"><img src="../resources/img/c1.png" height="220"
-								width="220"></a>
-							<p class="my-f1">
-								<b>올드팬션드</b>
-							</p>
-
-						</div>
-
-						<div class="span3">
-							<h2>
-								<B>3rd</B>
-							</h2>
-							<a href="#"><img src="../resources/img/c1.png" height="220"
-								width="220"></a>
-							<p class="my-f1">
-								<b>올드팬션드</b>
-							</p>
-						</div>
-
-						<div class="span3">
-							<h2>
-								<B>4th</B>
-							</h2>
-							<a href="#"><img src="../resources/img/c1.png" height="220"
-								width="220"></a>
-							<p class="my-f2">
-								<b>올드팬션드</b>
-							</p>
-
-						</div>
-						 -->
-						<div class="v-bg1"></div>
-
-
-
+								<div class="screen">
+								
+								<div class="top" style="text-align: left;">
+								<p># ${ls.cocktailLevel}</p><p># ${ls.cocktailRating} </p>	
+								
+								</div>
+								<div class="bottom">이동하기 </div>
+								
+								<div class="image_wrap" data-cocktailno="${ls.imageList[0].cocktailNo}" data-path="${ls.imageList[0].uploadPath}" data-uuid="${ls.imageList[0].uuid}" data-filename="${ls.imageList[0].fileName}">
+									<img style=" border-radius: 20px; "></div>							   								
+								</div>
+								<div>
+								<br>
+								<b><p>${ls.cocktailName}</p></b>
+								</div>							
+							  </a>
+							</li>						
+						</c:forEach>			
+						</ul>
 					</div>
 				</div>
-
-
-			</div>
-			<div class="mm2">
-				<a class="btn btn-large btn-danger" href="cocktailList"> 더 보러가기 </a>
-			</div>
+				<br>
+					
+					
+						<a class="custom-btn btn-14 mm2_2" href="cocktailList">더 보러가기</a>
+				
+				</div>
 		</div>
+	
 		<br> <br>
 
+
+
+
+<!--  칵테일 영상  -->
+
+<div id="myCarousel3" class="carousel slide" >
+    <div class="carousel-inner" >
+		
+      <div class="active item" >
+	 
+        <div class="container" >
+          <div class="row" >
+             
+             
+			
+			 <iframe width="1100" height="550" class="mm100" src="https://www.youtube.com/embed/J09reqatUY4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			
+          </div>
+        </div>
+      </div>
+
+      <div class="item">   
+         <div class="container" >
+          <div class="row" >         
+               <iframe width="1100" height="550" class="mm100" src="https://www.youtube.com/embed/Tp8iQ45exHI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>			
+          </div>
+        </div>
+      </div>
+
+  <div class="item">   
+         <div class="container" >
+          <div class="row" >         
+              <iframe width="1100" height="550" class="mm100"  src="https://www.youtube.com/embed/5vnCRg83p2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
+        </div>
+      </div>
+
+  <div class="item">   
+         <div class="container" >
+          <div class="row" >         
+           <iframe width="1100" height="550" class="mm100"  src="https://www.youtube.com/embed/PIL_c4b2_CU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  </div>
+        </div>
+      </div>
+
+    </div>
+       <!-- Carousel nav -->
+      <a class="carousel-control left " href="#myCarousel3" data-slide="prev"><i class="icon-chevron-left"></i></a>
+      <a class="carousel-control right" href="#myCarousel3" data-slide="next"><i class="icon-chevron-right"></i></a>
+        <!-- /.Carousel nav -->
+
+  </div>
+
+
+<br><br>
 
 		<div class="row-view2">
 			<div class="row">
@@ -416,19 +763,19 @@
 
 				<div class="span6 mm3">
 
-					<p class="my-f6">내가 가지고 있는 재료로 칵테일 검색하기</p>
+					<p class="my-f6">집에 있는 재료로<br> 칵테일 검색하기</p>
 
 					<div class="my-f5 mm6">
-						사진으로 검색 <a class="btn btn-large btn-danger mm5 " href="#">지금
-							바로가기</a>
+						사진으로 검색  <a class="custom-btn btn-14 mm5"  href="keyword"><span>지금
+							바로가기</span></a>
 					</div>
 					<br>
 					<p class="mm7">
 						집에 있는 재료를 찍어서 그 재료가 <br>들어가 있는 칵테일 검색하기
 					</p>
 					<div class="my-f5 mm6">
-						키워드로 검색<a class="btn btn-large btn-danger mm5" href="keyword">지금
-							바로가기</a>
+						키워드로 검색<a class="custom-btn btn-14 mm5"  href="keyword"><span>지금
+							바로가기</span></a>
 					</div>
 					<br>
 					<p class="mm7">
@@ -633,6 +980,7 @@
 
 				</div>
 			</div>
+			
 			<a class="btn btn-large btn-danger mm24" href="#">지금 바로가기</a><br>
 			<!-- Carousel nav -->
 			<a class="carousel-control left " href="#myCarousel2"

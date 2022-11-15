@@ -254,23 +254,27 @@
   /* 리뷰쓰기 버튼 */
   .reply_button_wrap{
   	padding : 10px;
+  	margin-left:3%;
+  
   }
   .reply_button_wrap button{
-	background-color: #365fdd;
+	background-color: #000000;
     color: white;
     font-weight: bold;
-    font-size: 15px;
-    padding: 5px 12px;
+    font-size: 20px;
+    padding: 10px 44% 10px 44%;
+    border-radius: 5px;
+    	margin-top:20px;
     cursor: pointer;  
   }
   .reply_button_wrap button:hover{
-  	background-color: #1347e7;
+  	background-color: #424242;
   }
   
   /* 리뷰 영역 */
   	.content_bottom{
-  		width: 80%;
-  		margin:0;
+  		/*width: 100%;*/
+  		 /*margin:0;*/
   	}
 	.reply_content_ul{
 		list-style: none;
@@ -279,14 +283,16 @@
 		position: relative;
     	border-bottom: 1px dotted #d4d4d4;
     	padding: 14px 0 10px 0;	
-    	font-size: 12px;
+    
 	}
 		/* 리뷰 머리 부분 */
 		.reply_top{
+		
 			padding-bottom: 10px;
 		}
 		.id_span{
-			padding: 0 15px 0 3px;
+			font-size: 14px;
+			padding: 0 0px 0 0px;
 		    font-weight: bold;		
 		}
 		.date_span{
@@ -337,8 +343,10 @@
   /* 리뷰 없는 경우 div */
   .reply_not_div{
   	text-align: center;
+  	
   }
   .reply_not_div span{
+  font-size: 30px;
 	display: block;
     margin-top: 30px;
     margin-bottom: 20px; 
@@ -349,11 +357,12 @@
  	font-weight: bold;
     background-color: #b7b399;
     display: inline-block;
-    width: 40px;
+    width: 50px;
     text-align: center;
-    height: 20px;
+    height: 25px;
     line-height: 20px;
     margin: 0 5px 0 30px;
+    padding-top : 3px;
     border-radius: 6px;
     color: white; 
     cursor: pointer;
@@ -362,9 +371,10 @@
  	font-weight: bold;
     background-color: #e7578f;
     display: inline-block;
-    width: 40px;
+    width: 50px;
     text-align: center;
-    height: 20px;
+    height: 25px;
+     padding-top : 3px;
     line-height: 20px;
     border-radius: 6px;
     color: white; 

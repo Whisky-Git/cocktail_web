@@ -42,6 +42,10 @@
 	href="ico/apple-touch-icon-57-precomposed.png">
 	
 <link rel="stylesheet" href="../resources/css/admin/cocktailModify.css">
+<script src="../resources/js/side2.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<link href="../resources/css/style2.css" rel="stylesheet">
 
 <style>
 #result_card img{
@@ -81,7 +85,7 @@
 </head>
 <title>관리자페이지</title>
 <body>
-    <%@include file="../includes/admin/header.jsp" %>
+    <%@include file="../includes/admin/header2.jsp" %>
     <div class="container">
     	<div class="wrap">
             <!-- top_subject_area -->
@@ -102,7 +106,10 @@
                       	</li>
                 		<li>
                       		<a class="admin_list_03" href="/admin/memberManage">회원 관리</a>                            
-                  		</li>                                                                                             
+                  		</li>  
+                  		<li>
+                      		<a class="admin_list_04" href="/admin/cocktailstuffEnroll">재료 등록</a>                            
+                  		</li>                                                                                           
               		</ul>
               	</div>
               	<div class="admin_content_wrap">
