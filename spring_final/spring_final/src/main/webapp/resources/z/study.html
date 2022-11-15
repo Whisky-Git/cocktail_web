@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>MHDP Full Calendar</title>
+  <script defer src="study.js"></script>
+</head>
+<body>
+  
+  
+  <div class="calendar">
+    <div class="header">
+      <div class="year-month"></div>
+      <div class="nav">
+        <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+        <button class="nav-btn go-today" onclick="goToday()">Today</button>
+        <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="days">
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wen</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+      </div>
+      <div class="dates"></div>
+    </div>
+    <div style="float: right;">
+      <a class="btn btn-large btn-danger" href="#">출첵하기</a>
+    </div>
+  </div>
+  
+</body>
+</html>
